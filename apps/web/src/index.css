@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm Earth & Luxury Gold Palette */
+    --background: 40 33% 98%; /* Very warm off-white */
+    --foreground: 220 20% 15%; /* Deep slate/blue-gray for text */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+    
+    /* Elegant Gold */
+    --primary: 43 74% 49%; 
+    --primary-foreground: 0 0% 100%;
+    
+    /* Deep Mediterranean Blue */
+    --secondary: 210 100% 25%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Warm Earth Tone */
+    --accent: 25 40% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 40 20% 92%;
+    --muted-foreground: 220 10% 45%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 43 74% 49%;
+    
+    --radius: 0.75rem;
+    
+    /* Luxury Design Tokens */
+    --gradient-subtle-gold: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+    --gradient-subtle-blue: linear-gradient(135deg, rgba(0, 71, 113, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 40 20% 95%;
+    
+    --card: 220 25% 14%;
+    --card-foreground: 40 20% 95%;
+    
+    --popover: 220 25% 14%;
+    --popover-foreground: 40 20% 95%;
+    
+    --primary: 43 74% 55%;
+    --primary-foreground: 220 25% 10%;
+    
+    --secondary: 210 80% 40%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 25 40% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 220 20% 20%;
+    --muted-foreground: 40 10% 70%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 43 74% 55%;
+    
+    /* Luxury Design Tokens (Dark Mode Adjustments) */
+    --gradient-subtle-gold: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+    --gradient-subtle-blue: linear-gradient(135deg, rgba(0, 105, 148, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Outfit", sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: clip;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    line-height: 1.7;
+    max-width: 65ch;
+  }
+
+  button, a {
+    transition: all 200ms ease;
+  }
+}
+
+@layer utilities {
+  .bg-luxury-subtle {
+    background: var(--gradient-subtle-gold);
+  }
+  
+  .bg-elegant-gradient {
+    background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 50%), 
+                radial-gradient(circle at bottom left, rgba(0, 71, 113, 0.06), transparent 50%);
+  }
+
+  .pattern-geometric {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.2) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .pattern-linen {
+    background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px),
+                      repeating-linear-gradient(-45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px);
+  }
+
+  .divider-elegant {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+    margin: 4rem auto;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+  }
+  
+  .divider-elegant::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    background-color: hsl(var(--background));
+    border: 1px solid rgba(212, 175, 55, 0.5);
+  }
+}
