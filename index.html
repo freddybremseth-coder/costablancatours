@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Costa Blanca Tours — Intimate Luxury Experiences</title>
+  <meta name="description" content="Intimate small-group luxury experiences on the Costa Blanca. Maximum 4 guests. Private car. All-inclusive. cbt.freddybremseth.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e0be72;
+      --navy: #0a0f1c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #080c18;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      text-wrap: balance;
+    }
+
+    p { text-wrap: pretty; }
+
+    input, select, textarea, button { font-family: 'DM Sans', sans-serif; }
+
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    select option { background: #1a2030; color: white; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #080c18; }
+    ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.4); border-radius: 3px; }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none !important; }
+      .mobile-controls { display: flex !important; }
+      .about-grid { grid-template-columns: 1fr !important; }
+      .contact-grid { grid-template-columns: 1fr !important; }
+      .booking-grid { grid-template-columns: 1fr !important; }
+      .detail-grid { grid-template-columns: 1fr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- Data -->
+<script>
+const TOURS = [
+  {
+    id: 'villajoyosa-chocolate',
+    name: 'Villajoyosa: Sweet Temptations',
+    tagline: "Spain's oldest chocolate traditions",
+    shortDesc: "Explore vibrant coastal beauty and dive into Spain's oldest chocolate traditions on an exclusive full-day journey.",
+    duration: 'Full day · 6–7 hrs',
+    price: '€189',
+    priceNum: 189,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Culinary & Culture',
+    image: 'https://horizons-cdn.hostinger.com/fdaae8f6-c2cb-4e61-863e-e79e6b571eca/45fb6619bb798d20fa0d7374cc82fc50.png',
+    highlights: ['Factory tour', 'Pro tasting', 'Gourmet lunch', 'Chocolate workshop'],
+    fullDesc: "Step into a world where the air is thick with the intoxicating aroma of roasted cocoa. Villajoyosa, with its iconic brightly painted fishermen's houses, is the historic heart of Spain's chocolate-making tradition. This exclusive journey blends centuries-old heritage with modern culinary excellence.\n\nYou'll tour an exclusive historic chocolate factory, watch master artisans at work, then sit down for a guided sensory tasting session. A multi-course gourmet lunch featuring regional specialties follows, then a hands-on workshop where you craft your own personalized chocolate creation under the guidance of a master chocolatier.",
+    featured: true
+  },
+  {
+    id: 'sierra-nevada',
+    name: 'Sierra Nevada: Alpine Winter Escape',
+    tagline: "Spain's highest mountain ski adventure",
+    shortDesc: "Experience the thrill of winter sports in Spain's highest mountains with an exclusive, all-inclusive ski adventure.",
+    duration: '2 or 3 Days',
+    price: 'From €800',
+    priceNum: 800,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Adventure & Sports',
+    image: 'https://horizons-cdn.hostinger.com/fdaae8f6-c2cb-4e61-863e-e79e6b571eca/9ad7a02375695d15c9f267db0389f43c.png',
+    highlights: ['VIP equipment fitting', 'Guided orientation', 'Alpine lunch', 'Après-ski'],
+    fullDesc: "Leave the Mediterranean coast behind and ascend into the breathtaking, snow-capped peaks of the Sierra Nevada. Spain's premier winter destination, this majestic mountain range offers pristine slopes, brilliant sunshine, and an unparalleled alpine atmosphere.\n\nChoose the 2-day (€800) or 3-day (€1,100) package. We handle every logistical detail — transport, hotel accommodation, VIP equipment fitting, guided mountain orientation and alpine lunches. The 3-day option includes our exclusive après-ski relaxation evening with premium drinks and tapas.",
+    featured: true
+  },
+  {
+    id: 'juan-gil-wine',
+    name: 'Juan Gil: The Art of Jumilla Wine',
+    tagline: 'Elite winemaking in sun-drenched vineyards',
+    shortDesc: "A sophisticated journey through Spain's celebrated wine heritage in the vineyards of Jumilla.",
+    duration: 'Full day · 7–8 hrs',
+    price: '€225',
+    priceNum: 225,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Wine & Gastronomy',
+    image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['VIP vineyard access', 'Sommelier tasting', 'Gourmet pairing lunch', 'Cellar access'],
+    fullDesc: "Step into the world of Juan Gil, where centuries of winemaking tradition meet modern excellence. The arid, sun-drenched landscapes of Jumilla produce some of Spain's most robust and celebrated wines.\n\nWalk ancient Monastrell vines with an expert viticulturist, descend into cool atmospheric cellars, then take your seat for a sommelier-led tasting of Juan Gil's finest premium vintages. A spectacular multi-course lunch at the estate follows, each dish crafted from local ingredients and perfectly paired with a specific vintage.",
+    featured: true
+  },
+  {
+    id: 'ibiza-escape',
+    name: 'Ibiza: Mediterranean Island Escape',
+    tagline: 'Pristine beaches, bohemian markets',
+    shortDesc: 'Cross the azure waters to the legendary island of Ibiza for a day of pristine beaches and vibrant culture.',
+    duration: 'Full day · 12 hrs',
+    price: '€350',
+    priceNum: 350,
+    maxGuests: 4,
+    transport: 'Private Car & Ferry',
+    category: 'Island & Coastal',
+    image: 'https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Fast ferry crossing', 'Dalt Vila tour', 'Secluded cove', 'Beach club lunch', 'Hippy market'],
+    fullDesc: "Discover the dual nature of Ibiza — a world-renowned haven for both tranquil bohemian retreats and vibrant coastal energy. This exclusive day trip takes you across the Mediterranean to explore hidden coves, historic Dalt Vila, and chic beach clubs.\n\nWe transfer you by Private Car to the port, then board a premium fast ferry. Explore the UNESCO-listed Dalt Vila, escape to a secluded cala for swimming, enjoy a luxurious beach club lunch with fresh seafood, and conclude with a visit to a famous hippy market.",
+    featured: false
+  },
+  {
+    id: 'altea-charm',
+    name: 'Altea: The Dome of the Mediterranean',
+    tagline: 'Whitewashed streets & artisan boutiques',
+    shortDesc: "Wander through the whitewashed streets of Altea, the Costa Blanca's most picturesque coastal town.",
+    duration: 'Half day · 5 hrs',
+    price: '€145',
+    priceNum: 145,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Culture & Sightseeing',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Old town walk', 'Artisan boutiques', 'Church dome views', 'Hillside lunch'],
+    fullDesc: "Crowned by its iconic blue-and-white tiled church dome, Altea is a haven for artists and dreamers. This enchanting town offers a beautiful contrast to the bustling resorts nearby, preserving its traditional Spanish soul.\n\nArrive at the foot of Altea's old town and ascend through charming narrow streets lined with whitewashed houses and vibrant bougainvillea. Reach the Church of the Virgin of Consuelo for panoramic bay views, dine at a hillside restaurant, and stroll the pebble beach promenade.",
+    featured: false
+  },
+  {
+    id: 'dona-anna',
+    name: 'Dona Anna: Coastal Elegance',
+    tagline: 'Dramatic cliffs & crystalline waters',
+    shortDesc: 'Experience the pristine beauty of the Dona Anna coastline with an exclusive, luxurious seaside retreat.',
+    duration: 'Full day · 7 hrs',
+    price: '€210',
+    priceNum: 210,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Luxury & Coastal',
+    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Cliff-top walk', 'Luxury beach loungers', 'Cliffside seafood lunch', 'VIP service'],
+    fullDesc: "The Dona Anna coastal region is synonymous with dramatic cliffs, hidden grottos, and waters of impossible clarity. This tour is designed for those who appreciate the finer things, combining breathtaking scenery with unparalleled luxury.\n\nBegin with a chilled glass of cava upon arrival, then take a guided walk along dramatic cliff tops. Descend to a reserved luxury beach area, relax on private loungers, and indulge in a multi-course cliffside seafood feast paired with premium regional wines.",
+    featured: false
+  },
+  {
+    id: 'markedet-tour',
+    name: 'Markedet: The Authentic Market Experience',
+    tagline: "Insider access to Spain's beating culinary heart",
+    shortDesc: 'Dive into the bustling local markets of the Costa Blanca, tasting fresh produce and regional culinary secrets.',
+    duration: 'Half day · 4–5 hrs',
+    price: '€135',
+    priceNum: 135,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Culinary & Culture',
+    image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Guided market tour', 'Vendor interactions', 'Premium tastings', 'Authentic tapas lunch'],
+    fullDesc: "To truly understand Spanish culture, one must visit its markets. The Mercado is the beating heart of the community — a vibrant, colorful spectacle where the freshest Mediterranean ingredients are proudly displayed.\n\nNavigate the bustling aisles with your guide, learn to select the best Jamón Ibérico, artisanal cheeses and fresh olives, sample premium cured meats and local wines from the stalls, then enjoy a traditional tapas lunch made from the very ingredients you just discovered.",
+    featured: false
+  },
+  {
+    id: 'guadalest-valley',
+    name: 'Guadalest: The Mountain Fortress',
+    tagline: 'Medieval history & emerald reservoir',
+    shortDesc: 'Journey inland to the spectacular mountain village of Guadalest, famous for its castle and emerald reservoir.',
+    duration: 'Half day · 5–6 hrs',
+    price: '€155',
+    priceNum: 155,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Nature & History',
+    image: 'https://images.unsplash.com/photo-1559588500-1b211bf118c7?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Castle of San José', 'Emerald reservoir views', 'Village exploration', 'Mountain lunch'],
+    fullDesc: "Hidden in the rugged mountains of Alicante lies Guadalest, one of the most beautiful and historically significant villages in Spain. Perched on a limestone pinnacle, accessed only through a tunnel carved into the rock.\n\nClimb to the remains of the 11th-century Moorish castle for unparalleled panoramic views, gaze upon the stunning turquoise Embalse de Guadalest, explore quirky micro-museums and artisan shops, then conclude with a hearty mountain lunch of slow-cooked lamb and regional wines.",
+    featured: false
+  },
+  {
+    id: 'romantisk-tur',
+    name: 'Romantic Escape: Evening Elegance',
+    tagline: 'Candlelit dinners under Mediterranean stars',
+    shortDesc: 'A meticulously crafted evening of romance, featuring secluded viewpoints, fine dining, and Mediterranean magic.',
+    duration: 'Evening · 4–5 hrs',
+    price: '€250',
+    priceNum: 250,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Romance & Luxury',
+    image: 'https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Secluded coastal viewpoint', 'Premium Cava & chocolates', 'Romantic promenade', 'Candlelit dinner'],
+    fullDesc: "Celebrate love against the stunning backdrop of the Costa Blanca. Every detail of this exclusive evening tour is curated to provide a seamless, romantic journey under the Mediterranean stars.\n\nBegin at a hidden elevated viewpoint overlooking the sea with a chilled bottle of premium Cava and artisan chocolates. Stroll a quiet coastal promenade hand-in-hand, then spend the evening at a reservation at one of the region's most romantic restaurants — a multi-course tasting menu with wine pairings.",
+    featured: false
+  },
+  {
+    id: 'solnedgang-sunset',
+    name: 'Sunset Magic: Coastal Twilight',
+    tagline: 'Gold hour vistas with wine & tapas',
+    shortDesc: 'Witness the spectacular Mediterranean sunset from exclusive vantage points with fine wine and local tapas.',
+    duration: 'Evening · 3–4 hrs',
+    price: '€165',
+    priceNum: 165,
+    maxGuests: 4,
+    transport: 'Private Car',
+    category: 'Nature & Relaxation',
+    image: 'https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Scenic coastal drive', 'Exclusive sunset viewpoint', 'Premium wine', 'Gourmet tapas'],
+    fullDesc: "There is a brief, magical window when the Costa Blanca's harsh daylight softens into brilliant hues of gold, pink, and violet. This sunset tour celebrates that golden hour from the most stunning, unobstructed clifftop viewpoints.\n\nBoard our Private Car as the late afternoon heat fades, enjoy the changing light along coastal cliffs, then arrive at a secluded elevated location just in time. Sip premium Spanish wines paired with gourmet tapas — artisanal cheeses, cured meats, fresh olives — as the sun dips below the horizon.",
+    featured: false
+  }
+];
+
+const LOGO = 'https://horizons-cdn.hostinger.com/fdaae8f6-c2cb-4e61-863e-e79e6b571eca/5e1471de21621c8a783339a25d92fc19.png';
+const HERO_IMG = 'https://images.unsplash.com/photo-1602854127232-983309a47263?auto=format&fit=crop&q=85&w=1920';
+
+const CATEGORIES = ['All', 'Culinary & Culture', 'Wine & Gastronomy', 'Adventure & Sports', 'Island & Coastal', 'Culture & Sightseeing', 'Luxury & Coastal', 'Nature & History', 'Romance & Luxury', 'Nature & Relaxation'];
+
+</script>
+<script>
+
+const TRANSLATIONS = {
+  en: {
+    nav: { home: 'Home', tours: 'Tours', about: 'About', contact: 'Contact', bookNow: 'Book Now' },
+    hero: {
+      eyebrow: 'Costa Blanca · Spain · Max 4 Guests',
+      title1: 'Discover the',
+      titleItalic: 'Soul',
+      title2: 'of',
+      title3: 'Costa Blanca',
+      subtitle: 'Intimate small-group luxury experiences. Private car. Local expertise. Wine, tapas and memories — all included.',
+      exploreBtn: 'Explore Experiences',
+      storyBtn: 'Our Story',
+      scroll: 'Scroll',
+    },
+    stats: { tours: 'Unique Experiences', guests: 'Max Guests Per Tour', inclusive: 'All-Inclusive', rating: 'Rated by Guests' },
+    why: {
+      eyebrow: 'The Costa Blanca Tours Difference',
+      title: 'Why discerning travellers choose us',
+      items: [
+        { title: 'Maximum 4 Guests', desc: "Every tour is strictly limited to 4 guests. You'll never feel like a number — only a valued guest with personal attention." },
+        { title: 'Private Car Always', desc: 'Door-to-door comfort in a private vehicle. No coaches, no waiting for others. Your schedule, your pace.' },
+        { title: 'Truly All-Inclusive', desc: 'Wine, beer, tapas, gourmet meals, entry fees — all covered. No awkward bill moments. Pure enjoyment.' },
+        { title: 'Born & Raised Locally', desc: 'Our guides are Costa Blanca natives. Hidden gems, family stories, secret spots — this is lived knowledge.' },
+      ],
+    },
+    featured: {
+      eyebrow: 'Signature Experiences',
+      title: 'Featured Journeys',
+      viewAll: 'View All 10 Tours →',
+    },
+    cta: {
+      eyebrow: 'Ready to explore?',
+      title: 'Your perfect Mediterranean experience awaits',
+      subtitle: 'From snow-capped Sierra Nevada to Ibiza\'s turquoise coves — every journey is crafted around you.',
+      reserveBtn: 'Reserve Your Experience',
+      questionBtn: 'Ask a Question',
+    },
+    footer: {
+      desc: 'Intimate luxury experiences on the Costa Blanca. Maximum 4 guests. Local expertise. Unforgettable memories.',
+      experiences: 'Experiences',
+      quickLinks: 'Quick Links',
+      contact: 'Get in Touch',
+      rights: '© 2026 Costa Blanca Tours. All rights reserved.',
+    },
+    tours: {
+      eyebrow: 'All Experiences',
+      title: 'Our Curated Journeys',
+      subtitle: 'Each experience is strictly limited to 4 guests, fully all-inclusive with private car transport. No hidden costs — just pure discovery.',
+      count1: 'experience', countN: 'experiences',
+      from: 'From', perPerson: '/person',
+      viewDetails: 'View Details →',
+      filter: 'All',
+    },
+    detail: {
+      backBtn: '← Back to Tours',
+      duration: 'Duration', maxGuests: 'Max Guests', transport: 'Transport',
+      aboutTitle: 'About the Experience',
+      highlightsTitle: 'Tour Highlights',
+      priceLabel: 'Price per person',
+      allInclusive: 'All-inclusive · Max',
+      included: ['Wine, beer & tapas included', 'Private car transport', 'Gourmet meals', 'Expert local guide', 'No hidden costs'],
+      reserveBtn: 'Reserve This Experience',
+      questionBtn: 'Ask a Question',
+      cancelNote: 'Free cancellation up to 48h before. Payment on the day.',
+      otherTitle: 'Other Experiences',
+    },
+    about: {
+      eyebrow: 'Our Story',
+      heroTitle: 'Two passions. One destination.',
+      heroItalic: 'Endless discoveries.',
+      heroSubtitle: 'Costa Blanca Tours was born from a simple belief: the best travel experiences happen when you slow down, connect deeply, and explore with someone who truly knows the land.',
+      philEyebrow: 'The Philosophy',
+      philTitle: 'Small groups. Big moments.',
+      phil1: 'We limit every tour to just 4 guests. Not because we have to — because we want to. Four is the sweet spot where everyone can ask questions, try everything, and feel like they\'re exploring with friends rather than following a flag.',
+      phil2: 'You\'ll never be rushed. Never miss a moment. Never wonder if there\'s a better story just around the corner — because we already know, and we\'ll take you there.',
+      phil3: 'Our all-inclusive approach means wine, beer, tapas, and gourmet meals are always part of the journey. No awkward bills. No hidden costs. Just the pure pleasure of the Costa Blanca.',
+      valuesTitle: 'What sets us apart',
+      values: [
+        { title: 'Maximum 4 Guests', desc: 'Small groups create space for genuine conversations, personalised attention, and flexibility to adapt each tour to the group\'s interests.' },
+        { title: 'Local Expertise', desc: 'Our guides were born and raised on the Costa Blanca. This isn\'t rehearsed knowledge — it\'s lived experience, passed down through generations.' },
+        { title: 'Truly All-Inclusive', desc: 'We want you to taste everything, try everything, and never worry about the bill. Premium local products at no extra cost.' },
+        { title: 'Authentic Connections', desc: 'Meet the winemaker who tends the vines, the chef who sources from the morning market. These connections transform a tour into a memory.' },
+      ],
+      ctaTitle: 'Join us on the Costa Blanca',
+      ctaText: 'Whether you\'re a wine enthusiast, a food lover, or simply someone who appreciates beautiful landscapes and genuine hospitality — we\'d love to share our corner of the Mediterranean with you.',
+      ctaBtn: 'Explore Experiences',
+    },
+    contact: {
+      eyebrow: 'Get in Touch',
+      title: 'Questions? We\'d love to hear from you.',
+      subtitle: 'Whether you want to customise a tour, have dietary requirements, or simply want to know more — send us a message.',
+      nameLabel: 'Full Name', namePlaceholder: 'Your name',
+      emailLabel: 'Email Address', emailPlaceholder: 'you@email.com',
+      tourLabel: 'Tour of Interest (optional)', tourPlaceholder: 'Select a tour...',
+      messageLabel: 'Message', messagePlaceholder: 'Tell us about your trip, any questions, dietary requirements...',
+      sendBtn: 'Send Message', sendingBtn: 'Sending...',
+      successTitle: 'Message Sent!', successText: 'Thank you for reaching out. We\'ll get back to you within 24 hours.',
+      responseTitle: 'Response Time', responseText: 'We reply to all enquiries within 24 hours. For urgent bookings, call us directly.',
+    },
+    booking: {
+      eyebrow: 'Reservations',
+      title: 'Reserve Your Experience',
+      subtitle: 'Secure your spot for an intimate, all-inclusive exploration of the Costa Blanca.',
+      step1: 'Select Your Experience', step2: 'Your Details',
+      tourLabel: 'Tour', tourPlaceholder: 'Choose an experience...',
+      dateLabel: 'Preferred Date', guestsLabel: 'Number of Guests',
+      nameLabel: 'Full Name', namePlaceholder: 'Your full name',
+      emailLabel: 'Email Address', emailPlaceholder: 'you@email.com',
+      phoneLabel: 'Phone Number', phonePlaceholder: '+34 600 000 000',
+      notesLabel: 'Special Requests / Dietary Requirements', notesPlaceholder: 'Allergies, dietary needs, special occasions...',
+      submitBtn: 'Complete Booking', processingBtn: 'Processing...',
+      cancelNote: 'Free cancellation up to 48 hours before the tour. Payment on the day.',
+      summaryTitle: 'Booking Summary', selectTour: 'Select a tour to see your summary',
+      priceLabel: 'Price per person', totalLabel: 'Total',
+      whyItems: ['Intimate small groups (max 4)', 'Expert local guides', 'Free cancellation up to 48h'],
+      successTitle: 'Booking Confirmed!',
+      successText: (name, email) => `Thank you, ${name}. We'll send confirmation details to ${email} shortly. We look forward to welcoming you on the Costa Blanca.`,
+      refLabel: 'Booking Reference', tourLabel2: 'Tour', dateLabel2: 'Date', guestsLabel2: 'Guests', totalLabel2: 'Total',
+      exploreBtn: 'Explore More Tours',
+    },
+  },
+
+  no: {
+    nav: { home: 'Hjem', tours: 'Turer', about: 'Om oss', contact: 'Kontakt', bookNow: 'Bestill nå' },
+    hero: {
+      eyebrow: 'Costa Blanca · Spania · Maks 4 gjester',
+      title1: 'Oppdag', titleItalic: 'sjelen', title2: 'til', title3: 'Costa Blanca',
+      subtitle: 'Intime luksusopplevelser i små grupper. Privat bil. Lokal ekspertise. Vin, tapas og minner — alt inkludert.',
+      exploreBtn: 'Utforsk opplevelser', storyBtn: 'Vår historie', scroll: 'Scroll',
+    },
+    stats: { tours: 'Unike opplevelser', guests: 'Maks gjester per tur', inclusive: 'Alt inkludert', rating: 'Vurdert av gjester' },
+    why: {
+      eyebrow: 'Costa Blanca Tours — forskjellen',
+      title: 'Hvorfor kresne reisende velger oss',
+      items: [
+        { title: 'Maks 4 gjester', desc: 'Hver tur er strengt begrenset til 4 gjester. Du vil aldri føle deg som et nummer — bare som en verdsatt gjest med personlig oppmerksomhet.' },
+        { title: 'Alltid privat bil', desc: 'Dør-til-dør komfort i et privat kjøretøy. Ingen busser, ikke vente på andre. Din timeplan, ditt tempo.' },
+        { title: 'Virkelig alt inkludert', desc: 'Vin, øl, tapas, gourmetmåltider, inngangsbilletter — alt dekket. Ingen pinlige regningsøyeblikk. Ren nytelse.' },
+        { title: 'Født og oppvokst lokalt', desc: 'Våre guider er innfødte fra Costa Blanca. Skjulte perler, familiehistorier, hemmelige steder — dette er levd kunnskap.' },
+      ],
+    },
+    featured: { eyebrow: 'Signaturopplevelser', title: 'Utvalgte reiser', viewAll: 'Se alle 10 turer →' },
+    cta: {
+      eyebrow: 'Klar til å utforske?',
+      title: 'Din perfekte middelhavsopplevelse venter',
+      subtitle: 'Fra snødekte Sierra Nevada til Ibizas turkisblå viker — hver reise er skreddersydd for deg.',
+      reserveBtn: 'Reserver din opplevelse', questionBtn: 'Still et spørsmål',
+    },
+    footer: { desc: 'Intime luksusopplevelser på Costa Blanca. Maks 4 gjester. Lokal ekspertise. Uforglemmelige minner.', experiences: 'Opplevelser', quickLinks: 'Hurtiglenker', contact: 'Ta kontakt', rights: '© 2026 Costa Blanca Tours. Med enerett.' },
+    tours: { eyebrow: 'Alle opplevelser', title: 'Våre utvalgte reiser', subtitle: 'Hver opplevelse er strengt begrenset til 4 gjester, fullt alt-inkludert med privat biltransport.', count1: 'opplevelse', countN: 'opplevelser', from: 'Fra', perPerson: '/person', viewDetails: 'Se detaljer →', filter: 'Alle' },
+    detail: { backBtn: '← Tilbake til turer', duration: 'Varighet', maxGuests: 'Maks gjester', transport: 'Transport', aboutTitle: 'Om opplevelsen', highlightsTitle: 'Høydepunkter', priceLabel: 'Pris per person', allInclusive: 'Alt inkludert · Maks', included: ['Vin, øl og tapas inkludert', 'Privat biltransport', 'Gourmetmåltider', 'Ekspert lokal guide', 'Ingen skjulte kostnader'], reserveBtn: 'Reserver denne opplevelsen', questionBtn: 'Still et spørsmål', cancelNote: 'Gratis avbestilling inntil 48t før. Betaling på turdagen.', otherTitle: 'Andre opplevelser' },
+    about: { eyebrow: 'Vår historie', heroTitle: 'To lidenskaper. Ett reisemål.', heroItalic: 'Uendelige oppdagelser.', heroSubtitle: 'Costa Blanca Tours ble skapt av en enkel overbevisning: de beste reiseopplevelsene skjer når du senker tempoet, kobler deg til, og utforsker med noen som virkelig kjenner landet.', philEyebrow: 'Filosofien', philTitle: 'Små grupper. Store øyeblikk.', phil1: 'Vi begrenser hver tur til kun 4 gjester. Ikke fordi vi må — men fordi vi vil. Fire er det perfekte antallet der alle kan stille spørsmål, prøve alt og føle at de utforsker med venner.', phil2: 'Du vil aldri bli stresset. Aldri gå glipp av et øyeblikk. Aldri lure på om det er en bedre historie rett rundt hjørnet — for vi vet allerede, og tar deg dit.', phil3: 'Alt-inkludert betyr at vin, øl, tapas og gourmetmåltider alltid er en del av reisen. Ingen pinlige regninger. Ingen skjulte kostnader.', valuesTitle: 'Det som skiller oss', values: [{ title: 'Maks 4 gjester', desc: 'Små grupper gir rom for ekte samtaler, personlig oppmerksomhet og fleksibilitet til å tilpasse turen.' }, { title: 'Lokal ekspertise', desc: 'Våre guider er født og oppvokst på Costa Blanca. Dette er levd kunnskap, ikke innøvde manuskripter.' }, { title: 'Virkelig alt inkludert', desc: 'Vi vil at du skal smake alt, prøve alt og aldri bekymre deg for regningen. Premium lokale produkter uten ekstra kostnad.' }, { title: 'Autentiske forbindelser', desc: 'Møt vinprodusenten som steller vinstokkene, kokken som handler på morgensmarkedet. Disse forbindelsene forvandler en tur til et minne.' }], ctaTitle: 'Bli med oss på Costa Blanca', ctaText: 'Enten du er vinentusiast, matelsker eller bare en person som setter pris på vakker natur og ekte gjestfrihet — vi vil gjerne dele vår del av Middelhavet med deg.', ctaBtn: 'Utforsk opplevelser' },
+    contact: { eyebrow: 'Ta kontakt', title: 'Spørsmål? Vi hører gjerne fra deg.', subtitle: 'Enten du vil tilpasse en tur, har diettbehov eller bare vil vite mer — send oss en melding.', nameLabel: 'Fullt navn', namePlaceholder: 'Ditt navn', emailLabel: 'E-postadresse', emailPlaceholder: 'du@epost.no', tourLabel: 'Aktuell tur (valgfritt)', tourPlaceholder: 'Velg en tur...', messageLabel: 'Melding', messagePlaceholder: 'Fortell om turen din, spørsmål, diettbehov...', sendBtn: 'Send melding', sendingBtn: 'Sender...', successTitle: 'Melding sendt!', successText: 'Takk for at du tok kontakt. Vi svarer innen 24 timer.', responseTitle: 'Svartid', responseText: 'Vi svarer på alle henvendelser innen 24 timer. For haster, ring oss direkte.' },
+    booking: { eyebrow: 'Reservasjoner', title: 'Reserver din opplevelse', subtitle: 'Sikre plassen din for en intim, alt-inkludert utforskning av Costa Blanca.', step1: 'Velg opplevelse', step2: 'Dine detaljer', tourLabel: 'Tur', tourPlaceholder: 'Velg en opplevelse...', dateLabel: 'Ønsket dato', guestsLabel: 'Antall gjester', nameLabel: 'Fullt navn', namePlaceholder: 'Ditt fulle navn', emailLabel: 'E-postadresse', emailPlaceholder: 'du@epost.no', phoneLabel: 'Telefonnummer', phonePlaceholder: '+47 900 00 000', notesLabel: 'Spesielle ønsker / Diettbehov', notesPlaceholder: 'Allergier, diettbehov, spesielle anledninger...', submitBtn: 'Fullfør bestilling', processingBtn: 'Behandler...', cancelNote: 'Gratis avbestilling inntil 48 timer før turen. Betaling på turdagen.', summaryTitle: 'Bestillingssammendrag', selectTour: 'Velg en tur for å se sammendrag', priceLabel: 'Pris per person', totalLabel: 'Totalt', whyItems: ['Intime små grupper (maks 4)', 'Ekspert lokale guider', 'Gratis avbestilling inntil 48t'], successTitle: 'Bestilling bekreftet!', successText: (n,e) => `Takk, ${n}. Vi sender bekreftelse til ${e} snart. Vi gleder oss til å ønske deg velkommen!`, refLabel: 'Referanse', tourLabel2: 'Tur', dateLabel2: 'Dato', guestsLabel2: 'Gjester', totalLabel2: 'Totalt', exploreBtn: 'Utforsk flere turer' },
+  },
+
+  es: {
+    nav: { home: 'Inicio', tours: 'Tours', about: 'Nosotros', contact: 'Contacto', bookNow: 'Reservar' },
+    hero: { eyebrow: 'Costa Blanca · España · Máx. 4 personas', title1: 'Descubre el', titleItalic: 'alma', title2: 'de la', title3: 'Costa Blanca', subtitle: 'Experiencias íntimas de lujo en grupos pequeños. Coche privado. Experiencia local. Vino, tapas y recuerdos — todo incluido.', exploreBtn: 'Explorar experiencias', storyBtn: 'Nuestra historia', scroll: 'Desplazar' },
+    stats: { tours: 'Experiencias únicas', guests: 'Máx. personas por tour', inclusive: 'Todo incluido', rating: 'Valorado por clientes' },
+    why: { eyebrow: 'La diferencia Costa Blanca Tours', title: 'Por qué los viajeros exigentes nos eligen', items: [{ title: 'Máximo 4 personas', desc: 'Cada tour está estrictamente limitado a 4 personas. Nunca te sentirás como un número — solo como un huésped apreciado.' }, { title: 'Siempre coche privado', desc: 'Comodidad puerta a puerta en vehículo privado. Sin autobuses, sin esperar a otros. Tu horario, tu ritmo.' }, { title: 'Verdaderamente todo incluido', desc: 'Vino, cerveza, tapas, comidas gourmet, entradas — todo cubierto. Sin momentos incómodos de factura.' }, { title: 'Nacidos y criados localmente', desc: 'Nuestros guías son nativos de la Costa Blanca. Joyas escondidas, historias familiares, lugares secretos — conocimiento vivido.' }] },
+    featured: { eyebrow: 'Experiencias exclusivas', title: 'Viajes destacados', viewAll: 'Ver todos los 10 tours →' },
+    cta: { eyebrow: '¿Listo para explorar?', title: 'Tu experiencia mediterránea perfecta te espera', subtitle: 'Desde Sierra Nevada hasta las calas turquesas de Ibiza — cada viaje está hecho para ti.', reserveBtn: 'Reserva tu experiencia', questionBtn: 'Hacer una pregunta' },
+    footer: { desc: 'Experiencias íntimas de lujo en la Costa Blanca.', experiences: 'Experiencias', quickLinks: 'Accesos rápidos', contact: 'Contacto', rights: '© 2026 Costa Blanca Tours. Todos los derechos reservados.' },
+    tours: { eyebrow: 'Todas las experiencias', title: 'Nuestros viajes seleccionados', subtitle: 'Cada experiencia está limitada a 4 personas, totalmente todo incluido con transporte en coche privado.', count1: 'experiencia', countN: 'experiencias', from: 'Desde', perPerson: '/persona', viewDetails: 'Ver detalles →', filter: 'Todo' },
+    detail: { backBtn: '← Volver a tours', duration: 'Duración', maxGuests: 'Máx. personas', transport: 'Transporte', aboutTitle: 'Sobre la experiencia', highlightsTitle: 'Aspectos destacados', priceLabel: 'Precio por persona', allInclusive: 'Todo incluido · Máx.', included: ['Vino, cerveza y tapas incluidos', 'Transporte en coche privado', 'Comidas gourmet', 'Guía local experto', 'Sin costes ocultos'], reserveBtn: 'Reservar esta experiencia', questionBtn: 'Hacer una pregunta', cancelNote: 'Cancelación gratuita hasta 48h antes. Pago el día del tour.', otherTitle: 'Otras experiencias' },
+    about: { eyebrow: 'Nuestra historia', heroTitle: 'Dos pasiones. Un destino.', heroItalic: 'Descubrimientos infinitos.', heroSubtitle: 'Costa Blanca Tours nació de una creencia simple: las mejores experiencias de viaje ocurren cuando desaceleran, conectan profundamente y exploran con alguien que verdaderamente conoce la tierra.', philEyebrow: 'La filosofía', philTitle: 'Grupos pequeños. Grandes momentos.', phil1: 'Limitamos cada tour a solo 4 huéspedes. No porque tengamos que hacerlo — sino porque queremos. Cuatro es el punto ideal donde todos pueden hacer preguntas, probar todo y sentir que exploran con amigos.', phil2: 'Nunca te apresurarán. Nunca perderás un momento. Nunca te preguntarás si hay una historia mejor a la vuelta de la esquina.', phil3: 'Nuestro enfoque todo incluido significa que el vino, la cerveza, las tapas y las comidas gourmet siempre forman parte del viaje. Sin facturas incómodas. Sin costes ocultos.', valuesTitle: 'Lo que nos diferencia', values: [{ title: 'Máximo 4 personas', desc: 'Los grupos pequeños crean espacio para conversaciones genuinas y atención personalizada.' }, { title: 'Experiencia local', desc: 'Nuestros guías nacieron y crecieron en la Costa Blanca. No es conocimiento ensayado — es experiencia vivida.' }, { title: 'Verdaderamente todo incluido', desc: 'Queremos que pruebes todo y nunca te preocupes por la factura. Productos locales premium sin coste adicional.' }, { title: 'Conexiones auténticas', desc: 'Conoce al viticultor, al chef que compra en el mercado. Estas conexiones transforman un tour en un recuerdo.' }], ctaTitle: 'Únete a nosotros en la Costa Blanca', ctaText: 'Ya seas un entusiasta del vino, un amante de la gastronomía o simplemente alguien que aprecia los paisajes y la hospitalidad genuina — nos encantaría compartir nuestro rincón del Mediterráneo contigo.', ctaBtn: 'Explorar experiencias' },
+    contact: { eyebrow: 'Contacto', title: '¿Preguntas? Nos encantaría saber de ti.', subtitle: 'Si quieres personalizar un tour, tienes requisitos dietéticos o simplemente quieres saber más — envíanos un mensaje.', nameLabel: 'Nombre completo', namePlaceholder: 'Tu nombre', emailLabel: 'Correo electrónico', emailPlaceholder: 'tu@correo.com', tourLabel: 'Tour de interés (opcional)', tourPlaceholder: 'Selecciona un tour...', messageLabel: 'Mensaje', messagePlaceholder: 'Cuéntanos sobre tu viaje, preguntas, necesidades dietéticas...', sendBtn: 'Enviar mensaje', sendingBtn: 'Enviando...', successTitle: '¡Mensaje enviado!', successText: 'Gracias por contactarnos. Te responderemos en 24 horas.', responseTitle: 'Tiempo de respuesta', responseText: 'Respondemos a todas las consultas en 24 horas. Para reservas urgentes, llámanos directamente.' },
+    booking: { eyebrow: 'Reservas', title: 'Reserva tu experiencia', subtitle: 'Asegura tu lugar para una exploración íntima y todo incluido de la Costa Blanca.', step1: 'Selecciona tu experiencia', step2: 'Tus datos', tourLabel: 'Tour', tourPlaceholder: 'Elige una experiencia...', dateLabel: 'Fecha preferida', guestsLabel: 'Número de personas', nameLabel: 'Nombre completo', namePlaceholder: 'Tu nombre completo', emailLabel: 'Correo electrónico', emailPlaceholder: 'tu@correo.com', phoneLabel: 'Número de teléfono', phonePlaceholder: '+34 600 000 000', notesLabel: 'Solicitudes especiales / Requisitos dietéticos', notesPlaceholder: 'Alergias, necesidades dietéticas, ocasiones especiales...', submitBtn: 'Completar reserva', processingBtn: 'Procesando...', cancelNote: 'Cancelación gratuita hasta 48 horas antes del tour. Pago el día.', summaryTitle: 'Resumen de reserva', selectTour: 'Selecciona un tour para ver el resumen', priceLabel: 'Precio por persona', totalLabel: 'Total', whyItems: ['Grupos pequeños íntimos (máx. 4)', 'Guías locales expertos', 'Cancelación gratuita hasta 48h'], successTitle: '¡Reserva confirmada!', successText: (n,e) => `Gracias, ${n}. Enviaremos los detalles de confirmación a ${e} en breve.`, refLabel: 'Referencia', tourLabel2: 'Tour', dateLabel2: 'Fecha', guestsLabel2: 'Personas', totalLabel2: 'Total', exploreBtn: 'Explorar más tours' },
+  },
+
+  fr: {
+    nav: { home: 'Accueil', tours: 'Circuits', about: 'À propos', contact: 'Contact', bookNow: 'Réserver' },
+    hero: { eyebrow: 'Costa Blanca · Espagne · Max 4 personnes', title1: 'Découvrez l\'', titleItalic: 'âme', title2: 'de la', title3: 'Costa Blanca', subtitle: 'Expériences de luxe intimes en petits groupes. Voiture privée. Expertise locale. Vin, tapas et souvenirs — tout compris.', exploreBtn: 'Explorer les expériences', storyBtn: 'Notre histoire', scroll: 'Défiler' },
+    stats: { tours: 'Expériences uniques', guests: 'Max personnes par circuit', inclusive: 'Tout compris', rating: 'Évalué par les clients' },
+    why: { eyebrow: 'La différence Costa Blanca Tours', title: 'Pourquoi les voyageurs exigeants nous choisissent', items: [{ title: 'Maximum 4 personnes', desc: 'Chaque circuit est strictement limité à 4 personnes. Vous ne vous sentirez jamais comme un numéro — seulement comme un hôte apprécié.' }, { title: 'Toujours en voiture privée', desc: 'Confort de porte à porte en véhicule privé. Pas de bus, pas d\'attente. Votre programme, votre rythme.' }, { title: 'Vraiment tout compris', desc: 'Vin, bière, tapas, repas gastronomiques, entrées — tout couvert. Aucun moment gênant de facture.' }, { title: 'Natifs de la région', desc: 'Nos guides sont natifs de la Costa Blanca. Joyaux cachés, histoires familiales, endroits secrets — un savoir vécu.' }] },
+    featured: { eyebrow: 'Expériences exclusives', title: 'Circuits à la une', viewAll: 'Voir les 10 circuits →' },
+    cta: { eyebrow: 'Prêt à explorer ?', title: 'Votre expérience méditerranéenne parfaite vous attend', subtitle: 'De la Sierra Nevada enneigée aux criques turquoise d\'Ibiza — chaque voyage est fait pour vous.', reserveBtn: 'Réservez votre expérience', questionBtn: 'Poser une question' },
+    footer: { desc: 'Expériences de luxe intimes sur la Costa Blanca.', experiences: 'Expériences', quickLinks: 'Liens rapides', contact: 'Contactez-nous', rights: '© 2026 Costa Blanca Tours. Tous droits réservés.' },
+    tours: { eyebrow: 'Toutes les expériences', title: 'Nos circuits sélectionnés', subtitle: 'Chaque expérience est limitée à 4 personnes, tout compris avec transport en voiture privée.', count1: 'expérience', countN: 'expériences', from: 'À partir de', perPerson: '/personne', viewDetails: 'Voir les détails →', filter: 'Tous' },
+    detail: { backBtn: '← Retour aux circuits', duration: 'Durée', maxGuests: 'Max personnes', transport: 'Transport', aboutTitle: 'À propos de l\'expérience', highlightsTitle: 'Points forts', priceLabel: 'Prix par personne', allInclusive: 'Tout compris · Max', included: ['Vin, bière & tapas inclus', 'Transport en voiture privée', 'Repas gastronomiques', 'Guide local expert', 'Aucun frais caché'], reserveBtn: 'Réserver cette expérience', questionBtn: 'Poser une question', cancelNote: 'Annulation gratuite jusqu\'à 48h avant. Paiement le jour même.', otherTitle: 'Autres expériences' },
+    about: { eyebrow: 'Notre histoire', heroTitle: 'Deux passions. Une destination.', heroItalic: 'Des découvertes infinies.', heroSubtitle: 'Costa Blanca Tours est né d\'une conviction simple : les meilleures expériences de voyage se produisent quand on ralentit, se connecte profondément et explore avec quelqu\'un qui connaît vraiment le territoire.', philEyebrow: 'La philosophie', philTitle: 'Petits groupes. Grands moments.', phil1: 'Nous limitons chaque circuit à seulement 4 personnes. Non pas parce que nous devons — mais parce que nous le voulons. Quatre est le nombre idéal où chacun peut poser des questions et tout essayer.', phil2: 'Vous ne serez jamais pressé. Vous ne manquerez jamais un instant. Vous ne vous demanderez jamais s\'il y a une meilleure histoire au coin de la rue — parce que nous le savons déjà.', phil3: 'Notre approche tout compris signifie que le vin, la bière, les tapas et les repas gastronomiques font toujours partie du voyage. Pas de factures gênantes. Pas de frais cachés.', valuesTitle: 'Ce qui nous distingue', values: [{ title: 'Maximum 4 personnes', desc: 'Les petits groupes créent de l\'espace pour des conversations authentiques et une attention personnalisée.' }, { title: 'Expertise locale', desc: 'Nos guides sont nés et ont grandi sur la Costa Blanca. Ce n\'est pas un savoir répété — c\'est une expérience vécue.' }, { title: 'Vraiment tout compris', desc: 'Nous voulons que vous goûtiez tout et ne vous inquiétiez jamais de la facture. Produits locaux premium sans frais supplémentaires.' }, { title: 'Connexions authentiques', desc: 'Rencontrez le vigneron, le chef qui achète au marché du matin. Ces connexions transforment un circuit en souvenir.' }], ctaTitle: 'Rejoignez-nous sur la Costa Blanca', ctaText: 'Que vous soyez amateur de vin, gastronome ou simplement quelqu\'un qui apprécie les beaux paysages et l\'hospitalité authentique — nous serions ravis de partager notre coin de Méditerranée avec vous.', ctaBtn: 'Explorer les expériences' },
+    contact: { eyebrow: 'Contact', title: 'Des questions ? Nous serions ravis de vous entendre.', subtitle: 'Que vous souhaitiez personnaliser un circuit, ayez des besoins diététiques ou vouliez simplement en savoir plus — envoyez-nous un message.', nameLabel: 'Nom complet', namePlaceholder: 'Votre nom', emailLabel: 'Adresse e-mail', emailPlaceholder: 'vous@email.fr', tourLabel: 'Circuit d\'intérêt (optionnel)', tourPlaceholder: 'Sélectionnez un circuit...', messageLabel: 'Message', messagePlaceholder: 'Parlez-nous de votre voyage, questions, besoins diététiques...', sendBtn: 'Envoyer le message', sendingBtn: 'Envoi en cours...', successTitle: 'Message envoyé !', successText: 'Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures.', responseTitle: 'Délai de réponse', responseText: 'Nous répondons à toutes les demandes dans les 24 heures. Pour les réservations urgentes, appelez-nous directement.' },
+    booking: { eyebrow: 'Réservations', title: 'Réservez votre expérience', subtitle: 'Assurez votre place pour une exploration intime et tout compris de la Costa Blanca.', step1: 'Choisissez votre expérience', step2: 'Vos coordonnées', tourLabel: 'Circuit', tourPlaceholder: 'Choisissez une expérience...', dateLabel: 'Date souhaitée', guestsLabel: 'Nombre de personnes', nameLabel: 'Nom complet', namePlaceholder: 'Votre nom complet', emailLabel: 'Adresse e-mail', emailPlaceholder: 'vous@email.fr', phoneLabel: 'Numéro de téléphone', phonePlaceholder: '+33 6 00 00 00 00', notesLabel: 'Demandes spéciales / Besoins diététiques', notesPlaceholder: 'Allergies, besoins diététiques, occasions spéciales...', submitBtn: 'Finaliser la réservation', processingBtn: 'Traitement...', cancelNote: 'Annulation gratuite jusqu\'à 48 heures avant le circuit. Paiement le jour J.', summaryTitle: 'Récapitulatif', selectTour: 'Sélectionnez un circuit pour voir le récapitulatif', priceLabel: 'Prix par personne', totalLabel: 'Total', whyItems: ['Petits groupes intimes (max 4)', 'Guides locaux experts', 'Annulation gratuite jusqu\'à 48h'], successTitle: 'Réservation confirmée !', successText: (n,e) => `Merci, ${n}. Nous vous enverrons les détails de confirmation à ${e} sous peu.`, refLabel: 'Référence', tourLabel2: 'Circuit', dateLabel2: 'Date', guestsLabel2: 'Personnes', totalLabel2: 'Total', exploreBtn: 'Explorer d\'autres circuits' },
+  },
+
+  de: {
+    nav: { home: 'Startseite', tours: 'Touren', about: 'Über uns', contact: 'Kontakt', bookNow: 'Buchen' },
+    hero: { eyebrow: 'Costa Blanca · Spanien · Max. 4 Gäste', title1: 'Entdecken Sie die', titleItalic: 'Seele', title2: 'der', title3: 'Costa Blanca', subtitle: 'Intime Luxuserlebnisse in kleinen Gruppen. Privatwagen. Lokale Expertise. Wein, Tapas und Erinnerungen — alles inklusive.', exploreBtn: 'Erlebnisse entdecken', storyBtn: 'Unsere Geschichte', scroll: 'Scrollen' },
+    stats: { tours: 'Einzigartige Erlebnisse', guests: 'Max. Gäste pro Tour', inclusive: 'Alles inklusive', rating: 'Von Gästen bewertet' },
+    why: { eyebrow: 'Der Costa Blanca Tours Unterschied', title: 'Warum anspruchsvolle Reisende uns wählen', items: [{ title: 'Maximal 4 Gäste', desc: 'Jede Tour ist streng auf 4 Gäste begrenzt. Sie werden sich nie wie eine Nummer fühlen — nur wie ein geschätzter Gast.' }, { title: 'Immer Privatwagen', desc: 'Tür-zu-Tür-Komfort im Privatfahrzeug. Keine Busse, kein Warten auf andere. Ihr Zeitplan, Ihr Tempo.' }, { title: 'Wirklich alles inklusive', desc: 'Wein, Bier, Tapas, Gourmetmahlzeiten, Eintrittsgelder — alles abgedeckt. Keine unangenehmen Rechnungsmomente.' }, { title: 'Einheimische Guides', desc: 'Unsere Guides sind in der Costa Blanca aufgewachsen. Versteckte Schätze, Familiengeschichten, Geheimtipps — gelebtes Wissen.' }] },
+    featured: { eyebrow: 'Exklusive Erlebnisse', title: 'Ausgewählte Reisen', viewAll: 'Alle 10 Touren anzeigen →' },
+    cta: { eyebrow: 'Bereit zu erkunden?', title: 'Ihr perfektes Mittelmeer-Erlebnis wartet', subtitle: 'Von der verschneiten Sierra Nevada bis zu Ibizas türkisblauen Buchten — jede Reise ist für Sie gestaltet.', reserveBtn: 'Erlebnis reservieren', questionBtn: 'Frage stellen' },
+    footer: { desc: 'Intime Luxuserlebnisse an der Costa Blanca.', experiences: 'Erlebnisse', quickLinks: 'Schnelllinks', contact: 'Kontakt', rights: '© 2026 Costa Blanca Tours. Alle Rechte vorbehalten.' },
+    tours: { eyebrow: 'Alle Erlebnisse', title: 'Unsere ausgewählten Reisen', subtitle: 'Jedes Erlebnis ist auf 4 Gäste begrenzt, vollständig alles inklusive mit Privatwagentransport.', count1: 'Erlebnis', countN: 'Erlebnisse', from: 'Ab', perPerson: '/Person', viewDetails: 'Details anzeigen →', filter: 'Alle' },
+    detail: { backBtn: '← Zurück zu Touren', duration: 'Dauer', maxGuests: 'Max. Gäste', transport: 'Transport', aboutTitle: 'Über das Erlebnis', highlightsTitle: 'Tour-Highlights', priceLabel: 'Preis pro Person', allInclusive: 'Alles inkl. · Max.', included: ['Wein, Bier & Tapas inklusive', 'Privatwagentransport', 'Gourmetmahlzeiten', 'Lokaler Expertenguide', 'Keine versteckten Kosten'], reserveBtn: 'Dieses Erlebnis reservieren', questionBtn: 'Frage stellen', cancelNote: 'Kostenlose Stornierung bis 48h vorher. Zahlung am Tourentag.', otherTitle: 'Weitere Erlebnisse' },
+    about: { eyebrow: 'Unsere Geschichte', heroTitle: 'Zwei Leidenschaften. Ein Ziel.', heroItalic: 'Unendliche Entdeckungen.', heroSubtitle: 'Costa Blanca Tours wurde aus einer einfachen Überzeugung geboren: Die besten Reiseerlebnisse entstehen, wenn man entschleunigt, tief verbindet und mit jemandem erkundet, der das Land wirklich kennt.', philEyebrow: 'Die Philosophie', philTitle: 'Kleine Gruppen. Große Momente.', phil1: 'Wir begrenzen jede Tour auf nur 4 Gäste. Nicht weil wir müssen — sondern weil wir wollen. Vier ist die ideale Zahl, bei der jeder Fragen stellen und alles ausprobieren kann.', phil2: 'Sie werden nie gehetzt. Nie einen Moment verpassen. Nie fragen, ob eine bessere Geschichte um die Ecke wartet.', phil3: 'Unser alles-inklusive-Ansatz bedeutet, dass Wein, Bier, Tapas und Gourmetmahlzeiten immer Teil der Reise sind. Keine unangenehmen Rechnungen. Keine versteckten Kosten.', valuesTitle: 'Was uns auszeichnet', values: [{ title: 'Maximal 4 Gäste', desc: 'Kleine Gruppen schaffen Raum für echte Gespräche und persönliche Aufmerksamkeit.' }, { title: 'Lokale Expertise', desc: 'Unsere Guides sind in der Costa Blanca aufgewachsen. Das ist kein einstudiertes Wissen — es ist gelebte Erfahrung.' }, { title: 'Wirklich alles inklusive', desc: 'Wir möchten, dass Sie alles probieren und sich nie um die Rechnung sorgen müssen.' }, { title: 'Authentische Verbindungen', desc: 'Treffen Sie den Winzer, den Koch, der auf dem Morgenmarkt einkauft. Diese Verbindungen verwandeln eine Tour in eine Erinnerung.' }], ctaTitle: 'Begleiten Sie uns an der Costa Blanca', ctaText: 'Ob Weinliebhaber, Feinschmecker oder einfach jemand, der schöne Landschaften schätzt — wir teilen unsere Ecke des Mittelmeers gerne mit Ihnen.', ctaBtn: 'Erlebnisse erkunden' },
+    contact: { eyebrow: 'Kontakt', title: 'Fragen? Wir hören gerne von Ihnen.', subtitle: 'Ob Sie eine Tour anpassen möchten, diätetische Anforderungen haben oder einfach mehr wissen möchten — schicken Sie uns eine Nachricht.', nameLabel: 'Vollständiger Name', namePlaceholder: 'Ihr Name', emailLabel: 'E-Mail-Adresse', emailPlaceholder: 'sie@email.de', tourLabel: 'Tour von Interesse (optional)', tourPlaceholder: 'Tour auswählen...', messageLabel: 'Nachricht', messagePlaceholder: 'Erzählen Sie uns von Ihrer Reise, Fragen, Ernährungsbedürfnissen...', sendBtn: 'Nachricht senden', sendingBtn: 'Wird gesendet...', successTitle: 'Nachricht gesendet!', successText: 'Vielen Dank für Ihre Nachricht. Wir werden innerhalb von 24 Stunden antworten.', responseTitle: 'Reaktionszeit', responseText: 'Wir antworten auf alle Anfragen innerhalb von 24 Stunden. Für dringende Buchungen rufen Sie uns direkt an.' },
+    booking: { eyebrow: 'Reservierungen', title: 'Erlebnis reservieren', subtitle: 'Sichern Sie sich Ihren Platz für eine intime, alles-inklusive Erkundung der Costa Blanca.', step1: 'Erlebnis wählen', step2: 'Ihre Daten', tourLabel: 'Tour', tourPlaceholder: 'Erlebnis auswählen...', dateLabel: 'Gewünschtes Datum', guestsLabel: 'Anzahl der Gäste', nameLabel: 'Vollständiger Name', namePlaceholder: 'Ihr vollständiger Name', emailLabel: 'E-Mail-Adresse', emailPlaceholder: 'sie@email.de', phoneLabel: 'Telefonnummer', phonePlaceholder: '+49 151 0000000', notesLabel: 'Besondere Wünsche / Ernährungsbedürfnisse', notesPlaceholder: 'Allergien, Ernährungsbedürfnisse, besondere Anlässe...', submitBtn: 'Buchung abschließen', processingBtn: 'Wird verarbeitet...', cancelNote: 'Kostenlose Stornierung bis 48 Stunden vorher. Zahlung am Tourentag.', summaryTitle: 'Buchungsübersicht', selectTour: 'Tour auswählen für Übersicht', priceLabel: 'Preis pro Person', totalLabel: 'Gesamt', whyItems: ['Intime kleine Gruppen (max. 4)', 'Erfahrene lokale Guides', 'Kostenlose Stornierung bis 48h'], successTitle: 'Buchung bestätigt!', successText: (n,e) => `Vielen Dank, ${n}. Wir senden die Buchungsdetails an ${e}.`, refLabel: 'Buchungsreferenz', tourLabel2: 'Tour', dateLabel2: 'Datum', guestsLabel2: 'Gäste', totalLabel2: 'Gesamt', exploreBtn: 'Weitere Touren entdecken' },
+  },
+
+  ru: {
+    nav: { home: 'Главная', tours: 'Туры', about: 'О нас', contact: 'Контакты', bookNow: 'Забронировать' },
+    hero: { eyebrow: 'Коста Бланка · Испания · Макс. 4 гостя', title1: 'Откройте', titleItalic: 'душу', title2: '', title3: 'Коста Бланки', subtitle: 'Интимный люкс-опыт в малых группах. Личный автомобиль. Местные эксперты. Вино, тапас и воспоминания — всё включено.', exploreBtn: 'Смотреть туры', storyBtn: 'Наша история', scroll: 'Листать' },
+    stats: { tours: 'Уникальных туров', guests: 'Макс. гостей на тур', inclusive: 'Всё включено', rating: 'Оценка гостей' },
+    why: { eyebrow: 'Отличие Costa Blanca Tours', title: 'Почему взыскательные путешественники выбирают нас', items: [{ title: 'Максимум 4 гостя', desc: 'Каждый тур строго ограничен 4 гостями. Вы никогда не почувствуете себя номером — только ценным гостем с личным вниманием.' }, { title: 'Всегда личный автомобиль', desc: 'Комфорт от двери до двери на личном автомобиле. Без автобусов, без ожидания других. Ваш график, ваш темп.' }, { title: 'По-настоящему всё включено', desc: 'Вино, пиво, тапас, гурмэ-обеды, входные билеты — всё оплачено. Никаких неловких моментов со счётом.' }, { title: 'Местные жители', desc: 'Наши гиды родились и выросли на Коста Бланке. Скрытые сокровища, семейные истории, секретные места — живые знания.' }] },
+    featured: { eyebrow: 'Эксклюзивные впечатления', title: 'Избранные путешествия', viewAll: 'Все 10 туров →' },
+    cta: { eyebrow: 'Готовы к путешествию?', title: 'Ваше идеальное средиземноморское приключение ждёт', subtitle: 'От заснеженной Сьерры-Невады до бирюзовых бухт Ибицы — каждое путешествие создано для вас.', reserveBtn: 'Забронировать', questionBtn: 'Задать вопрос' },
+    footer: { desc: 'Интимный люкс-опыт на Коста Бланке. Макс. 4 гостя. Местные эксперты. Незабываемые воспоминания.', experiences: 'Туры', quickLinks: 'Быстрые ссылки', contact: 'Связь', rights: '© 2026 Costa Blanca Tours. Все права защищены.' },
+    tours: { eyebrow: 'Все туры', title: 'Наши избранные маршруты', subtitle: 'Каждый тур строго ограничен 4 гостями, полностью всё включено с трансфером на личном автомобиле.', count1: 'тур', countN: 'туров', from: 'От', perPerson: '/чел.', viewDetails: 'Подробнее →', filter: 'Все' },
+    detail: { backBtn: '← Назад к турам', duration: 'Продолжительность', maxGuests: 'Макс. гостей', transport: 'Транспорт', aboutTitle: 'Об этом туре', highlightsTitle: 'Особенности', priceLabel: 'Цена за человека', allInclusive: 'Всё включено · Макс.', included: ['Вино, пиво и тапас включены', 'Трансфер на личном авто', 'Гурмэ-питание', 'Местный гид-эксперт', 'Без скрытых платежей'], reserveBtn: 'Забронировать', questionBtn: 'Задать вопрос', cancelNote: 'Бесплатная отмена за 48 ч. Оплата в день тура.', otherTitle: 'Другие туры' },
+    about: { eyebrow: 'Наша история', heroTitle: 'Две страсти. Одно направление.', heroItalic: 'Бесконечные открытия.', heroSubtitle: 'Costa Blanca Tours родился из простого убеждения: лучшие путешествия случаются, когда замедляешься, глубоко соединяешься и исследуешь с тем, кто по-настоящему знает эту землю.', philEyebrow: 'Философия', philTitle: 'Малые группы. Большие впечатления.', phil1: 'Мы ограничиваем каждый тур 4 гостями — не потому что обязаны, а потому что хотим. Четыре — идеальное число, при котором каждый может задать вопрос и попробовать всё.', phil2: 'Вас никогда не поторопят. Вы никогда не упустите момент. Вам не придётся думать, есть ли лучшая история за углом.', phil3: 'Наш принцип «всё включено» означает, что вино, пиво, тапас и гурмэ-обеды всегда входят в тур. Без неловких счётов. Без скрытых расходов.', valuesTitle: 'Что нас отличает', values: [{ title: 'Максимум 4 гостя', desc: 'Малые группы создают пространство для настоящих разговоров и индивидуального внимания.' }, { title: 'Местная экспертиза', desc: 'Наши гиды родились и выросли на Коста Бланке. Это не заученные знания — это жизненный опыт.' }, { title: 'По-настоящему всё включено', desc: 'Мы хотим, чтобы вы пробовали всё и никогда не беспокоились о счёте.' }, { title: 'Настоящие связи', desc: 'Познакомьтесь с виноделом, шефом с утреннего рынка. Эти связи превращают тур в воспоминание.' }], ctaTitle: 'Присоединяйтесь к нам на Коста Бланке', ctaText: 'Любите ли вы вино, гастрономию или просто цените красивые пейзажи — мы с радостью поделимся нашим уголком Средиземноморья.', ctaBtn: 'Смотреть туры' },
+    contact: { eyebrow: 'Контакты', title: 'Вопросы? Мы рады помочь.', subtitle: 'Хотите настроить тур, есть диетические требования или просто хотите узнать больше — напишите нам.', nameLabel: 'Полное имя', namePlaceholder: 'Ваше имя', emailLabel: 'Email', emailPlaceholder: 'вы@email.ru', tourLabel: 'Интересующий тур (не обязательно)', tourPlaceholder: 'Выберите тур...', messageLabel: 'Сообщение', messagePlaceholder: 'Расскажите о поездке, вопросах, диетических требованиях...', sendBtn: 'Отправить', sendingBtn: 'Отправка...', successTitle: 'Сообщение отправлено!', successText: 'Спасибо за обращение. Мы ответим в течение 24 часов.', responseTitle: 'Время ответа', responseText: 'Мы отвечаем на все запросы в течение 24 часов. Для срочных бронирований звоните нам напрямую.' },
+    booking: { eyebrow: 'Бронирование', title: 'Забронировать тур', subtitle: 'Обеспечьте себе место для интимного путешествия всё включено по Коста Бланке.', step1: 'Выберите тур', step2: 'Ваши данные', tourLabel: 'Тур', tourPlaceholder: 'Выберите тур...', dateLabel: 'Предпочтительная дата', guestsLabel: 'Количество гостей', nameLabel: 'Полное имя', namePlaceholder: 'Ваше полное имя', emailLabel: 'Email', emailPlaceholder: 'вы@email.ru', phoneLabel: 'Номер телефона', phonePlaceholder: '+7 900 000 00 00', notesLabel: 'Особые пожелания / Диета', notesPlaceholder: 'Аллергии, диетические требования, особые случаи...', submitBtn: 'Завершить бронирование', processingBtn: 'Обработка...', cancelNote: 'Бесплатная отмена за 48 часов. Оплата в день тура.', summaryTitle: 'Сводка бронирования', selectTour: 'Выберите тур для просмотра сводки', priceLabel: 'Цена за человека', totalLabel: 'Итого', whyItems: ['Малые группы (макс. 4)', 'Местные гиды-эксперты', 'Бесплатная отмена за 48 ч'], successTitle: 'Бронирование подтверждено!', successText: (n,e) => `Спасибо, ${n}. Мы отправим детали на ${e}.`, refLabel: 'Номер брони', tourLabel2: 'Тур', dateLabel2: 'Дата', guestsLabel2: 'Гостей', totalLabel2: 'Итого', exploreBtn: 'Другие туры' },
+  },
+};
+
+const LANG_FLAGS = {
+  en: { flag: '🇬🇧', label: 'EN' },
+  no: { flag: '🇳🇴', label: 'NO' },
+  es: { flag: '🇪🇸', label: 'ES' },
+  fr: { flag: '🇫🇷', label: 'FR' },
+  de: { flag: '🇩🇪', label: 'DE' },
+  ru: { flag: '🇷🇺', label: 'RU' },
+};
+
+// Simple global language state using a mini event system
+window.__lang = localStorage.getItem('cbt_lang') || 'no';
+window.__langListeners = [];
+window.__setLang = function(l) {
+  window.__lang = l;
+  localStorage.setItem('cbt_lang', l);
+  window.__langListeners.forEach(fn => fn(l));
+};
+
+function useLang() {
+  const [lang, setLang] = React.useState(window.__lang);
+  React.useEffect(() => {
+    const handler = (l) => setLang(l);
+    window.__langListeners.push(handler);
+    return () => { window.__langListeners = window.__langListeners.filter(fn => fn !== handler); };
+  }, []);
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  return { lang, setLang: window.__setLang, t };
+}
+
+</script>
+
+<!-- Components (Babel JSX) -->
+<script type="text/babel">
+
+function CbtLogo({ size = 54, color = 'var(--gold)' }) {
+  const w = size;
+  const h = size * (190 / 180);
+  return (
+    <svg width={w} height={h} viewBox="0 0 180 190" fill="none" xmlns="http://www.w3.org/2000/svg"
+      style={{ filter: 'drop-shadow(0 0 8px rgba(201,168,76,0.35))' }}>
+      <circle cx="90" cy="72" r="9" fill={color} opacity="0.18"/>
+      <circle cx="90" cy="72" r="18" stroke={color} strokeWidth="2"/>
+      <line x1="90" y1="43" x2="90" y2="36" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="90" y1="101" x2="90" y2="108" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="61" y1="72" x2="54" y2="72" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="119" y1="72" x2="126" y2="72" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="69.5" y1="51.5" x2="64.5" y2="46.5" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="110.5" y1="51.5" x2="115.5" y2="46.5" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="69.5" y1="92.5" x2="64.5" y2="97.5" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="110.5" y1="92.5" x2="115.5" y2="97.5" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="32" y1="108" x2="148" y2="108" stroke={color} strokeWidth="1.4"/>
+      <path d="M32 118 Q50 112 68 118 Q86 124 104 118 Q122 112 148 118" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round"/>
+      <path d="M38 128 Q56 122 74 128 Q92 134 110 128 Q128 122 142 128" stroke={color} strokeWidth="1.3" fill="none" strokeLinecap="round" opacity="0.7"/>
+      <path d="M46 137 Q62 131 78 137 Q94 143 110 137 Q126 131 134 137" stroke={color} strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.4"/>
+      <text x="90" y="156" textAnchor="middle" fill={color}
+        fontFamily="Cormorant Garamond, Playfair Display, serif"
+        fontSize="14" fontWeight="600" letterSpacing="4.5">COSTA BLANCA</text>
+      <line x1="52" y1="161" x2="128" y2="161" stroke={color} strokeWidth="0.7" opacity="0.4"/>
+      <text x="90" y="173" textAnchor="middle" fill={color}
+        fontFamily="DM Sans, sans-serif"
+        fontSize="8" fontWeight="400" letterSpacing="7" opacity="0.75">TOURS</text>
+    </svg>
+  );
+}
+
+function LangSwitcher() {
+  const { lang, setLang } = useLang();
+  const [open, setOpen] = React.useState(false);
+  const langs = Object.entries(LANG_FLAGS);
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <button onClick={() => setOpen(!open)} style={{
+        background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
+        borderRadius: 2, cursor: 'pointer', color: 'white',
+        fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem', fontWeight: 600,
+        letterSpacing: '0.06em', padding: '0.35rem 0.65rem',
+        display: 'flex', alignItems: 'center', gap: '0.35rem',
+        transition: 'all 0.2s',
+      }}>
+        <span>{LANG_FLAGS[lang]?.flag}</span>
+        <span>{LANG_FLAGS[lang]?.label}</span>
+        <span style={{ opacity: 0.5, fontSize: '0.6rem' }}>▼</span>
+      </button>
+      {open && (
+        <div style={{
+          position: 'absolute', top: 'calc(100% + 8px)', right: 0,
+          background: 'rgba(13,21,37,0.98)', border: '1px solid rgba(255,255,255,0.12)',
+          borderRadius: 4, overflow: 'hidden', zIndex: 200,
+          boxShadow: '0 12px 40px rgba(0,0,0,0.6)', minWidth: 100,
+        }}>
+          {langs.map(([code, { flag, label }]) => (
+            <button key={code} onClick={() => { setLang(code); setOpen(false); }} style={{
+              display: 'flex', alignItems: 'center', gap: '0.6rem',
+              width: '100%', background: lang === code ? 'rgba(201,168,76,0.12)' : 'transparent',
+              border: 'none', cursor: 'pointer',
+              color: lang === code ? 'var(--gold)' : 'rgba(255,255,255,0.7)',
+              fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', fontWeight: lang === code ? 700 : 400,
+              padding: '0.6rem 1rem', textAlign: 'left',
+              transition: 'background 0.15s',
+            }}
+            onMouseEnter={e => { if (lang !== code) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+            onMouseLeave={e => { if (lang !== code) e.currentTarget.style.background = 'transparent'; }}
+            >
+              <span>{flag}</span><span>{label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Header({ page, setPage }) {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const { t, lang } = useLang();
+  const isHero = page === 'home';
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  React.useEffect(() => { setMenuOpen(false); }, [page]);
+
+  const nav = [
+    { id: 'home', label: t.nav.home },
+    { id: 'tours', label: t.nav.tours },
+    { id: 'about', label: t.nav.about },
+    { id: 'contact', label: t.nav.contact },
+  ];
+
+  const frosted = scrolled || !isHero || menuOpen;
+
+  return (
+    <header style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      transition: 'all 0.4s ease',
+      background: frosted ? 'rgba(10,15,28,0.92)' : 'transparent',
+      backdropFilter: frosted ? 'blur(16px)' : 'none',
+      borderBottom: frosted ? '1px solid rgba(255,255,255,0.07)' : 'none',
+    }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
+        <button onClick={() => setPage('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0 0 0' }}>
+          <CbtLogo size={54} />
+        </button>
+
+        {/* Desktop nav */}
+        <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="desktop-nav">
+          {nav.map(n => (
+            <button key={n.id} onClick={() => setPage(n.id)} style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: page === n.id ? 'var(--gold)' : 'rgba(255,255,255,0.82)',
+              fontFamily: 'DM Sans, sans-serif', fontSize: '0.875rem', fontWeight: 500,
+              letterSpacing: '0.06em', textTransform: 'uppercase',
+              borderBottom: page === n.id ? '1px solid var(--gold)' : '1px solid transparent',
+              paddingBottom: 2, transition: 'all 0.2s',
+            }}>{n.label}</button>
+          ))}
+          <LangSwitcher />
+          <button onClick={() => setPage('booking')} style={{
+            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+            fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', fontWeight: 700,
+            letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.6rem 1.5rem',
+            borderRadius: 2, transition: 'all 0.2s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.background='var(--gold-light)'}
+          onMouseLeave={e => e.currentTarget.style.background='var(--gold)'}
+          >{t.nav.bookNow}</button>
+        </nav>
+
+        {/* Mobile */}
+        <div style={{ display: 'none', alignItems: 'center', gap: '0.75rem' }} className="mobile-controls">
+          <LangSwitcher />
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)} style={{
+            background: 'none', border: 'none', cursor: 'pointer', color: 'white', fontSize: 22,
+          }}>
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+      </div>
+
+      {menuOpen && (
+        <div style={{ background: 'rgba(10,15,28,0.97)', borderTop: '1px solid rgba(255,255,255,0.08)', padding: '1.5rem 2rem 2rem' }}>
+          {nav.map(n => (
+            <button key={n.id} onClick={() => { setPage(n.id); setMenuOpen(false); }} style={{
+              display: 'block', width: '100%', textAlign: 'left',
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: page === n.id ? 'var(--gold)' : 'rgba(255,255,255,0.85)',
+              fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', fontWeight: 500,
+              padding: '0.9rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)',
+            }}>{n.label}</button>
+          ))}
+          <button onClick={() => { setPage('booking'); setMenuOpen(false); }} style={{
+            display: 'block', width: '100%', marginTop: '1.5rem',
+            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+            fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', fontWeight: 700,
+            letterSpacing: '0.06em', textTransform: 'uppercase', padding: '0.9rem 1.5rem', borderRadius: 2,
+          }}>{t.nav.bookNow}</button>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Footer({ setPage }) {
+  const { t } = useLang();
+  return (
+    <footer style={{ background: '#080c18', borderTop: '1px solid rgba(255,255,255,0.07)', padding: '4rem 2rem 2rem' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+          <div>
+            <CbtLogo size={110} />
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: 280, marginTop: '0.5rem' }}>
+              {t.footer.desc}
+            </p>
+          </div>
+          <div>
+            <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.experiences}</h4>
+            {['Culinary & Culture', 'Wine & Gastronomy', 'Adventure & Sports', 'Romance & Luxury', 'Nature & Relaxation'].map(c => (
+              <button key={c} onClick={() => setPage('tours')} style={{ display: 'block', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textAlign: 'left', transition: 'color 0.2s' }}
+              onMouseEnter={e=>e.currentTarget.style.color='var(--gold)'}
+              onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.45)'}
+              >{c}</button>
+            ))}
+          </div>
+          <div>
+            <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.quickLinks}</h4>
+            {[['home', t.nav.home],['tours', t.nav.tours],['about', t.nav.about],['contact', t.nav.contact],['booking', t.nav.bookNow]].map(([id,label]) => (
+              <button key={id} onClick={() => setPage(id)} style={{ display: 'block', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textAlign: 'left', transition: 'color 0.2s' }}
+              onMouseEnter={e=>e.currentTarget.style.color='var(--gold)'}
+              onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.45)'}
+              >{label}</button>
+            ))}
+          </div>
+          <div>
+            <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.contact}</h4>
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', lineHeight: 1.8 }}>
+              cbt.freddybremseth.com<br/>
+              info@costablancatours.com<br/>
+              +34 600 000 000<br/>
+              Alicante, Spain
+            </p>
+          </div>
+        </div>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.8rem', fontFamily: 'DM Sans' }}>{t.footer.rights}</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+Object.assign(window, { CbtLogo, LangSwitcher, Header, Footer });
+
+</script>
+<script type="text/babel">
+
+function useReveal() {
+  const ref = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+  React.useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.12 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+function Reveal({ children, delay = 0, style = {} }) {
+  const [ref, visible] = useReveal();
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0)' : 'translateY(32px)',
+      transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
+      ...style
+    }}>{children}</div>
+  );
+}
+
+function TourCard({ tour, setPage, setTourId, compact }) {
+  const { t } = useLang();
+  const [hov, setHov] = React.useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      onClick={() => { setTourId(tour.id); setPage('tour-detail'); window.scrollTo(0,0); }}
+      style={{
+        cursor: 'pointer', borderRadius: 4, overflow: 'hidden',
+        background: '#111827',
+        boxShadow: hov ? '0 24px 60px rgba(0,0,0,0.5)' : '0 4px 20px rgba(0,0,0,0.3)',
+        transform: hov ? 'translateY(-6px)' : 'translateY(0)',
+        transition: 'all 0.35s ease',
+        display: 'flex', flexDirection: 'column',
+      }}
+    >
+      <div style={{ position: 'relative', paddingTop: compact ? '56%' : '66%', overflow: 'hidden' }}>
+        <img src={tour.image} alt={tour.name} style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover',
+          transform: hov ? 'scale(1.06)' : 'scale(1)',
+          transition: 'transform 0.6s ease',
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(8,12,24,0.85) 0%, transparent 55%)' }} />
+        <div style={{ position: 'absolute', top: 14, left: 14 }}>
+          <span style={{
+            background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(255,255,255,0.15)',
+            color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.7rem',
+            letterSpacing: '0.07em', textTransform: 'uppercase', padding: '4px 10px', borderRadius: 2,
+          }}>{tour.category}</span>
+        </div>
+        <div style={{ position: 'absolute', bottom: 14, left: 16, right: 16 }}>
+          <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 4 }}>{tour.duration}</div>
+          <h3 style={{ color: 'white', fontFamily: 'Playfair Display', fontSize: compact ? '1.1rem' : '1.3rem', fontWeight: 700, margin: 0, lineHeight: 1.25, textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>{tour.name}</h3>
+        </div>
+      </div>
+      <div style={{ padding: '1.25rem 1.25rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1rem' }}>
+        <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans', fontSize: '0.875rem', lineHeight: 1.65, margin: 0 }}>{tour.shortDesc}</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <span style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans', fontSize: '0.7rem', display: 'block', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{t.tours.from}</span>
+            <span style={{ color: 'white', fontFamily: 'Playfair Display', fontSize: '1.4rem', fontWeight: 700 }}>{tour.price}</span>
+            <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.75rem' }}>{t.tours.perPerson}</span>
+          </div>
+          <div style={{
+            background: hov ? 'var(--gold)' : 'transparent',
+            border: '1px solid',
+            borderColor: hov ? 'var(--gold)' : 'rgba(255,255,255,0.2)',
+            color: hov ? '#0a0f1c' : 'rgba(255,255,255,0.8)',
+            fontFamily: 'DM Sans', fontSize: '0.75rem', fontWeight: 700,
+            letterSpacing: '0.06em', textTransform: 'uppercase',
+            padding: '0.5rem 1rem', borderRadius: 2,
+            transition: 'all 0.25s',
+          }}>{t.tours.viewDetails}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HomePage({ setPage, setTourId, showStats }) {
+  const { t } = useLang();
+  const featuredTours = TOURS.filter(tr => tr.featured);
+  const [heroLoaded, setHeroLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const img = new Image();
+    img.onload = () => setHeroLoaded(true);
+    img.src = window.HERO_IMG || HERO_IMG;
+  }, []);
+
+  const heroImg = window.HERO_IMG || HERO_IMG;
+
+  return (
+    <div>
+      {/* HERO */}
+      <section style={{ position: 'relative', height: '100dvh', minHeight: 600, display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: heroLoaded ? `url(${heroImg}) center/cover no-repeat` : '#0a1628',
+          transition: 'opacity 0.8s ease',
+        }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(5,10,22,0.82) 0%, rgba(5,10,22,0.45) 60%, rgba(5,10,22,0.65) 100%)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: 'linear-gradient(to bottom, transparent, var(--gold), transparent)' }} />
+
+        <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '0 2rem', width: '100%' }}>
+          <div style={{ maxWidth: 720, opacity: heroLoaded ? 1 : 0, transform: heroLoaded ? 'translateY(0)' : 'translateY(20px)', transition: 'all 1s ease 0.2s' }}>
+            <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span style={{ display: 'inline-block', width: 32, height: 1, background: 'var(--gold)' }} />
+              {t.hero.eyebrow}
+            </div>
+            <h1 style={{
+              fontFamily: 'Playfair Display', color: 'white', fontWeight: 700,
+              fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 1.1, margin: '0 0 1.5rem',
+              letterSpacing: '-0.01em',
+            }}>
+              {t.hero.title1}<br/>
+              <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>{t.hero.titleItalic}</em> {t.hero.title2}<br/>
+              {t.hero.title3}
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.78)', fontFamily: 'DM Sans', fontSize: 'clamp(1rem, 2vw, 1.2rem)', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: 520 }}>
+              {t.hero.subtitle}
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <button onClick={() => setPage('tours')} style={{
+                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                padding: '1rem 2.5rem', borderRadius: 2,
+              }}>{t.hero.exploreBtn}</button>
+              <button onClick={() => setPage('about')} style={{
+                background: 'transparent', color: 'white',
+                border: '1px solid rgba(255,255,255,0.4)',
+                cursor: 'pointer', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
+                letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1rem 2rem', borderRadius: 2,
+              }}>{t.hero.storyBtn}</button>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}>
+          <div style={{ width: 1, height: 48, background: 'linear-gradient(to bottom, transparent, var(--gold))', margin: '0 auto 8px' }} />
+          <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{t.hero.scroll}</span>
+        </div>
+      </section>
+
+      {/* STATS */}
+      {showStats !== false && (
+        <section style={{ background: '#0d1525', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }} className="stats-grid">
+            {[
+              { num: '10+', label: t.stats.tours },
+              { num: '4', label: t.stats.guests },
+              { num: '100%', label: t.stats.inclusive },
+              { num: '5★', label: t.stats.rating },
+            ].map(({ num, label }) => (
+              <div key={label} style={{ textAlign: 'center', padding: '1rem 0' }}>
+                <div style={{ fontFamily: 'Playfair Display', color: 'var(--gold)', fontSize: '2rem', fontWeight: 700 }}>{num}</div>
+                <div style={{ fontFamily: 'DM Sans', color: 'rgba(255,255,255,0.45)', fontSize: '0.75rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* WHY US */}
+      <section style={{ background: '#0a0f1c', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <Reveal>
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+              <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.why.eyebrow}</div>
+              <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', fontWeight: 700, margin: 0 }}>{t.why.title}</h2>
+            </div>
+          </Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+            {['◈','◉','◎','◐'].map((icon, i) => (
+              <Reveal key={i} delay={i * 100}>
+                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 4, padding: '2.5rem 2rem' }}>
+                  <div style={{ color: 'var(--gold)', fontSize: '1.5rem', marginBottom: '1.25rem' }}>{icon}</div>
+                  <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>{t.why.items[i].title}</h3>
+                  <p style={{ fontFamily: 'DM Sans', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', lineHeight: 1.7, margin: 0 }}>{t.why.items[i].desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED */}
+      <section style={{ background: '#080c18', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <Reveal>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{t.featured.eyebrow}</div>
+                <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', fontWeight: 700, margin: 0 }}>{t.featured.title}</h2>
+              </div>
+              <button onClick={() => setPage('tours')} style={{
+                background: 'none', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer',
+                color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans', fontSize: '0.8rem',
+                letterSpacing: '0.06em', textTransform: 'uppercase', padding: '0.6rem 1.5rem', borderRadius: 2,
+              }}>{t.featured.viewAll}</button>
+            </div>
+          </Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+            {featuredTours.map((tour, i) => (
+              <Reveal key={tour.id} delay={i * 100}>
+                <TourCard tour={tour} setPage={setPage} setTourId={setTourId} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ position: 'relative', padding: '7rem 2rem', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: `url(https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1600) center/cover no-repeat` }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,10,22,0.78)' }} />
+        <div style={{ position: 'relative', maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
+          <Reveal>
+            <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cta.eyebrow}</div>
+            <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1.5rem' }}>{t.cta.title}</h2>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>{t.cta.subtitle}</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button onClick={() => setPage('booking')} style={{
+                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                padding: '1rem 2.5rem', borderRadius: 2,
+              }}>{t.cta.reserveBtn}</button>
+              <button onClick={() => setPage('contact')} style={{
+                background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)',
+                cursor: 'pointer', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
+                letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1rem 2rem', borderRadius: 2,
+              }}>{t.cta.questionBtn}</button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+Object.assign(window, { HomePage, TourCard, Reveal, useReveal });
+
+</script>
+<script type="text/babel">
+
+function ToursPage({ setPage, setTourId }) {
+  const { t } = useLang();
+  const [activeCategory, setActiveCategory] = React.useState('All');
+  const filterLabel = t.tours.filter;
+  const cats = [filterLabel, ...CATEGORIES.slice(1)];
+  const filtered = activeCategory === filterLabel || activeCategory === 'All'
+    ? TOURS
+    : TOURS.filter(tr => tr.category === activeCategory);
+
+  return (
+    <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
+      <div style={{ background: '#0a1020', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '5rem 2rem 4rem' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.tours.eyebrow}</div>
+          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, margin: '0 0 1rem', lineHeight: 1.15 }}>{t.tours.title}</h1>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, maxWidth: 600, margin: 0 }}>{t.tours.subtitle}</p>
+        </div>
+      </div>
+
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: '#0a0f1c', overflowX: 'auto' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem', display: 'flex', gap: 0 }}>
+          {cats.map(cat => (
+            <button key={cat} onClick={() => setActiveCategory(cat)} style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              fontFamily: 'DM Sans', fontSize: '0.78rem', letterSpacing: '0.05em',
+              textTransform: 'uppercase', fontWeight: 500, whiteSpace: 'nowrap',
+              padding: '1.1rem 1.25rem',
+              color: activeCategory === cat ? 'var(--gold)' : 'rgba(255,255,255,0.4)',
+              borderBottom: activeCategory === cat ? '2px solid var(--gold)' : '2px solid transparent',
+              transition: 'all 0.2s',
+            }}>{cat}</button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '4rem 2rem 6rem' }}>
+        <div style={{ marginBottom: '2rem', color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans', fontSize: '0.85rem' }}>
+          {filtered.length} {filtered.length === 1 ? t.tours.count1 : t.tours.countN}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          {filtered.map((tour, i) => (
+            <Reveal key={tour.id} delay={i * 60}>
+              <TourCard tour={tour} setPage={setPage} setTourId={setTourId} compact />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TourDetailPage({ tourId, setPage, setTourId }) {
+  const { t } = useLang();
+  const tour = TOURS.find(tr => tr.id === tourId) || TOURS[0];
+  const [imgLoaded, setImgLoaded] = React.useState(false);
+
+  return (
+    <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
+      <div style={{ position: 'relative', height: '65vh', minHeight: 420, overflow: 'hidden' }}>
+        <img src={tour.image} alt={tour.name} onLoad={() => setImgLoaded(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: imgLoaded ? 1 : 0, transition: 'opacity 0.6s' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(8,12,24,1) 0%, rgba(8,12,24,0.5) 40%, rgba(8,12,24,0.2) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', padding: '0 2rem 3rem' }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto', width: '100%' }}>
+            <button onClick={() => setPage('tours')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.8rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '1rem', padding: 0 }}>
+              {t.detail.backBtn}
+            </button>
+            <span style={{ background: 'var(--gold)', color: '#0a0f1c', fontFamily: 'DM Sans', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '4px 12px', borderRadius: 2, display: 'inline-block', marginBottom: '1rem' }}>{tour.category}</span>
+            <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 700, margin: '0 0 0.5rem', lineHeight: 1.15 }}>{tour.name}</h1>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans', fontSize: '1rem', margin: 0, fontStyle: 'italic' }}>{tour.tagline}</p>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '4rem 2rem 6rem', display: 'grid', gridTemplateColumns: '1fr 340px', gap: '4rem', alignItems: 'start' }} className="detail-grid">
+        <div>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+            {[
+              { label: t.detail.duration, value: tour.duration },
+              { label: t.detail.maxGuests, value: `${tour.maxGuests}` },
+              { label: t.detail.transport, value: tour.transport },
+            ].map(({ label, value }) => (
+              <div key={label} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 2, padding: '0.875rem 1.25rem' }}>
+                <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
+                <div style={{ color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', fontWeight: 500 }}>{value}</div>
+              </div>
+            ))}
+          </div>
+
+          <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.6rem', fontWeight: 700, marginBottom: '1.25rem' }}>{t.detail.aboutTitle}</h2>
+          {tour.fullDesc.split('\n\n').map((para, i) => (
+            <p key={i} style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>{para}</p>
+          ))}
+
+          <div style={{ marginTop: '3rem', padding: '2rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 4 }}>
+            <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.25rem' }}>{t.detail.highlightsTitle}</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '0.75rem' }}>
+              {tour.highlights.map(h => (
+                <div key={h} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <span style={{ color: 'var(--gold)', fontSize: '0.7rem' }}>◆</span>
+                  <span style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans', fontSize: '0.875rem' }}>{h}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ position: 'sticky', top: 92 }}>
+          <div style={{ background: '#0d1525', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '2rem' }}>
+            <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 6 }}>{t.detail.priceLabel}</div>
+              <div style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2.5rem', fontWeight: 700, lineHeight: 1 }}>{tour.price}</div>
+              <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: 6 }}>{t.detail.allInclusive} {tour.maxGuests}</div>
+            </div>
+            <div style={{ marginBottom: '1.5rem' }}>
+              {t.detail.included.map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.4rem 0' }}>
+                  <span style={{ color: 'var(--gold)', fontSize: '0.7rem' }}>✓</span>
+                  <span style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.85rem' }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => setPage('booking')} style={{
+              width: '100%', background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+              fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+              padding: '1rem', borderRadius: 2, marginBottom: '0.75rem',
+            }}>{t.detail.reserveBtn}</button>
+            <button onClick={() => setPage('contact')} style={{
+              width: '100%', background: 'transparent', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
+              fontFamily: 'DM Sans', fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase',
+              padding: '0.875rem', borderRadius: 2,
+            }}>{t.detail.questionBtn}</button>
+            <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.75rem', textAlign: 'center', marginTop: '1rem', lineHeight: 1.5 }}>
+              {t.detail.cancelNote}
+            </p>
+          </div>
+
+          <div style={{ marginTop: '2rem' }}>
+            <div style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.detail.otherTitle}</div>
+            {TOURS.filter(tr => tr.id !== tourId).slice(0, 3).map(tr => (
+              <div key={tr.id}
+                style={{ display: 'flex', gap: '0.75rem', padding: '0.75rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)', cursor: 'pointer', alignItems: 'center' }}
+                onClick={() => { window.__setTourId(tr.id); window.scrollTo(0,0); }}
+              >
+                <img src={tr.image} alt={tr.name} style={{ width: 60, height: 44, objectFit: 'cover', borderRadius: 2, flexShrink: 0 }} />
+                <div>
+                  <div style={{ color: 'rgba(255,255,255,0.75)', fontFamily: 'DM Sans', fontSize: '0.825rem', fontWeight: 500, lineHeight: 1.3 }}>{tr.name}</div>
+                  <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.75rem', marginTop: 3 }}>{tr.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { ToursPage, TourDetailPage });
+
+</script>
+<script type="text/babel">
+
+function AboutPage({ setPage }) {
+  const { t } = useLang();
+  const ab = t.about;
+  return (
+    <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
+      <div style={{ position: 'relative', padding: '6rem 2rem 5rem', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: `url(https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1600) center/cover no-repeat` }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(5,10,22,0.82)' }} />
+        <div style={{ position: 'relative', maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{ab.eyebrow}</div>
+          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 700, margin: '0 0 1.5rem', lineHeight: 1.15 }}>
+            {ab.heroTitle}<br/><em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>{ab.heroItalic}</em>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans', fontSize: '1.1rem', lineHeight: 1.75 }}>{ab.heroSubtitle}</p>
+        </div>
+      </div>
+
+      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }} className="about-grid">
+          <Reveal>
+            <div>
+              <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{ab.philEyebrow}</div>
+              <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2rem', fontWeight: 700, marginBottom: '1.5rem', lineHeight: 1.25 }}>{ab.philTitle}</h2>
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1rem' }}>{ab.phil1}</p>
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: '1rem' }}>{ab.phil2}</p>
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.95rem', lineHeight: 1.8 }}>{ab.phil3}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div style={{ position: 'relative' }}>
+              <img src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&q=80&w=800" alt="Local market" style={{ width: '100%', borderRadius: 4, display: 'block' }} />
+              <div style={{ position: 'absolute', bottom: -24, right: -24, background: '#0d1525', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '1.5rem', maxWidth: 200 }}>
+                <div style={{ fontFamily: 'Playfair Display', color: 'var(--gold)', fontSize: '2.5rem', fontWeight: 700, lineHeight: 1 }}>4</div>
+                <div style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: 6, lineHeight: 1.4 }}>{ab.values[0].title}</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section style={{ background: '#0a0f1c', padding: '5rem 2rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <Reveal>
+            <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2rem', fontWeight: 700, marginBottom: '3rem', textAlign: 'center' }}>{ab.valuesTitle}</h2>
+          </Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+            {ab.values.map(({ title, desc }, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 4, padding: '2rem' }}>
+                  <div style={{ color: 'var(--gold)', fontSize: '1.4rem', marginBottom: '1rem' }}>{'◈◉◎◐'[i]}</div>
+                  <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.75rem' }}>{title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.875rem', lineHeight: 1.7, margin: 0 }}>{desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: '5rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+          <Reveal>
+            <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>{ab.ctaTitle}</h2>
+            <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans', fontSize: '0.95rem', lineHeight: 1.75, marginBottom: '2rem' }}>{ab.ctaText}</p>
+            <button onClick={() => setPage('tours')} style={{
+              background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+              fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+              padding: '1rem 2.5rem', borderRadius: 2,
+            }}>{ab.ctaBtn}</button>
+          </Reveal>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ContactPage() {
+  const { t } = useLang();
+  const c = t.contact;
+  const [form, setForm] = React.useState({ name: '', email: '', phone: '', message: '', tour: '' });
+  const [sent, setSent] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSending(true);
+    setTimeout(() => { setSending(false); setSent(true); }, 1200);
+  };
+
+  const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 2, padding: '0.875rem 1rem', color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', boxSizing: 'border-box', outline: 'none' };
+  const labelStyle = { display: 'block', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 };
+
+  return (
+    <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
+      <div style={{ background: '#0a1020', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '5rem 2rem 4rem' }}>
+        <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{c.eyebrow}</div>
+          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, margin: '0 0 1rem' }}>{c.title}</h1>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, margin: 0 }}>{c.subtitle}</p>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem 6rem', display: 'grid', gridTemplateColumns: '1fr 380px', gap: '4rem', alignItems: 'start' }} className="contact-grid">
+        <div>
+          {sent ? (
+            <div style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.3)', borderRadius: 4, padding: '3rem', textAlign: 'center' }}>
+              <div style={{ color: 'var(--gold)', fontSize: '2rem', marginBottom: '1rem' }}>◆</div>
+              <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.5rem', marginBottom: '0.75rem' }}>{c.successTitle}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.9rem', lineHeight: 1.7 }}>{c.successText}</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                <div>
+                  <label style={labelStyle}>{c.nameLabel}</label>
+                  <input type="text" placeholder={c.namePlaceholder} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} style={inputStyle} required />
+                </div>
+                <div>
+                  <label style={labelStyle}>{c.emailLabel}</label>
+                  <input type="email" placeholder={c.emailPlaceholder} value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} style={inputStyle} required />
+                </div>
+              </div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label style={labelStyle}>{c.tourLabel}</label>
+                <select value={form.tour} onChange={e => setForm(f => ({ ...f, tour: e.target.value }))} style={{ ...inputStyle, color: form.tour ? 'white' : 'rgba(255,255,255,0.35)' }}>
+                  <option value="">{c.tourPlaceholder}</option>
+                  {TOURS.map(tr => <option key={tr.id} value={tr.id}>{tr.name}</option>)}
+                </select>
+              </div>
+              <div style={{ marginBottom: '1.75rem' }}>
+                <label style={labelStyle}>{c.messageLabel}</label>
+                <textarea placeholder={c.messagePlaceholder} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} rows={6} required style={{ ...inputStyle, resize: 'vertical' }} />
+              </div>
+              <button type="submit" disabled={sending} style={{
+                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: sending ? 'wait' : 'pointer',
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                padding: '1rem 2.5rem', borderRadius: 2, opacity: sending ? 0.7 : 1,
+              }}>{sending ? c.sendingBtn : c.sendBtn}</button>
+            </form>
+          )}
+        </div>
+
+        <div>
+          <div style={{ background: '#0d1525', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 4, padding: '2rem', marginBottom: '1.5rem' }}>
+            <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.15rem', fontWeight: 700, marginBottom: '1.5rem' }}>{c.eyebrow}</h3>
+            {[
+              { label: 'Website', val: 'cbt.freddybremseth.com' },
+              { label: 'Email', val: 'info@costablancatours.com' },
+              { label: 'Phone', val: '+34 600 000 000' },
+              { label: 'Location', val: 'Alicante, Costa Blanca, Spain' },
+            ].map(({ label, val }) => (
+              <div key={label} style={{ padding: '0.75rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
+                <div style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans', fontSize: '0.875rem' }}>{val}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)', borderRadius: 4, padding: '1.5rem' }}>
+            <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{c.responseTitle}</div>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.85rem', lineHeight: 1.65, margin: 0 }}>{c.responseText}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BookingPage({ setPage }) {
+  const { t } = useLang();
+  const b = t.booking;
+  const [form, setForm] = React.useState({ tour: '', date: '', guests: 2, name: '', email: '', phone: '', notes: '' });
+  const [submitting, setSubmitting] = React.useState(false);
+  const [done, setDone] = React.useState(false);
+  const [ref] = React.useState(() => 'CBT-' + Math.random().toString(36).slice(2,8).toUpperCase());
+
+  const selectedTour = TOURS.find(tr => tr.id === form.tour);
+  const total = selectedTour ? (parseInt(selectedTour.priceNum) * form.guests) : 0;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setTimeout(() => { setSubmitting(false); setDone(true); }, 1400);
+  };
+
+  const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 2, padding: '0.875rem 1rem', color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', boxSizing: 'border-box', outline: 'none' };
+  const labelStyle = { display: 'block', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 };
+
+  if (done) {
+    return (
+      <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 540, textAlign: 'center' }}>
+          <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem', fontSize: '2rem', color: 'var(--gold)' }}>◆</div>
+          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>{b.successTitle}</h1>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+            {typeof b.successText === 'function' ? b.successText(form.name, form.email) : b.successText}
+          </p>
+          <div style={{ background: '#0d1525', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 4, padding: '1.5rem', marginBottom: '2.5rem', textAlign: 'left' }}>
+            {[
+              [b.refLabel, ref],
+              [b.tourLabel2, selectedTour?.name],
+              [b.dateLabel2, form.date],
+              [b.guestsLabel2, `${form.guests}`],
+              [b.totalLabel2, `€${total}`],
+            ].map(([k, v]) => (
+              <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem' }}>{k}</span>
+                <span style={{ color: 'white', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500 }}>{v}</span>
+              </div>
+            ))}
+          </div>
+          <button onClick={() => setPage('tours')} style={{
+            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+            fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+            padding: '1rem 2.5rem', borderRadius: 2,
+          }}>{b.exploreBtn}</button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
+      <div style={{ background: '#0a1020', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '4rem 2rem 3rem' }}>
+        <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }}>{b.eyebrow}</div>
+          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, margin: '0 0 0.75rem' }}>{b.title}</h1>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>{b.subtitle}</p>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '4rem 2rem 6rem', display: 'grid', gridTemplateColumns: '1fr 320px', gap: '4rem', alignItems: 'start' }} className="booking-grid">
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '3rem' }}>
+            <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 24, height: 24, borderRadius: '50%', background: 'var(--gold)', color: '#0a0f1c', fontSize: '0.7rem', fontWeight: 700 }}>1</span>
+              {b.step1}
+            </div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <label style={labelStyle}>{b.tourLabel}</label>
+              <select value={form.tour} onChange={e => setForm(f => ({ ...f, tour: e.target.value }))} required style={{ ...inputStyle, color: form.tour ? 'white' : 'rgba(255,255,255,0.35)' }}>
+                <option value="">{b.tourPlaceholder}</option>
+                {TOURS.map(tr => <option key={tr.id} value={tr.id}>{tr.name} — {tr.price}</option>)}
+              </select>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+              <div>
+                <label style={labelStyle}>{b.dateLabel}</label>
+                <input type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} required style={{ ...inputStyle, colorScheme: 'dark' }} />
+              </div>
+              <div>
+                <label style={labelStyle}>{b.guestsLabel}</label>
+                <select value={form.guests} onChange={e => setForm(f => ({ ...f, guests: parseInt(e.target.value) }))} style={inputStyle}>
+                  {[1,2,3,4].map(n => <option key={n} value={n}>{n}</option>)}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '2.5rem' }}>
+            <div style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 24, height: 24, borderRadius: '50%', background: 'var(--gold)', color: '#0a0f1c', fontSize: '0.7rem', fontWeight: 700 }}>2</span>
+              {b.step2}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+              <div>
+                <label style={labelStyle}>{b.nameLabel}</label>
+                <input type="text" placeholder={b.namePlaceholder} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required style={inputStyle} />
+              </div>
+              <div>
+                <label style={labelStyle}>{b.emailLabel}</label>
+                <input type="email" placeholder={b.emailPlaceholder} value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} required style={inputStyle} />
+              </div>
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label style={labelStyle}>{b.phoneLabel}</label>
+                <input type="tel" placeholder={b.phonePlaceholder} value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} required style={inputStyle} />
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>{b.notesLabel}</label>
+              <textarea placeholder={b.notesPlaceholder} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} rows={4} style={{ ...inputStyle, resize: 'vertical' }} />
+            </div>
+          </div>
+
+          <button type="submit" disabled={submitting} style={{
+            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: submitting ? 'wait' : 'pointer',
+            fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+            padding: '1.1rem 3rem', borderRadius: 2, opacity: submitting ? 0.7 : 1,
+          }}>{submitting ? b.processingBtn : b.submitBtn}</button>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: '1rem' }}>{b.cancelNote}</p>
+        </form>
+
+        <div style={{ position: 'sticky', top: 92 }}>
+          <div style={{ background: '#0d1525', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 4, padding: '2rem' }}>
+            <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem' }}>{b.summaryTitle}</h3>
+            {selectedTour ? (
+              <>
+                <img src={selectedTour.image} alt={selectedTour.name} style={{ width: '100%', height: 140, objectFit: 'cover', borderRadius: 2, marginBottom: '1.25rem' }} />
+                <div style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem', lineHeight: 1.3 }}>{selectedTour.name}</div>
+                <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginBottom: '1.5rem' }}>{selectedTour.duration}</div>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.875rem' }}>{selectedTour.price} × {form.guests}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                    <span style={{ color: 'white', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700 }}>{b.totalLabel}</span>
+                    <span style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '1.4rem', fontWeight: 700 }}>€{total}</span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.875rem', textAlign: 'center', padding: '2rem 0' }}>{b.selectTour}</p>
+            )}
+          </div>
+          <div style={{ marginTop: '1.25rem', padding: '1.25rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 4 }}>
+            {b.whyItems.map(item => (
+              <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.35rem 0' }}>
+                <span style={{ color: 'var(--gold)', fontSize: '0.65rem' }}>✓</span>
+                <span style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.8rem' }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { AboutPage, ContactPage, BookingPage });
+
+</script>
+
+<!-- App shell + Tweaks -->
+<script type="text/babel">
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "#c9a84c",
+  "heroImage": "coastal",
+  "cardStyle": "dark",
+  "showStats": true
+}/*EDITMODE-END*/;
+
+function TweaksPanel({ tweaks, setTweak, onClose }) {
+  const [pos, setPos] = React.useState({ x: null, y: null });
+  const [dragging, setDragging] = React.useState(false);
+  const [dragOff, setDragOff] = React.useState({ x: 0, y: 0 });
+  const ref = React.useRef(null);
+
+  const startDrag = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    setDragOff({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setDragging(true);
+  };
+  React.useEffect(() => {
+    if (!dragging) return;
+    const move = (e) => setPos({ x: e.clientX - dragOff.x, y: e.clientY - dragOff.y });
+    const up = () => setDragging(false);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    return () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+  }, [dragging, dragOff]);
+
+  const panelStyle = {
+    position: 'fixed',
+    right: pos.x !== null ? 'auto' : 24,
+    bottom: pos.y !== null ? 'auto' : 24,
+    left: pos.x !== null ? pos.x : 'auto',
+    top: pos.y !== null ? pos.y : 'auto',
+    zIndex: 9999,
+    background: 'rgba(13,21,37,0.97)',
+    border: '1px solid rgba(201,168,76,0.35)',
+    borderRadius: 6,
+    boxShadow: '0 20px 60px rgba(0,0,0,0.7)',
+    width: 280,
+    overflow: 'hidden',
+    userSelect: 'none',
+  };
+
+  return (
+    <div ref={ref} style={panelStyle}>
+      <div onMouseDown={startDrag} style={{
+        background: 'rgba(201,168,76,0.12)', borderBottom: '1px solid rgba(201,168,76,0.2)',
+        padding: '0.75rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        cursor: 'grab',
+      }}>
+        <span style={{ color: 'var(--gold)', fontFamily: 'DM Sans', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>◆ Tweaks</span>
+        <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', fontSize: '1.1rem', lineHeight: 1 }}>✕</button>
+      </div>
+      <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <div>
+          <label style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>Accent Colour</label>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {[['#c9a84c','Gold'],['#2196a8','Ocean'],['#c0392b','Vermillion'],['#7c5cbf','Dusk']].map(([color, label]) => (
+              <button key={color} onClick={() => setTweak('accentColor', color)} title={label} style={{
+                width: 32, height: 32, borderRadius: 4, background: color, border: tweaks.accentColor === color ? '2px solid white' : '2px solid transparent',
+                cursor: 'pointer', transition: 'border 0.2s',
+              }} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <label style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>Hero Image</label>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {[['coastal','Coastal'],['mountain','Mountain'],['sunset','Sunset']].map(([val, label]) => (
+              <button key={val} onClick={() => setTweak('heroImage', val)} style={{
+                background: tweaks.heroImage === val ? 'var(--gold)' : 'rgba(255,255,255,0.07)',
+                color: tweaks.heroImage === val ? '#0a0f1c' : 'rgba(255,255,255,0.6)',
+                border: '1px solid', borderColor: tweaks.heroImage === val ? 'var(--gold)' : 'rgba(255,255,255,0.1)',
+                borderRadius: 2, padding: '0.4rem 0.75rem', cursor: 'pointer',
+                fontFamily: 'DM Sans', fontSize: '0.75rem', fontWeight: 500,
+              }}>{label}</button>
+            ))}
+          </div>
+        </div>
+        <div>
+          <label style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>Card Style</label>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            {[['dark','Dark'],['bordered','Bordered']].map(([val, label]) => (
+              <button key={val} onClick={() => setTweak('cardStyle', val)} style={{
+                background: tweaks.cardStyle === val ? 'var(--gold)' : 'rgba(255,255,255,0.07)',
+                color: tweaks.cardStyle === val ? '#0a0f1c' : 'rgba(255,255,255,0.6)',
+                border: '1px solid', borderColor: tweaks.cardStyle === val ? 'var(--gold)' : 'rgba(255,255,255,0.1)',
+                borderRadius: 2, padding: '0.4rem 0.75rem', cursor: 'pointer',
+                fontFamily: 'DM Sans', fontSize: '0.75rem', fontWeight: 500,
+              }}>{label}</button>
+            ))}
+          </div>
+        </div>
+        <div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }}>
+            <div onClick={() => setTweak('showStats', !tweaks.showStats)} style={{
+              width: 36, height: 20, borderRadius: 10, background: tweaks.showStats ? 'var(--gold)' : 'rgba(255,255,255,0.15)',
+              position: 'relative', transition: 'background 0.2s', flexShrink: 0, cursor: 'pointer',
+            }}>
+              <div style={{
+                position: 'absolute', top: 2, left: tweaks.showStats ? 18 : 2, width: 16, height: 16,
+                borderRadius: '50%', background: 'white', transition: 'left 0.2s',
+              }} />
+            </div>
+            <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem' }}>Show Stats Bar</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const HERO_IMAGES = {
+  coastal: 'https://images.unsplash.com/photo-1602854127232-983309a47263?auto=format&fit=crop&q=85&w=1920',
+  mountain: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=85&w=1920',
+  sunset: 'https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&q=85&w=1920',
+};
+
+function App() {
+  const [page, setPage] = React.useState('home');
+  const [tourId, setTourId] = React.useState(null);
+  const [tweaks, setTweaksState] = React.useState(TWEAK_DEFAULTS);
+  const [showTweaks, setShowTweaks] = React.useState(false);
+
+  // Expose setTourId globally so TourDetailPage sidebar links can use it
+  window.__setTourId = (id) => { setTourId(id); setPage('tour-detail'); window.scrollTo(0,0); };
+
+  const setTweak = (key, val) => {
+    const updated = typeof key === 'object' ? { ...tweaks, ...key } : { ...tweaks, [key]: val };
+    setTweaksState(updated);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: updated }, '*');
+    // Apply accent color CSS var live
+    if (updated.accentColor) document.documentElement.style.setProperty('--gold', updated.accentColor);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('message', (e) => {
+      if (e.data?.type === '__activate_edit_mode') setShowTweaks(true);
+      if (e.data?.type === '__deactivate_edit_mode') setShowTweaks(false);
+    });
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    // Apply saved accent
+    document.documentElement.style.setProperty('--gold', tweaks.accentColor);
+  }, []);
+
+  // Scroll to top on page change
+  React.useEffect(() => { window.scrollTo(0, 0); }, [page]);
+
+  // Override HERO_IMG based on tweak
+  window.HERO_IMG = HERO_IMAGES[tweaks.heroImage] || HERO_IMAGES.coastal;
+
+  const renderPage = () => {
+    switch(page) {
+      case 'home':       return <HomePage setPage={setPage} setTourId={setTourId} showStats={tweaks.showStats} />;
+      case 'tours':      return <ToursPage setPage={setPage} setTourId={setTourId} />;
+      case 'tour-detail':return <TourDetailPage tourId={tourId} setPage={setPage} setTourId={setTourId} />;
+      case 'about':      return <AboutPage setPage={setPage} />;
+      case 'contact':    return <ContactPage />;
+      case 'booking':    return <BookingPage setPage={setPage} />;
+      default:           return <HomePage setPage={setPage} setTourId={setTourId} />;
+    }
+  };
+
+  return (
+    <>
+      <Header page={page} setPage={setPage} tourId={tourId} />
+      <main>{renderPage()}</main>
+      <Footer setPage={setPage} />
+      {showTweaks && (
+        <TweaksPanel tweaks={tweaks} setTweak={setTweak} onClose={() => {
+          setShowTweaks(false);
+          window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+        }} />
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+</script>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="80" fill="#080c18"/>
+    <rect x="20" y="20" width="80" height="40" rx="3" fill="#0d1525" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+    <text x="60" y="43" text-anchor="middle" fill="#c9a84c" font-size="9" font-family="serif" font-weight="700">CBT</text>
+    <line x1="35" y1="52" x2="85" y2="52" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/>
+  </svg>
+</template>
+
+</body>
+</html>
