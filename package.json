@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --kill-others --raw \"npm run dev --prefix apps/web\"",
-    "build": "echo \"Static Costa Blanca Tours site is ready in public/\"",
+    "build": "npm run ecosystem:audit && echo \"Static Costa Blanca Tours site is ready in public/\"",
     "start": "echo \"Static site: serve public/ via Vercel\"",
-    "lint": "concurrently --raw \"npm run lint --prefix apps/web\""
+    "lint": "concurrently --raw \"npm run lint --prefix apps/web\"",
+    "ecosystem:audit": "node scripts/ecosystem-link-audit.mjs"
   },
   "engines": {
     "node": "20.x"
