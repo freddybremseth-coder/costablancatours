@@ -606,10 +606,10 @@ function Header({ page, setPage }) {
   React.useEffect(() => { setMenuOpen(false); }, [page]);
 
   const nav = [
-    { id: 'home', label: t.nav.home },
-    { id: 'tours', label: t.nav.tours },
-    { id: 'about', label: t.nav.about },
-    { id: 'contact', label: t.nav.contact },
+    { id: 'home', label: t.nav.home, href: '/' },
+    { id: 'tours', label: t.nav.tours, href: '/turer/' },
+    { id: 'about', label: t.nav.about, href: '/om-oss/' },
+    { id: 'contact', label: t.nav.contact, href: '/kontakt/' },
   ];
 
   const frosted = scrolled || !isHero || menuOpen;
@@ -623,32 +623,28 @@ function Header({ page, setPage }) {
       borderBottom: frosted ? '1px solid rgba(255,255,255,0.07)' : 'none',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <button onClick={() => setPage('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0 0 0' }}>
+        <a href="/" aria-label="Costa Blanca Tours home" style={{ display: 'inline-flex', padding: '6px 0 0 0' }}>
           <CbtLogo size={54} />
-        </button>
+        </a>
 
         {/* Desktop nav */}
         <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="desktop-nav">
           {nav.map(n => (
-            <button key={n.id} onClick={() => setPage(n.id)} style={{
-              background: 'none', border: 'none', cursor: 'pointer',
+            <a key={n.id} href={n.href} style={{
               color: page === n.id ? 'var(--gold)' : 'rgba(255,255,255,0.82)',
               fontFamily: 'DM Sans, sans-serif', fontSize: '0.875rem', fontWeight: 500,
               letterSpacing: '0.06em', textTransform: 'uppercase',
               borderBottom: page === n.id ? '1px solid var(--gold)' : '1px solid transparent',
-              paddingBottom: 2, transition: 'all 0.2s',
-            }}>{n.label}</button>
+              paddingBottom: 2, transition: 'all 0.2s', textDecoration: 'none',
+            }}>{n.label}</a>
           ))}
           <LangSwitcher />
-          <button onClick={() => setPage('booking')} style={{
-            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+          <a href="/kontakt/" style={{
+            background: 'var(--gold)', color: '#0a0f1c',
             fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', fontWeight: 700,
             letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.6rem 1.5rem',
-            borderRadius: 2, transition: 'all 0.2s',
-          }}
-          onMouseEnter={e => e.currentTarget.style.background='var(--gold-light)'}
-          onMouseLeave={e => e.currentTarget.style.background='var(--gold)'}
-          >{t.nav.bookNow}</button>
+            borderRadius: 2, transition: 'all 0.2s', textDecoration: 'none',
+          }}>{t.nav.bookNow}</a>
         </nav>
 
         {/* Mobile */}
@@ -665,20 +661,21 @@ function Header({ page, setPage }) {
       {menuOpen && (
         <div style={{ background: 'rgba(10,15,28,0.97)', borderTop: '1px solid rgba(255,255,255,0.08)', padding: '1.5rem 2rem 2rem' }}>
           {nav.map(n => (
-            <button key={n.id} onClick={() => { setPage(n.id); setMenuOpen(false); }} style={{
+            <a key={n.id} href={n.href} style={{
               display: 'block', width: '100%', textAlign: 'left',
-              background: 'none', border: 'none', cursor: 'pointer',
               color: page === n.id ? 'var(--gold)' : 'rgba(255,255,255,0.85)',
               fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', fontWeight: 500,
               padding: '0.9rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)',
-            }}>{n.label}</button>
+              textDecoration: 'none',
+            }}>{n.label}</a>
           ))}
-          <button onClick={() => { setPage('booking'); setMenuOpen(false); }} style={{
+          <a href="/kontakt/" style={{
             display: 'block', width: '100%', marginTop: '1.5rem',
-            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+            background: 'var(--gold)', color: '#0a0f1c',
             fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', fontWeight: 700,
             letterSpacing: '0.06em', textTransform: 'uppercase', padding: '0.9rem 1.5rem', borderRadius: 2,
-          }}>{t.nav.bookNow}</button>
+            textDecoration: 'none', textAlign: 'center',
+          }}>{t.nav.bookNow}</a>
         </div>
       )}
     </header>
@@ -768,11 +765,20 @@ function Reveal({ children, delay = 0, style = {} }) {
 function TourCard({ tour, setPage, setTourId, compact }) {
   const { t } = useLang();
   const [hov, setHov] = React.useState(false);
+  const tourHref = {
+    'villajoyosa-chocolate': '/turer/villajoyosa-sjokolade/',
+    'altea-charm': '/turer/altea/',
+    'guadalest-valley': '/turer/guadalest/',
+    'juan-gil-wine': '/turer/jumilla-vin/',
+  }[tour.id];
   return (
     <div
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      onClick={() => { setTourId(tour.id); setPage('tour-detail'); window.scrollTo(0,0); }}
+      onClick={() => {
+        if (tourHref) window.location.href = tourHref;
+        else { setTourId(tour.id); setPage('tour-detail'); window.scrollTo(0,0); }
+      }}
       style={{
         cursor: 'pointer', borderRadius: 4, overflow: 'hidden',
         background: '#111827',
