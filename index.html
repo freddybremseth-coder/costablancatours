@@ -699,20 +699,24 @@ function Footer({ setPage }) {
           </div>
           <div>
             <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.experiences}</h4>
-            {['Culinary & Culture', 'Wine & Gastronomy', 'Adventure & Sports', 'Romance & Luxury', 'Nature & Relaxation'].map(c => (
-              <button key={c} onClick={() => setPage('tours')} style={{ display: 'block', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textAlign: 'left', transition: 'color 0.2s' }}
-              onMouseEnter={e=>e.currentTarget.style.color='var(--gold)'}
-              onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.45)'}
-              >{c}</button>
+            {[
+              ['/turer/altea/', 'Altea'],
+              ['/turer/guadalest/', 'Guadalest'],
+              ['/turer/villajoyosa-sjokolade/', 'Villajoyosa & chocolate'],
+              ['/turer/jumilla-vin/', 'Jumilla wine country'],
+            ].map(([href,label]) => (
+              <a key={href} href={href} style={{ display: 'block', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textDecoration: 'none' }}>{label}</a>
             ))}
           </div>
           <div>
             <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.quickLinks}</h4>
-            {[['home', t.nav.home],['tours', t.nav.tours],['about', t.nav.about],['contact', t.nav.contact],['booking', t.nav.bookNow]].map(([id,label]) => (
-              <button key={id} onClick={() => setPage(id)} style={{ display: 'block', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textAlign: 'left', transition: 'color 0.2s' }}
-              onMouseEnter={e=>e.currentTarget.style.color='var(--gold)'}
-              onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.45)'}
-              >{label}</button>
+            {[
+              ['/', t.nav.home],
+              ['/turer/', t.nav.tours],
+              ['/om-oss/', t.nav.about],
+              ['/kontakt/', t.nav.contact],
+            ].map(([href,label]) => (
+              <a key={href} href={href} style={{ display: 'block', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textDecoration: 'none' }}>{label}</a>
             ))}
           </div>
           <div>
