@@ -897,10 +897,10 @@ function HomePage({ setPage, setTourId, showStats }) {
         <section style={{ background: '#0d1525', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
           <div style={{ maxWidth: 1280, margin: '0 auto', padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }} className="stats-grid">
             {[
-              { num: '10+', label: t.stats.tours },
+              { num: '4', label: 'Published experiences' },
               { num: '4', label: t.stats.guests },
-              { num: '100%', label: t.stats.inclusive },
-              { num: '5★', label: t.stats.rating },
+              { num: '1:1', label: 'Availability confirmed' },
+              { num: 'Local', label: t.stats.rating },
             ].map(({ num, label }) => (
               <div key={label} style={{ textAlign: 'center', padding: '1rem 0' }}>
                 <div style={{ fontFamily: 'Playfair Display', color: 'var(--gold)', fontSize: '2rem', fontWeight: 700 }}>{num}</div>
@@ -998,9 +998,11 @@ function ToursPage({ setPage, setTourId }) {
   const [activeCategory, setActiveCategory] = React.useState('All');
   const filterLabel = t.tours.filter;
   const cats = [filterLabel, ...CATEGORIES.slice(1)];
+  const publishedIds = new Set(['villajoyosa-chocolate', 'altea-charm', 'guadalest-valley', 'juan-gil-wine']);
+  const publishedTours = TOURS.filter(tr => publishedIds.has(tr.id));
   const filtered = activeCategory === filterLabel || activeCategory === 'All'
-    ? TOURS
-    : TOURS.filter(tr => tr.category === activeCategory);
+    ? publishedTours
+    : publishedTours.filter(tr => tr.category === activeCategory);
 
   return (
     <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
