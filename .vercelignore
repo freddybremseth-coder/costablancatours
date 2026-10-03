@@ -1,0 +1,8 @@
+apps/
+project/
+chats/
+node_modules/
+.git/
+README.md
+index.html
+package-lock.json
