@@ -877,17 +877,18 @@ function HomePage({ setPage, setTourId, showStats }) {
               {t.hero.subtitle}
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <button onClick={() => setPage('tours')} style={{
-                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+              <a href="/turer/" style={{
+                background: 'var(--gold)', color: '#0a0f1c',
                 fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                padding: '1rem 2.5rem', borderRadius: 2,
-              }}>{t.hero.exploreBtn}</button>
-              <button onClick={() => setPage('about')} style={{
+                padding: '1rem 2.5rem', borderRadius: 2, textDecoration: 'none',
+              }}>{t.hero.exploreBtn}</a>
+              <a href="/om-oss/" style={{
                 background: 'transparent', color: 'white',
                 border: '1px solid rgba(255,255,255,0.4)',
-                cursor: 'pointer', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
                 letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1rem 2rem', borderRadius: 2,
-              }}>{t.hero.storyBtn}</button>
+                textDecoration: 'none',
+              }}>{t.hero.storyBtn}</a>
             </div>
           </div>
         </div>
@@ -976,16 +977,17 @@ function HomePage({ setPage, setTourId, showStats }) {
             <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1.5rem' }}>{t.cta.title}</h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>{t.cta.subtitle}</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button onClick={() => setPage('booking')} style={{
-                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+              <a href="/kontakt/" style={{
+                background: 'var(--gold)', color: '#0a0f1c',
                 fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                padding: '1rem 2.5rem', borderRadius: 2,
-              }}>{t.cta.reserveBtn}</button>
-              <button onClick={() => setPage('contact')} style={{
+                padding: '1rem 2.5rem', borderRadius: 2, textDecoration: 'none',
+              }}>{t.cta.reserveBtn}</a>
+              <a href="/kontakt/" style={{
                 background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)',
-                cursor: 'pointer', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
                 letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1rem 2rem', borderRadius: 2,
-              }}>{t.cta.questionBtn}</button>
+                textDecoration: 'none',
+              }}>{t.cta.questionBtn}</a>
             </div>
           </Reveal>
         </div>
