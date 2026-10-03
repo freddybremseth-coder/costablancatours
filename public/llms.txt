@@ -1,0 +1,25 @@
+# Costa Blanca Tours
+
+Costa Blanca Tours is a curated experiences brand for the Costa Blanca and nearby parts of Alicante, Spain.
+
+Canonical website: https://www.costablancatours.pro/
+
+## What the site offers
+- Private and small-group day trips
+- Food, wine and cultural experiences
+- Coastal and mountain experiences
+- Local recommendations for visitors and property owners
+
+## Core destinations and themes
+- Altea
+- Villajoyosa
+- Guadalest
+- Costa Blanca North
+- Alicante province
+- Food and gastronomy
+- Wine
+- Culture
+- Nature
+
+## Editorial principles
+Information should clearly distinguish confirmed inclusions, prices and availability from examples or proposed itineraries. Experiences should only be presented as bookable when operational details and partners are confirmed.

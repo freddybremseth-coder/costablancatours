@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Costa Blanca Tours — Intimate Luxury Experiences</title>
-  <meta name="description" content="Intimate small-group luxury experiences on the Costa Blanca. Maximum 4 guests. Private car. All-inclusive. cbt.freddybremseth.com" />
+  <title>Costa Blanca Tours | Private Experiences on the Costa Blanca</title>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="description" content="Private and small-group experiences on the Costa Blanca, with local knowledge, curated routes and personal service. Discover food, culture, nature and memorable day trips." />
+  <link rel="canonical" href="https://www.costablancatours.pro/" />
+  <meta property="og:title" content="Costa Blanca Tours | Private Experiences on the Costa Blanca" />
+  <meta property="og:description" content="Curated private and small-group experiences across the Costa Blanca: food, culture, nature and memorable day trips." />
+  <meta property="og:url" content="https://www.costablancatours.pro/" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
@@ -61,6 +67,22 @@
       .stats-grid { grid-template-columns: 1fr 1fr !important; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"WebSite","@id":"https://www.costablancatours.pro/#website","url":"https://www.costablancatours.pro/","name":"Costa Blanca Tours","inLanguage":["en","nb","es","de","fr","ru"]},
+      {"@type":"TravelAgency","@id":"https://www.costablancatours.pro/#business","name":"Costa Blanca Tours","url":"https://www.costablancatours.pro/","areaServed":{"@type":"AdministrativeArea","name":"Costa Blanca, Alicante, Spain"},"description":"Curated private and small-group experiences across the Costa Blanca, including food, culture, nature and day trips."},
+      {"@type":"ItemList","@id":"https://www.costablancatours.pro/#experiences","name":"Costa Blanca Tours experiences","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Villajoyosa: Sweet Temptations"},
+        {"@type":"ListItem","position":2,"name":"Altea: The Dome of the Mediterranean"},
+        {"@type":"ListItem","position":3,"name":"Guadalest: The Mountain Fortress"},
+        {"@type":"ListItem","position":4,"name":"Juan Gil: The Art of Jumilla Wine"}
+      ]}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -99,7 +121,7 @@ const TOURS = [
     image: 'https://horizons-cdn.hostinger.com/fdaae8f6-c2cb-4e61-863e-e79e6b571eca/9ad7a02375695d15c9f267db0389f43c.png',
     highlights: ['VIP equipment fitting', 'Guided orientation', 'Alpine lunch', 'Après-ski'],
     fullDesc: "Leave the Mediterranean coast behind and ascend into the breathtaking, snow-capped peaks of the Sierra Nevada. Spain's premier winter destination, this majestic mountain range offers pristine slopes, brilliant sunshine, and an unparalleled alpine atmosphere.\n\nChoose the 2-day (€800) or 3-day (€1,100) package. We handle every logistical detail — transport, hotel accommodation, VIP equipment fitting, guided mountain orientation and alpine lunches. The 3-day option includes our exclusive après-ski relaxation evening with premium drinks and tapas.",
-    featured: true
+    featured: false
   },
   {
     id: 'juan-gil-wine',
@@ -115,7 +137,7 @@ const TOURS = [
     image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=1200',
     highlights: ['VIP vineyard access', 'Sommelier tasting', 'Gourmet pairing lunch', 'Cellar access'],
     fullDesc: "Step into the world of Juan Gil, where centuries of winemaking tradition meet modern excellence. The arid, sun-drenched landscapes of Jumilla produce some of Spain's most robust and celebrated wines.\n\nWalk ancient Monastrell vines with an expert viticulturist, descend into cool atmospheric cellars, then take your seat for a sommelier-led tasting of Juan Gil's finest premium vintages. A spectacular multi-course lunch at the estate follows, each dish crafted from local ingredients and perfectly paired with a specific vintage.",
-    featured: true
+    featured: false
   },
   {
     id: 'ibiza-escape',
@@ -147,7 +169,7 @@ const TOURS = [
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1200',
     highlights: ['Old town walk', 'Artisan boutiques', 'Church dome views', 'Hillside lunch'],
     fullDesc: "Crowned by its iconic blue-and-white tiled church dome, Altea is a haven for artists and dreamers. This enchanting town offers a beautiful contrast to the bustling resorts nearby, preserving its traditional Spanish soul.\n\nArrive at the foot of Altea's old town and ascend through charming narrow streets lined with whitewashed houses and vibrant bougainvillea. Reach the Church of the Virgin of Consuelo for panoramic bay views, dine at a hillside restaurant, and stroll the pebble beach promenade.",
-    featured: false
+    featured: true
   },
   {
     id: 'dona-anna',
@@ -195,7 +217,7 @@ const TOURS = [
     image: 'https://images.unsplash.com/photo-1559588500-1b211bf118c7?auto=format&fit=crop&q=80&w=1200',
     highlights: ['Castle of San José', 'Emerald reservoir views', 'Village exploration', 'Mountain lunch'],
     fullDesc: "Hidden in the rugged mountains of Alicante lies Guadalest, one of the most beautiful and historically significant villages in Spain. Perched on a limestone pinnacle, accessed only through a tunnel carved into the rock.\n\nClimb to the remains of the 11th-century Moorish castle for unparalleled panoramic views, gaze upon the stunning turquoise Embalse de Guadalest, explore quirky micro-museums and artisan shops, then conclude with a hearty mountain lunch of slow-cooked lamb and regional wines.",
-    featured: false
+    featured: true
   },
   {
     id: 'romantisk-tur',
@@ -253,7 +275,7 @@ const TRANSLATIONS = {
       storyBtn: 'Our Story',
       scroll: 'Scroll',
     },
-    stats: { tours: 'Unique Experiences', guests: 'Max Guests Per Tour', inclusive: 'All-Inclusive', rating: 'Rated by Guests' },
+    stats: { tours: 'Unique Experiences', guests: 'Max Guests Per Tour', inclusive: 'All-Inclusive', rating: 'Small Groups' },
     why: {
       eyebrow: 'The Costa Blanca Tours Difference',
       title: 'Why discerning travellers choose us',
@@ -261,19 +283,19 @@ const TRANSLATIONS = {
         { title: 'Maximum 4 Guests', desc: "Every tour is strictly limited to 4 guests. You'll never feel like a number — only a valued guest with personal attention." },
         { title: 'Private Car Always', desc: 'Door-to-door comfort in a private vehicle. No coaches, no waiting for others. Your schedule, your pace.' },
         { title: 'Truly All-Inclusive', desc: 'Wine, beer, tapas, gourmet meals, entry fees — all covered. No awkward bill moments. Pure enjoyment.' },
-        { title: 'Born & Raised Locally', desc: 'Our guides are Costa Blanca natives. Hidden gems, family stories, secret spots — this is lived knowledge.' },
+        { title: 'Local Knowledge', desc: 'Our experiences are built around first-hand knowledge of the Costa Blanca, trusted local partners and carefully selected places worth sharing.' },
       ],
     },
     featured: {
       eyebrow: 'Signature Experiences',
       title: 'Featured Journeys',
-      viewAll: 'View All 10 Tours →',
+      viewAll: 'View verified experiences →',
     },
     cta: {
       eyebrow: 'Ready to explore?',
       title: 'Your perfect Mediterranean experience awaits',
       subtitle: 'From snow-capped Sierra Nevada to Ibiza\'s turquoise coves — every journey is crafted around you.',
-      reserveBtn: 'Reserve Your Experience',
+      reserveBtn: 'Request Availability',
       questionBtn: 'Ask a Question',
     },
     footer: {
@@ -286,7 +308,7 @@ const TRANSLATIONS = {
     tours: {
       eyebrow: 'All Experiences',
       title: 'Our Curated Journeys',
-      subtitle: 'Each experience is strictly limited to 4 guests, fully all-inclusive with private car transport. No hidden costs — just pure discovery.',
+      subtitle: 'We focus on private and very small-group experiences. Final transport, inclusions, timing and price are confirmed for your requested date before anything is booked.',
       count1: 'experience', countN: 'experiences',
       from: 'From', perPerson: '/person',
       viewDetails: 'View Details →',
@@ -300,7 +322,7 @@ const TRANSLATIONS = {
       priceLabel: 'Price per person',
       allInclusive: 'All-inclusive · Max',
       included: ['Wine, beer & tapas included', 'Private car transport', 'Gourmet meals', 'Expert local guide', 'No hidden costs'],
-      reserveBtn: 'Reserve This Experience',
+      reserveBtn: 'Request Availability',
       questionBtn: 'Ask a Question',
       cancelNote: 'Free cancellation up to 48h before. Payment on the day.',
       otherTitle: 'Other Experiences',
@@ -340,8 +362,8 @@ const TRANSLATIONS = {
     },
     booking: {
       eyebrow: 'Reservations',
-      title: 'Reserve Your Experience',
-      subtitle: 'Secure your spot for an intimate, all-inclusive exploration of the Costa Blanca.',
+      title: 'Request Availability',
+      subtitle: 'Send a request for your preferred date and experience. Availability and final details are confirmed personally before any booking is final.',
       step1: 'Select Your Experience', step2: 'Your Details',
       tourLabel: 'Tour', tourPlaceholder: 'Choose an experience...',
       dateLabel: 'Preferred Date', guestsLabel: 'Number of Guests',
@@ -349,12 +371,12 @@ const TRANSLATIONS = {
       emailLabel: 'Email Address', emailPlaceholder: 'you@email.com',
       phoneLabel: 'Phone Number', phonePlaceholder: '+34 600 000 000',
       notesLabel: 'Special Requests / Dietary Requirements', notesPlaceholder: 'Allergies, dietary needs, special occasions...',
-      submitBtn: 'Complete Booking', processingBtn: 'Processing...',
+      submitBtn: 'Send Booking Request', processingBtn: 'Processing...',
       cancelNote: 'Free cancellation up to 48 hours before the tour. Payment on the day.',
       summaryTitle: 'Booking Summary', selectTour: 'Select a tour to see your summary',
       priceLabel: 'Price per person', totalLabel: 'Total',
       whyItems: ['Intimate small groups (max 4)', 'Expert local guides', 'Free cancellation up to 48h'],
-      successTitle: 'Booking Confirmed!',
+      successTitle: 'Request Received!',
       successText: (name, email) => `Thank you, ${name}. We'll send confirmation details to ${email} shortly. We look forward to welcoming you on the Costa Blanca.`,
       refLabel: 'Booking Reference', tourLabel2: 'Tour', dateLabel2: 'Date', guestsLabel2: 'Guests', totalLabel2: 'Total',
       exploreBtn: 'Explore More Tours',
@@ -380,19 +402,19 @@ const TRANSLATIONS = {
         { title: 'Født og oppvokst lokalt', desc: 'Våre guider er innfødte fra Costa Blanca. Skjulte perler, familiehistorier, hemmelige steder — dette er levd kunnskap.' },
       ],
     },
-    featured: { eyebrow: 'Signaturopplevelser', title: 'Utvalgte reiser', viewAll: 'Se alle 10 turer →' },
+    featured: { eyebrow: 'Signaturopplevelser', title: 'Utvalgte reiser', viewAll: 'Se kvalitetssikrede opplevelser →' },
     cta: {
       eyebrow: 'Klar til å utforske?',
       title: 'Din perfekte middelhavsopplevelse venter',
-      subtitle: 'Fra snødekte Sierra Nevada til Ibizas turkisblå viker — hver reise er skreddersydd for deg.',
-      reserveBtn: 'Reserver din opplevelse', questionBtn: 'Still et spørsmål',
+      subtitle: 'Fra kystbyer til fjellandsbyer og matopplevelser i innlandet — dagen tilpasses interessene dine og bekreftet tilgjengelighet.',
+      reserveBtn: 'Sjekk tilgjengelighet', questionBtn: 'Still et spørsmål',
     },
     footer: { desc: 'Intime luksusopplevelser på Costa Blanca. Maks 4 gjester. Lokal ekspertise. Uforglemmelige minner.', experiences: 'Opplevelser', quickLinks: 'Hurtiglenker', contact: 'Ta kontakt', rights: '© 2026 Costa Blanca Tours. Med enerett.' },
-    tours: { eyebrow: 'Alle opplevelser', title: 'Våre utvalgte reiser', subtitle: 'Hver opplevelse er strengt begrenset til 4 gjester, fullt alt-inkludert med privat biltransport.', count1: 'opplevelse', countN: 'opplevelser', from: 'Fra', perPerson: '/person', viewDetails: 'Se detaljer →', filter: 'Alle' },
-    detail: { backBtn: '← Tilbake til turer', duration: 'Varighet', maxGuests: 'Maks gjester', transport: 'Transport', aboutTitle: 'Om opplevelsen', highlightsTitle: 'Høydepunkter', priceLabel: 'Pris per person', allInclusive: 'Alt inkludert · Maks', included: ['Vin, øl og tapas inkludert', 'Privat biltransport', 'Gourmetmåltider', 'Ekspert lokal guide', 'Ingen skjulte kostnader'], reserveBtn: 'Reserver denne opplevelsen', questionBtn: 'Still et spørsmål', cancelNote: 'Gratis avbestilling inntil 48t før. Betaling på turdagen.', otherTitle: 'Andre opplevelser' },
+    tours: { eyebrow: 'Alle opplevelser', title: 'Våre utvalgte reiser', subtitle: 'Vi fokuserer på private og svært små grupper. Transport, innhold, tidspunkt og pris bekreftes for ønsket dato før noe bookes.', count1: 'opplevelse', countN: 'opplevelser', from: 'Fra', perPerson: '/person', viewDetails: 'Se detaljer →', filter: 'Alle' },
+    detail: { backBtn: '← Tilbake til turer', duration: 'Varighet', maxGuests: 'Maks gjester', transport: 'Transport', aboutTitle: 'Om opplevelsen', highlightsTitle: 'Høydepunkter', priceLabel: 'Pris per person', allInclusive: 'Alt inkludert · Maks', included: ['Vin, øl og tapas inkludert', 'Privat biltransport', 'Gourmetmåltider', 'Ekspert lokal guide', 'Ingen skjulte kostnader'], reserveBtn: 'Sjekk tilgjengelighet', questionBtn: 'Still et spørsmål', cancelNote: 'Gratis avbestilling inntil 48t før. Betaling på turdagen.', otherTitle: 'Andre opplevelser' },
     about: { eyebrow: 'Vår historie', heroTitle: 'To lidenskaper. Ett reisemål.', heroItalic: 'Uendelige oppdagelser.', heroSubtitle: 'Costa Blanca Tours ble skapt av en enkel overbevisning: de beste reiseopplevelsene skjer når du senker tempoet, kobler deg til, og utforsker med noen som virkelig kjenner landet.', philEyebrow: 'Filosofien', philTitle: 'Små grupper. Store øyeblikk.', phil1: 'Vi begrenser hver tur til kun 4 gjester. Ikke fordi vi må — men fordi vi vil. Fire er det perfekte antallet der alle kan stille spørsmål, prøve alt og føle at de utforsker med venner.', phil2: 'Du vil aldri bli stresset. Aldri gå glipp av et øyeblikk. Aldri lure på om det er en bedre historie rett rundt hjørnet — for vi vet allerede, og tar deg dit.', phil3: 'Alt-inkludert betyr at vin, øl, tapas og gourmetmåltider alltid er en del av reisen. Ingen pinlige regninger. Ingen skjulte kostnader.', valuesTitle: 'Det som skiller oss', values: [{ title: 'Maks 4 gjester', desc: 'Små grupper gir rom for ekte samtaler, personlig oppmerksomhet og fleksibilitet til å tilpasse turen.' }, { title: 'Lokal ekspertise', desc: 'Våre guider er født og oppvokst på Costa Blanca. Dette er levd kunnskap, ikke innøvde manuskripter.' }, { title: 'Virkelig alt inkludert', desc: 'Vi vil at du skal smake alt, prøve alt og aldri bekymre deg for regningen. Premium lokale produkter uten ekstra kostnad.' }, { title: 'Autentiske forbindelser', desc: 'Møt vinprodusenten som steller vinstokkene, kokken som handler på morgensmarkedet. Disse forbindelsene forvandler en tur til et minne.' }], ctaTitle: 'Bli med oss på Costa Blanca', ctaText: 'Enten du er vinentusiast, matelsker eller bare en person som setter pris på vakker natur og ekte gjestfrihet — vi vil gjerne dele vår del av Middelhavet med deg.', ctaBtn: 'Utforsk opplevelser' },
     contact: { eyebrow: 'Ta kontakt', title: 'Spørsmål? Vi hører gjerne fra deg.', subtitle: 'Enten du vil tilpasse en tur, har diettbehov eller bare vil vite mer — send oss en melding.', nameLabel: 'Fullt navn', namePlaceholder: 'Ditt navn', emailLabel: 'E-postadresse', emailPlaceholder: 'du@epost.no', tourLabel: 'Aktuell tur (valgfritt)', tourPlaceholder: 'Velg en tur...', messageLabel: 'Melding', messagePlaceholder: 'Fortell om turen din, spørsmål, diettbehov...', sendBtn: 'Send melding', sendingBtn: 'Sender...', successTitle: 'Melding sendt!', successText: 'Takk for at du tok kontakt. Vi svarer innen 24 timer.', responseTitle: 'Svartid', responseText: 'Vi svarer på alle henvendelser innen 24 timer. For haster, ring oss direkte.' },
-    booking: { eyebrow: 'Reservasjoner', title: 'Reserver din opplevelse', subtitle: 'Sikre plassen din for en intim, alt-inkludert utforskning av Costa Blanca.', step1: 'Velg opplevelse', step2: 'Dine detaljer', tourLabel: 'Tur', tourPlaceholder: 'Velg en opplevelse...', dateLabel: 'Ønsket dato', guestsLabel: 'Antall gjester', nameLabel: 'Fullt navn', namePlaceholder: 'Ditt fulle navn', emailLabel: 'E-postadresse', emailPlaceholder: 'du@epost.no', phoneLabel: 'Telefonnummer', phonePlaceholder: '+47 900 00 000', notesLabel: 'Spesielle ønsker / Diettbehov', notesPlaceholder: 'Allergier, diettbehov, spesielle anledninger...', submitBtn: 'Fullfør bestilling', processingBtn: 'Behandler...', cancelNote: 'Gratis avbestilling inntil 48 timer før turen. Betaling på turdagen.', summaryTitle: 'Bestillingssammendrag', selectTour: 'Velg en tur for å se sammendrag', priceLabel: 'Pris per person', totalLabel: 'Totalt', whyItems: ['Intime små grupper (maks 4)', 'Ekspert lokale guider', 'Gratis avbestilling inntil 48t'], successTitle: 'Bestilling bekreftet!', successText: (n,e) => `Takk, ${n}. Vi sender bekreftelse til ${e} snart. Vi gleder oss til å ønske deg velkommen!`, refLabel: 'Referanse', tourLabel2: 'Tur', dateLabel2: 'Dato', guestsLabel2: 'Gjester', totalLabel2: 'Totalt', exploreBtn: 'Utforsk flere turer' },
+    booking: { eyebrow: 'Reservasjoner', title: 'Sjekk tilgjengelighet', subtitle: 'Send en forespørsel med ønsket dato og opplevelse. Tilgjengelighet og endelige detaljer bekreftes personlig før noe er endelig booket.', step1: 'Velg opplevelse', step2: 'Dine detaljer', tourLabel: 'Tur', tourPlaceholder: 'Velg en opplevelse...', dateLabel: 'Ønsket dato', guestsLabel: 'Antall gjester', nameLabel: 'Fullt navn', namePlaceholder: 'Ditt fulle navn', emailLabel: 'E-postadresse', emailPlaceholder: 'du@epost.no', phoneLabel: 'Telefonnummer', phonePlaceholder: '+47 900 00 000', notesLabel: 'Spesielle ønsker / Diettbehov', notesPlaceholder: 'Allergier, diettbehov, spesielle anledninger...', submitBtn: 'Send bestillingsforespørsel', processingBtn: 'Behandler...', cancelNote: 'Gratis avbestilling inntil 48 timer før turen. Betaling på turdagen.', summaryTitle: 'Bestillingssammendrag', selectTour: 'Velg en tur for å se sammendrag', priceLabel: 'Pris per person', totalLabel: 'Totalt', whyItems: ['Intime små grupper (maks 4)', 'Ekspert lokale guider', 'Gratis avbestilling inntil 48t'], successTitle: 'Forespørsel mottatt!', successText: (n,e) => `Takk, ${n}. Vi sender bekreftelse til ${e} snart. Vi gleder oss til å ønske deg velkommen!`, refLabel: 'Referanse', tourLabel2: 'Tur', dateLabel2: 'Dato', guestsLabel2: 'Gjester', totalLabel2: 'Totalt', exploreBtn: 'Utforsk flere turer' },
   },
 
   es: {
@@ -401,13 +423,13 @@ const TRANSLATIONS = {
     stats: { tours: 'Experiencias únicas', guests: 'Máx. personas por tour', inclusive: 'Todo incluido', rating: 'Valorado por clientes' },
     why: { eyebrow: 'La diferencia Costa Blanca Tours', title: 'Por qué los viajeros exigentes nos eligen', items: [{ title: 'Máximo 4 personas', desc: 'Cada tour está estrictamente limitado a 4 personas. Nunca te sentirás como un número — solo como un huésped apreciado.' }, { title: 'Siempre coche privado', desc: 'Comodidad puerta a puerta en vehículo privado. Sin autobuses, sin esperar a otros. Tu horario, tu ritmo.' }, { title: 'Verdaderamente todo incluido', desc: 'Vino, cerveza, tapas, comidas gourmet, entradas — todo cubierto. Sin momentos incómodos de factura.' }, { title: 'Nacidos y criados localmente', desc: 'Nuestros guías son nativos de la Costa Blanca. Joyas escondidas, historias familiares, lugares secretos — conocimiento vivido.' }] },
     featured: { eyebrow: 'Experiencias exclusivas', title: 'Viajes destacados', viewAll: 'Ver todos los 10 tours →' },
-    cta: { eyebrow: '¿Listo para explorar?', title: 'Tu experiencia mediterránea perfecta te espera', subtitle: 'Desde Sierra Nevada hasta las calas turquesas de Ibiza — cada viaje está hecho para ti.', reserveBtn: 'Reserva tu experiencia', questionBtn: 'Hacer una pregunta' },
+    cta: { eyebrow: '¿Listo para explorar?', title: 'Tu experiencia mediterránea perfecta te espera', subtitle: 'Desde Sierra Nevada hasta las calas turquesas de Ibiza — cada viaje está hecho para ti.', reserveBtn: 'Consultar disponibilidad', questionBtn: 'Hacer una pregunta' },
     footer: { desc: 'Experiencias íntimas de lujo en la Costa Blanca.', experiences: 'Experiencias', quickLinks: 'Accesos rápidos', contact: 'Contacto', rights: '© 2026 Costa Blanca Tours. Todos los derechos reservados.' },
     tours: { eyebrow: 'Todas las experiencias', title: 'Nuestros viajes seleccionados', subtitle: 'Cada experiencia está limitada a 4 personas, totalmente todo incluido con transporte en coche privado.', count1: 'experiencia', countN: 'experiencias', from: 'Desde', perPerson: '/persona', viewDetails: 'Ver detalles →', filter: 'Todo' },
-    detail: { backBtn: '← Volver a tours', duration: 'Duración', maxGuests: 'Máx. personas', transport: 'Transporte', aboutTitle: 'Sobre la experiencia', highlightsTitle: 'Aspectos destacados', priceLabel: 'Precio por persona', allInclusive: 'Todo incluido · Máx.', included: ['Vino, cerveza y tapas incluidos', 'Transporte en coche privado', 'Comidas gourmet', 'Guía local experto', 'Sin costes ocultos'], reserveBtn: 'Reservar esta experiencia', questionBtn: 'Hacer una pregunta', cancelNote: 'Cancelación gratuita hasta 48h antes. Pago el día del tour.', otherTitle: 'Otras experiencias' },
+    detail: { backBtn: '← Volver a tours', duration: 'Duración', maxGuests: 'Máx. personas', transport: 'Transporte', aboutTitle: 'Sobre la experiencia', highlightsTitle: 'Aspectos destacados', priceLabel: 'Precio por persona', allInclusive: 'Todo incluido · Máx.', included: ['Vino, cerveza y tapas incluidos', 'Transporte en coche privado', 'Comidas gourmet', 'Guía local experto', 'Sin costes ocultos'], reserveBtn: 'Consultar disponibilidad', questionBtn: 'Hacer una pregunta', cancelNote: 'Cancelación gratuita hasta 48h antes. Pago el día del tour.', otherTitle: 'Otras experiencias' },
     about: { eyebrow: 'Nuestra historia', heroTitle: 'Dos pasiones. Un destino.', heroItalic: 'Descubrimientos infinitos.', heroSubtitle: 'Costa Blanca Tours nació de una creencia simple: las mejores experiencias de viaje ocurren cuando desaceleran, conectan profundamente y exploran con alguien que verdaderamente conoce la tierra.', philEyebrow: 'La filosofía', philTitle: 'Grupos pequeños. Grandes momentos.', phil1: 'Limitamos cada tour a solo 4 huéspedes. No porque tengamos que hacerlo — sino porque queremos. Cuatro es el punto ideal donde todos pueden hacer preguntas, probar todo y sentir que exploran con amigos.', phil2: 'Nunca te apresurarán. Nunca perderás un momento. Nunca te preguntarás si hay una historia mejor a la vuelta de la esquina.', phil3: 'Nuestro enfoque todo incluido significa que el vino, la cerveza, las tapas y las comidas gourmet siempre forman parte del viaje. Sin facturas incómodas. Sin costes ocultos.', valuesTitle: 'Lo que nos diferencia', values: [{ title: 'Máximo 4 personas', desc: 'Los grupos pequeños crean espacio para conversaciones genuinas y atención personalizada.' }, { title: 'Experiencia local', desc: 'Nuestros guías nacieron y crecieron en la Costa Blanca. No es conocimiento ensayado — es experiencia vivida.' }, { title: 'Verdaderamente todo incluido', desc: 'Queremos que pruebes todo y nunca te preocupes por la factura. Productos locales premium sin coste adicional.' }, { title: 'Conexiones auténticas', desc: 'Conoce al viticultor, al chef que compra en el mercado. Estas conexiones transforman un tour en un recuerdo.' }], ctaTitle: 'Únete a nosotros en la Costa Blanca', ctaText: 'Ya seas un entusiasta del vino, un amante de la gastronomía o simplemente alguien que aprecia los paisajes y la hospitalidad genuina — nos encantaría compartir nuestro rincón del Mediterráneo contigo.', ctaBtn: 'Explorar experiencias' },
     contact: { eyebrow: 'Contacto', title: '¿Preguntas? Nos encantaría saber de ti.', subtitle: 'Si quieres personalizar un tour, tienes requisitos dietéticos o simplemente quieres saber más — envíanos un mensaje.', nameLabel: 'Nombre completo', namePlaceholder: 'Tu nombre', emailLabel: 'Correo electrónico', emailPlaceholder: 'tu@correo.com', tourLabel: 'Tour de interés (opcional)', tourPlaceholder: 'Selecciona un tour...', messageLabel: 'Mensaje', messagePlaceholder: 'Cuéntanos sobre tu viaje, preguntas, necesidades dietéticas...', sendBtn: 'Enviar mensaje', sendingBtn: 'Enviando...', successTitle: '¡Mensaje enviado!', successText: 'Gracias por contactarnos. Te responderemos en 24 horas.', responseTitle: 'Tiempo de respuesta', responseText: 'Respondemos a todas las consultas en 24 horas. Para reservas urgentes, llámanos directamente.' },
-    booking: { eyebrow: 'Reservas', title: 'Reserva tu experiencia', subtitle: 'Asegura tu lugar para una exploración íntima y todo incluido de la Costa Blanca.', step1: 'Selecciona tu experiencia', step2: 'Tus datos', tourLabel: 'Tour', tourPlaceholder: 'Elige una experiencia...', dateLabel: 'Fecha preferida', guestsLabel: 'Número de personas', nameLabel: 'Nombre completo', namePlaceholder: 'Tu nombre completo', emailLabel: 'Correo electrónico', emailPlaceholder: 'tu@correo.com', phoneLabel: 'Número de teléfono', phonePlaceholder: '+34 600 000 000', notesLabel: 'Solicitudes especiales / Requisitos dietéticos', notesPlaceholder: 'Alergias, necesidades dietéticas, ocasiones especiales...', submitBtn: 'Completar reserva', processingBtn: 'Procesando...', cancelNote: 'Cancelación gratuita hasta 48 horas antes del tour. Pago el día.', summaryTitle: 'Resumen de reserva', selectTour: 'Selecciona un tour para ver el resumen', priceLabel: 'Precio por persona', totalLabel: 'Total', whyItems: ['Grupos pequeños íntimos (máx. 4)', 'Guías locales expertos', 'Cancelación gratuita hasta 48h'], successTitle: '¡Reserva confirmada!', successText: (n,e) => `Gracias, ${n}. Enviaremos los detalles de confirmación a ${e} en breve.`, refLabel: 'Referencia', tourLabel2: 'Tour', dateLabel2: 'Fecha', guestsLabel2: 'Personas', totalLabel2: 'Total', exploreBtn: 'Explorar más tours' },
+    booking: { eyebrow: 'Reservas', title: 'Consultar disponibilidad', subtitle: 'Asegura tu lugar para una exploración íntima y todo incluido de la Costa Blanca.', step1: 'Selecciona tu experiencia', step2: 'Tus datos', tourLabel: 'Tour', tourPlaceholder: 'Elige una experiencia...', dateLabel: 'Fecha preferida', guestsLabel: 'Número de personas', nameLabel: 'Nombre completo', namePlaceholder: 'Tu nombre completo', emailLabel: 'Correo electrónico', emailPlaceholder: 'tu@correo.com', phoneLabel: 'Número de teléfono', phonePlaceholder: '+34 600 000 000', notesLabel: 'Solicitudes especiales / Requisitos dietéticos', notesPlaceholder: 'Alergias, necesidades dietéticas, ocasiones especiales...', submitBtn: 'Completar reserva', processingBtn: 'Procesando...', cancelNote: 'Cancelación gratuita hasta 48 horas antes del tour. Pago el día.', summaryTitle: 'Resumen de reserva', selectTour: 'Selecciona un tour para ver el resumen', priceLabel: 'Precio por persona', totalLabel: 'Total', whyItems: ['Grupos pequeños íntimos (máx. 4)', 'Guías locales expertos', 'Cancelación gratuita hasta 48h'], successTitle: '¡Solicitud recibida!', successText: (n,e) => `Gracias, ${n}. Enviaremos los detalles de confirmación a ${e} en breve.`, refLabel: 'Referencia', tourLabel2: 'Tour', dateLabel2: 'Fecha', guestsLabel2: 'Personas', totalLabel2: 'Total', exploreBtn: 'Explorar más tours' },
   },
 
   fr: {
@@ -416,13 +438,13 @@ const TRANSLATIONS = {
     stats: { tours: 'Expériences uniques', guests: 'Max personnes par circuit', inclusive: 'Tout compris', rating: 'Évalué par les clients' },
     why: { eyebrow: 'La différence Costa Blanca Tours', title: 'Pourquoi les voyageurs exigeants nous choisissent', items: [{ title: 'Maximum 4 personnes', desc: 'Chaque circuit est strictement limité à 4 personnes. Vous ne vous sentirez jamais comme un numéro — seulement comme un hôte apprécié.' }, { title: 'Toujours en voiture privée', desc: 'Confort de porte à porte en véhicule privé. Pas de bus, pas d\'attente. Votre programme, votre rythme.' }, { title: 'Vraiment tout compris', desc: 'Vin, bière, tapas, repas gastronomiques, entrées — tout couvert. Aucun moment gênant de facture.' }, { title: 'Natifs de la région', desc: 'Nos guides sont natifs de la Costa Blanca. Joyaux cachés, histoires familiales, endroits secrets — un savoir vécu.' }] },
     featured: { eyebrow: 'Expériences exclusives', title: 'Circuits à la une', viewAll: 'Voir les 10 circuits →' },
-    cta: { eyebrow: 'Prêt à explorer ?', title: 'Votre expérience méditerranéenne parfaite vous attend', subtitle: 'De la Sierra Nevada enneigée aux criques turquoise d\'Ibiza — chaque voyage est fait pour vous.', reserveBtn: 'Réservez votre expérience', questionBtn: 'Poser une question' },
+    cta: { eyebrow: 'Prêt à explorer ?', title: 'Votre expérience méditerranéenne parfaite vous attend', subtitle: 'De la Sierra Nevada enneigée aux criques turquoise d\'Ibiza — chaque voyage est fait pour vous.', reserveBtn: 'Vérifier la disponibilité', questionBtn: 'Poser une question' },
     footer: { desc: 'Expériences de luxe intimes sur la Costa Blanca.', experiences: 'Expériences', quickLinks: 'Liens rapides', contact: 'Contactez-nous', rights: '© 2026 Costa Blanca Tours. Tous droits réservés.' },
     tours: { eyebrow: 'Toutes les expériences', title: 'Nos circuits sélectionnés', subtitle: 'Chaque expérience est limitée à 4 personnes, tout compris avec transport en voiture privée.', count1: 'expérience', countN: 'expériences', from: 'À partir de', perPerson: '/personne', viewDetails: 'Voir les détails →', filter: 'Tous' },
-    detail: { backBtn: '← Retour aux circuits', duration: 'Durée', maxGuests: 'Max personnes', transport: 'Transport', aboutTitle: 'À propos de l\'expérience', highlightsTitle: 'Points forts', priceLabel: 'Prix par personne', allInclusive: 'Tout compris · Max', included: ['Vin, bière & tapas inclus', 'Transport en voiture privée', 'Repas gastronomiques', 'Guide local expert', 'Aucun frais caché'], reserveBtn: 'Réserver cette expérience', questionBtn: 'Poser une question', cancelNote: 'Annulation gratuite jusqu\'à 48h avant. Paiement le jour même.', otherTitle: 'Autres expériences' },
+    detail: { backBtn: '← Retour aux circuits', duration: 'Durée', maxGuests: 'Max personnes', transport: 'Transport', aboutTitle: 'À propos de l\'expérience', highlightsTitle: 'Points forts', priceLabel: 'Prix par personne', allInclusive: 'Tout compris · Max', included: ['Vin, bière & tapas inclus', 'Transport en voiture privée', 'Repas gastronomiques', 'Guide local expert', 'Aucun frais caché'], reserveBtn: 'Vérifier la disponibilité', questionBtn: 'Poser une question', cancelNote: 'Annulation gratuite jusqu\'à 48h avant. Paiement le jour même.', otherTitle: 'Autres expériences' },
     about: { eyebrow: 'Notre histoire', heroTitle: 'Deux passions. Une destination.', heroItalic: 'Des découvertes infinies.', heroSubtitle: 'Costa Blanca Tours est né d\'une conviction simple : les meilleures expériences de voyage se produisent quand on ralentit, se connecte profondément et explore avec quelqu\'un qui connaît vraiment le territoire.', philEyebrow: 'La philosophie', philTitle: 'Petits groupes. Grands moments.', phil1: 'Nous limitons chaque circuit à seulement 4 personnes. Non pas parce que nous devons — mais parce que nous le voulons. Quatre est le nombre idéal où chacun peut poser des questions et tout essayer.', phil2: 'Vous ne serez jamais pressé. Vous ne manquerez jamais un instant. Vous ne vous demanderez jamais s\'il y a une meilleure histoire au coin de la rue — parce que nous le savons déjà.', phil3: 'Notre approche tout compris signifie que le vin, la bière, les tapas et les repas gastronomiques font toujours partie du voyage. Pas de factures gênantes. Pas de frais cachés.', valuesTitle: 'Ce qui nous distingue', values: [{ title: 'Maximum 4 personnes', desc: 'Les petits groupes créent de l\'espace pour des conversations authentiques et une attention personnalisée.' }, { title: 'Expertise locale', desc: 'Nos guides sont nés et ont grandi sur la Costa Blanca. Ce n\'est pas un savoir répété — c\'est une expérience vécue.' }, { title: 'Vraiment tout compris', desc: 'Nous voulons que vous goûtiez tout et ne vous inquiétiez jamais de la facture. Produits locaux premium sans frais supplémentaires.' }, { title: 'Connexions authentiques', desc: 'Rencontrez le vigneron, le chef qui achète au marché du matin. Ces connexions transforment un circuit en souvenir.' }], ctaTitle: 'Rejoignez-nous sur la Costa Blanca', ctaText: 'Que vous soyez amateur de vin, gastronome ou simplement quelqu\'un qui apprécie les beaux paysages et l\'hospitalité authentique — nous serions ravis de partager notre coin de Méditerranée avec vous.', ctaBtn: 'Explorer les expériences' },
     contact: { eyebrow: 'Contact', title: 'Des questions ? Nous serions ravis de vous entendre.', subtitle: 'Que vous souhaitiez personnaliser un circuit, ayez des besoins diététiques ou vouliez simplement en savoir plus — envoyez-nous un message.', nameLabel: 'Nom complet', namePlaceholder: 'Votre nom', emailLabel: 'Adresse e-mail', emailPlaceholder: 'vous@email.fr', tourLabel: 'Circuit d\'intérêt (optionnel)', tourPlaceholder: 'Sélectionnez un circuit...', messageLabel: 'Message', messagePlaceholder: 'Parlez-nous de votre voyage, questions, besoins diététiques...', sendBtn: 'Envoyer le message', sendingBtn: 'Envoi en cours...', successTitle: 'Message envoyé !', successText: 'Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures.', responseTitle: 'Délai de réponse', responseText: 'Nous répondons à toutes les demandes dans les 24 heures. Pour les réservations urgentes, appelez-nous directement.' },
-    booking: { eyebrow: 'Réservations', title: 'Réservez votre expérience', subtitle: 'Assurez votre place pour une exploration intime et tout compris de la Costa Blanca.', step1: 'Choisissez votre expérience', step2: 'Vos coordonnées', tourLabel: 'Circuit', tourPlaceholder: 'Choisissez une expérience...', dateLabel: 'Date souhaitée', guestsLabel: 'Nombre de personnes', nameLabel: 'Nom complet', namePlaceholder: 'Votre nom complet', emailLabel: 'Adresse e-mail', emailPlaceholder: 'vous@email.fr', phoneLabel: 'Numéro de téléphone', phonePlaceholder: '+33 6 00 00 00 00', notesLabel: 'Demandes spéciales / Besoins diététiques', notesPlaceholder: 'Allergies, besoins diététiques, occasions spéciales...', submitBtn: 'Finaliser la réservation', processingBtn: 'Traitement...', cancelNote: 'Annulation gratuite jusqu\'à 48 heures avant le circuit. Paiement le jour J.', summaryTitle: 'Récapitulatif', selectTour: 'Sélectionnez un circuit pour voir le récapitulatif', priceLabel: 'Prix par personne', totalLabel: 'Total', whyItems: ['Petits groupes intimes (max 4)', 'Guides locaux experts', 'Annulation gratuite jusqu\'à 48h'], successTitle: 'Réservation confirmée !', successText: (n,e) => `Merci, ${n}. Nous vous enverrons les détails de confirmation à ${e} sous peu.`, refLabel: 'Référence', tourLabel2: 'Circuit', dateLabel2: 'Date', guestsLabel2: 'Personnes', totalLabel2: 'Total', exploreBtn: 'Explorer d\'autres circuits' },
+    booking: { eyebrow: 'Réservations', title: 'Vérifier la disponibilité', subtitle: 'Assurez votre place pour une exploration intime et tout compris de la Costa Blanca.', step1: 'Choisissez votre expérience', step2: 'Vos coordonnées', tourLabel: 'Circuit', tourPlaceholder: 'Choisissez une expérience...', dateLabel: 'Date souhaitée', guestsLabel: 'Nombre de personnes', nameLabel: 'Nom complet', namePlaceholder: 'Votre nom complet', emailLabel: 'Adresse e-mail', emailPlaceholder: 'vous@email.fr', phoneLabel: 'Numéro de téléphone', phonePlaceholder: '+33 6 00 00 00 00', notesLabel: 'Demandes spéciales / Besoins diététiques', notesPlaceholder: 'Allergies, besoins diététiques, occasions spéciales...', submitBtn: 'Finaliser la réservation', processingBtn: 'Traitement...', cancelNote: 'Annulation gratuite jusqu\'à 48 heures avant le circuit. Paiement le jour J.', summaryTitle: 'Récapitulatif', selectTour: 'Sélectionnez un circuit pour voir le récapitulatif', priceLabel: 'Prix par personne', totalLabel: 'Total', whyItems: ['Petits groupes intimes (max 4)', 'Guides locaux experts', 'Annulation gratuite jusqu\'à 48h'], successTitle: 'Demande reçue !', successText: (n,e) => `Merci, ${n}. Nous vous enverrons les détails de confirmation à ${e} sous peu.`, refLabel: 'Référence', tourLabel2: 'Circuit', dateLabel2: 'Date', guestsLabel2: 'Personnes', totalLabel2: 'Total', exploreBtn: 'Explorer d\'autres circuits' },
   },
 
   de: {
@@ -431,28 +453,28 @@ const TRANSLATIONS = {
     stats: { tours: 'Einzigartige Erlebnisse', guests: 'Max. Gäste pro Tour', inclusive: 'Alles inklusive', rating: 'Von Gästen bewertet' },
     why: { eyebrow: 'Der Costa Blanca Tours Unterschied', title: 'Warum anspruchsvolle Reisende uns wählen', items: [{ title: 'Maximal 4 Gäste', desc: 'Jede Tour ist streng auf 4 Gäste begrenzt. Sie werden sich nie wie eine Nummer fühlen — nur wie ein geschätzter Gast.' }, { title: 'Immer Privatwagen', desc: 'Tür-zu-Tür-Komfort im Privatfahrzeug. Keine Busse, kein Warten auf andere. Ihr Zeitplan, Ihr Tempo.' }, { title: 'Wirklich alles inklusive', desc: 'Wein, Bier, Tapas, Gourmetmahlzeiten, Eintrittsgelder — alles abgedeckt. Keine unangenehmen Rechnungsmomente.' }, { title: 'Einheimische Guides', desc: 'Unsere Guides sind in der Costa Blanca aufgewachsen. Versteckte Schätze, Familiengeschichten, Geheimtipps — gelebtes Wissen.' }] },
     featured: { eyebrow: 'Exklusive Erlebnisse', title: 'Ausgewählte Reisen', viewAll: 'Alle 10 Touren anzeigen →' },
-    cta: { eyebrow: 'Bereit zu erkunden?', title: 'Ihr perfektes Mittelmeer-Erlebnis wartet', subtitle: 'Von der verschneiten Sierra Nevada bis zu Ibizas türkisblauen Buchten — jede Reise ist für Sie gestaltet.', reserveBtn: 'Erlebnis reservieren', questionBtn: 'Frage stellen' },
+    cta: { eyebrow: 'Bereit zu erkunden?', title: 'Ihr perfektes Mittelmeer-Erlebnis wartet', subtitle: 'Von der verschneiten Sierra Nevada bis zu Ibizas türkisblauen Buchten — jede Reise ist für Sie gestaltet.', reserveBtn: 'Verfügbarkeit anfragen', questionBtn: 'Frage stellen' },
     footer: { desc: 'Intime Luxuserlebnisse an der Costa Blanca.', experiences: 'Erlebnisse', quickLinks: 'Schnelllinks', contact: 'Kontakt', rights: '© 2026 Costa Blanca Tours. Alle Rechte vorbehalten.' },
     tours: { eyebrow: 'Alle Erlebnisse', title: 'Unsere ausgewählten Reisen', subtitle: 'Jedes Erlebnis ist auf 4 Gäste begrenzt, vollständig alles inklusive mit Privatwagentransport.', count1: 'Erlebnis', countN: 'Erlebnisse', from: 'Ab', perPerson: '/Person', viewDetails: 'Details anzeigen →', filter: 'Alle' },
-    detail: { backBtn: '← Zurück zu Touren', duration: 'Dauer', maxGuests: 'Max. Gäste', transport: 'Transport', aboutTitle: 'Über das Erlebnis', highlightsTitle: 'Tour-Highlights', priceLabel: 'Preis pro Person', allInclusive: 'Alles inkl. · Max.', included: ['Wein, Bier & Tapas inklusive', 'Privatwagentransport', 'Gourmetmahlzeiten', 'Lokaler Expertenguide', 'Keine versteckten Kosten'], reserveBtn: 'Dieses Erlebnis reservieren', questionBtn: 'Frage stellen', cancelNote: 'Kostenlose Stornierung bis 48h vorher. Zahlung am Tourentag.', otherTitle: 'Weitere Erlebnisse' },
+    detail: { backBtn: '← Zurück zu Touren', duration: 'Dauer', maxGuests: 'Max. Gäste', transport: 'Transport', aboutTitle: 'Über das Erlebnis', highlightsTitle: 'Tour-Highlights', priceLabel: 'Preis pro Person', allInclusive: 'Alles inkl. · Max.', included: ['Wein, Bier & Tapas inklusive', 'Privatwagentransport', 'Gourmetmahlzeiten', 'Lokaler Expertenguide', 'Keine versteckten Kosten'], reserveBtn: 'Dieses Verfügbarkeit anfragen', questionBtn: 'Frage stellen', cancelNote: 'Kostenlose Stornierung bis 48h vorher. Zahlung am Tourentag.', otherTitle: 'Weitere Erlebnisse' },
     about: { eyebrow: 'Unsere Geschichte', heroTitle: 'Zwei Leidenschaften. Ein Ziel.', heroItalic: 'Unendliche Entdeckungen.', heroSubtitle: 'Costa Blanca Tours wurde aus einer einfachen Überzeugung geboren: Die besten Reiseerlebnisse entstehen, wenn man entschleunigt, tief verbindet und mit jemandem erkundet, der das Land wirklich kennt.', philEyebrow: 'Die Philosophie', philTitle: 'Kleine Gruppen. Große Momente.', phil1: 'Wir begrenzen jede Tour auf nur 4 Gäste. Nicht weil wir müssen — sondern weil wir wollen. Vier ist die ideale Zahl, bei der jeder Fragen stellen und alles ausprobieren kann.', phil2: 'Sie werden nie gehetzt. Nie einen Moment verpassen. Nie fragen, ob eine bessere Geschichte um die Ecke wartet.', phil3: 'Unser alles-inklusive-Ansatz bedeutet, dass Wein, Bier, Tapas und Gourmetmahlzeiten immer Teil der Reise sind. Keine unangenehmen Rechnungen. Keine versteckten Kosten.', valuesTitle: 'Was uns auszeichnet', values: [{ title: 'Maximal 4 Gäste', desc: 'Kleine Gruppen schaffen Raum für echte Gespräche und persönliche Aufmerksamkeit.' }, { title: 'Lokale Expertise', desc: 'Unsere Guides sind in der Costa Blanca aufgewachsen. Das ist kein einstudiertes Wissen — es ist gelebte Erfahrung.' }, { title: 'Wirklich alles inklusive', desc: 'Wir möchten, dass Sie alles probieren und sich nie um die Rechnung sorgen müssen.' }, { title: 'Authentische Verbindungen', desc: 'Treffen Sie den Winzer, den Koch, der auf dem Morgenmarkt einkauft. Diese Verbindungen verwandeln eine Tour in eine Erinnerung.' }], ctaTitle: 'Begleiten Sie uns an der Costa Blanca', ctaText: 'Ob Weinliebhaber, Feinschmecker oder einfach jemand, der schöne Landschaften schätzt — wir teilen unsere Ecke des Mittelmeers gerne mit Ihnen.', ctaBtn: 'Erlebnisse erkunden' },
     contact: { eyebrow: 'Kontakt', title: 'Fragen? Wir hören gerne von Ihnen.', subtitle: 'Ob Sie eine Tour anpassen möchten, diätetische Anforderungen haben oder einfach mehr wissen möchten — schicken Sie uns eine Nachricht.', nameLabel: 'Vollständiger Name', namePlaceholder: 'Ihr Name', emailLabel: 'E-Mail-Adresse', emailPlaceholder: 'sie@email.de', tourLabel: 'Tour von Interesse (optional)', tourPlaceholder: 'Tour auswählen...', messageLabel: 'Nachricht', messagePlaceholder: 'Erzählen Sie uns von Ihrer Reise, Fragen, Ernährungsbedürfnissen...', sendBtn: 'Nachricht senden', sendingBtn: 'Wird gesendet...', successTitle: 'Nachricht gesendet!', successText: 'Vielen Dank für Ihre Nachricht. Wir werden innerhalb von 24 Stunden antworten.', responseTitle: 'Reaktionszeit', responseText: 'Wir antworten auf alle Anfragen innerhalb von 24 Stunden. Für dringende Buchungen rufen Sie uns direkt an.' },
-    booking: { eyebrow: 'Reservierungen', title: 'Erlebnis reservieren', subtitle: 'Sichern Sie sich Ihren Platz für eine intime, alles-inklusive Erkundung der Costa Blanca.', step1: 'Erlebnis wählen', step2: 'Ihre Daten', tourLabel: 'Tour', tourPlaceholder: 'Erlebnis auswählen...', dateLabel: 'Gewünschtes Datum', guestsLabel: 'Anzahl der Gäste', nameLabel: 'Vollständiger Name', namePlaceholder: 'Ihr vollständiger Name', emailLabel: 'E-Mail-Adresse', emailPlaceholder: 'sie@email.de', phoneLabel: 'Telefonnummer', phonePlaceholder: '+49 151 0000000', notesLabel: 'Besondere Wünsche / Ernährungsbedürfnisse', notesPlaceholder: 'Allergien, Ernährungsbedürfnisse, besondere Anlässe...', submitBtn: 'Buchung abschließen', processingBtn: 'Wird verarbeitet...', cancelNote: 'Kostenlose Stornierung bis 48 Stunden vorher. Zahlung am Tourentag.', summaryTitle: 'Buchungsübersicht', selectTour: 'Tour auswählen für Übersicht', priceLabel: 'Preis pro Person', totalLabel: 'Gesamt', whyItems: ['Intime kleine Gruppen (max. 4)', 'Erfahrene lokale Guides', 'Kostenlose Stornierung bis 48h'], successTitle: 'Buchung bestätigt!', successText: (n,e) => `Vielen Dank, ${n}. Wir senden die Buchungsdetails an ${e}.`, refLabel: 'Buchungsreferenz', tourLabel2: 'Tour', dateLabel2: 'Datum', guestsLabel2: 'Gäste', totalLabel2: 'Gesamt', exploreBtn: 'Weitere Touren entdecken' },
+    booking: { eyebrow: 'Reservierungen', title: 'Verfügbarkeit anfragen', subtitle: 'Sichern Sie sich Ihren Platz für eine intime, alles-inklusive Erkundung der Costa Blanca.', step1: 'Erlebnis wählen', step2: 'Ihre Daten', tourLabel: 'Tour', tourPlaceholder: 'Erlebnis auswählen...', dateLabel: 'Gewünschtes Datum', guestsLabel: 'Anzahl der Gäste', nameLabel: 'Vollständiger Name', namePlaceholder: 'Ihr vollständiger Name', emailLabel: 'E-Mail-Adresse', emailPlaceholder: 'sie@email.de', phoneLabel: 'Telefonnummer', phonePlaceholder: '+49 151 0000000', notesLabel: 'Besondere Wünsche / Ernährungsbedürfnisse', notesPlaceholder: 'Allergien, Ernährungsbedürfnisse, besondere Anlässe...', submitBtn: 'Buchung abschließen', processingBtn: 'Wird verarbeitet...', cancelNote: 'Kostenlose Stornierung bis 48 Stunden vorher. Zahlung am Tourentag.', summaryTitle: 'Buchungsübersicht', selectTour: 'Tour auswählen für Übersicht', priceLabel: 'Preis pro Person', totalLabel: 'Gesamt', whyItems: ['Intime kleine Gruppen (max. 4)', 'Erfahrene lokale Guides', 'Kostenlose Stornierung bis 48h'], successTitle: 'Anfrage erhalten!', successText: (n,e) => `Vielen Dank, ${n}. Wir senden die Buchungsdetails an ${e}.`, refLabel: 'Buchungsreferenz', tourLabel2: 'Tour', dateLabel2: 'Datum', guestsLabel2: 'Gäste', totalLabel2: 'Gesamt', exploreBtn: 'Weitere Touren entdecken' },
   },
 
   ru: {
-    nav: { home: 'Главная', tours: 'Туры', about: 'О нас', contact: 'Контакты', bookNow: 'Забронировать' },
+    nav: { home: 'Главная', tours: 'Туры', about: 'О нас', contact: 'Контакты', bookNow: 'Уточнить доступность' },
     hero: { eyebrow: 'Коста Бланка · Испания · Макс. 4 гостя', title1: 'Откройте', titleItalic: 'душу', title2: '', title3: 'Коста Бланки', subtitle: 'Интимный люкс-опыт в малых группах. Личный автомобиль. Местные эксперты. Вино, тапас и воспоминания — всё включено.', exploreBtn: 'Смотреть туры', storyBtn: 'Наша история', scroll: 'Листать' },
     stats: { tours: 'Уникальных туров', guests: 'Макс. гостей на тур', inclusive: 'Всё включено', rating: 'Оценка гостей' },
     why: { eyebrow: 'Отличие Costa Blanca Tours', title: 'Почему взыскательные путешественники выбирают нас', items: [{ title: 'Максимум 4 гостя', desc: 'Каждый тур строго ограничен 4 гостями. Вы никогда не почувствуете себя номером — только ценным гостем с личным вниманием.' }, { title: 'Всегда личный автомобиль', desc: 'Комфорт от двери до двери на личном автомобиле. Без автобусов, без ожидания других. Ваш график, ваш темп.' }, { title: 'По-настоящему всё включено', desc: 'Вино, пиво, тапас, гурмэ-обеды, входные билеты — всё оплачено. Никаких неловких моментов со счётом.' }, { title: 'Местные жители', desc: 'Наши гиды родились и выросли на Коста Бланке. Скрытые сокровища, семейные истории, секретные места — живые знания.' }] },
     featured: { eyebrow: 'Эксклюзивные впечатления', title: 'Избранные путешествия', viewAll: 'Все 10 туров →' },
-    cta: { eyebrow: 'Готовы к путешествию?', title: 'Ваше идеальное средиземноморское приключение ждёт', subtitle: 'От заснеженной Сьерры-Невады до бирюзовых бухт Ибицы — каждое путешествие создано для вас.', reserveBtn: 'Забронировать', questionBtn: 'Задать вопрос' },
+    cta: { eyebrow: 'Готовы к путешествию?', title: 'Ваше идеальное средиземноморское приключение ждёт', subtitle: 'От заснеженной Сьерры-Невады до бирюзовых бухт Ибицы — каждое путешествие создано для вас.', reserveBtn: 'Уточнить доступность', questionBtn: 'Задать вопрос' },
     footer: { desc: 'Интимный люкс-опыт на Коста Бланке. Макс. 4 гостя. Местные эксперты. Незабываемые воспоминания.', experiences: 'Туры', quickLinks: 'Быстрые ссылки', contact: 'Связь', rights: '© 2026 Costa Blanca Tours. Все права защищены.' },
     tours: { eyebrow: 'Все туры', title: 'Наши избранные маршруты', subtitle: 'Каждый тур строго ограничен 4 гостями, полностью всё включено с трансфером на личном автомобиле.', count1: 'тур', countN: 'туров', from: 'От', perPerson: '/чел.', viewDetails: 'Подробнее →', filter: 'Все' },
-    detail: { backBtn: '← Назад к турам', duration: 'Продолжительность', maxGuests: 'Макс. гостей', transport: 'Транспорт', aboutTitle: 'Об этом туре', highlightsTitle: 'Особенности', priceLabel: 'Цена за человека', allInclusive: 'Всё включено · Макс.', included: ['Вино, пиво и тапас включены', 'Трансфер на личном авто', 'Гурмэ-питание', 'Местный гид-эксперт', 'Без скрытых платежей'], reserveBtn: 'Забронировать', questionBtn: 'Задать вопрос', cancelNote: 'Бесплатная отмена за 48 ч. Оплата в день тура.', otherTitle: 'Другие туры' },
+    detail: { backBtn: '← Назад к турам', duration: 'Продолжительность', maxGuests: 'Макс. гостей', transport: 'Транспорт', aboutTitle: 'Об этом туре', highlightsTitle: 'Особенности', priceLabel: 'Цена за человека', allInclusive: 'Всё включено · Макс.', included: ['Вино, пиво и тапас включены', 'Трансфер на личном авто', 'Гурмэ-питание', 'Местный гид-эксперт', 'Без скрытых платежей'], reserveBtn: 'Уточнить доступность', questionBtn: 'Задать вопрос', cancelNote: 'Бесплатная отмена за 48 ч. Оплата в день тура.', otherTitle: 'Другие туры' },
     about: { eyebrow: 'Наша история', heroTitle: 'Две страсти. Одно направление.', heroItalic: 'Бесконечные открытия.', heroSubtitle: 'Costa Blanca Tours родился из простого убеждения: лучшие путешествия случаются, когда замедляешься, глубоко соединяешься и исследуешь с тем, кто по-настоящему знает эту землю.', philEyebrow: 'Философия', philTitle: 'Малые группы. Большие впечатления.', phil1: 'Мы ограничиваем каждый тур 4 гостями — не потому что обязаны, а потому что хотим. Четыре — идеальное число, при котором каждый может задать вопрос и попробовать всё.', phil2: 'Вас никогда не поторопят. Вы никогда не упустите момент. Вам не придётся думать, есть ли лучшая история за углом.', phil3: 'Наш принцип «всё включено» означает, что вино, пиво, тапас и гурмэ-обеды всегда входят в тур. Без неловких счётов. Без скрытых расходов.', valuesTitle: 'Что нас отличает', values: [{ title: 'Максимум 4 гостя', desc: 'Малые группы создают пространство для настоящих разговоров и индивидуального внимания.' }, { title: 'Местная экспертиза', desc: 'Наши гиды родились и выросли на Коста Бланке. Это не заученные знания — это жизненный опыт.' }, { title: 'По-настоящему всё включено', desc: 'Мы хотим, чтобы вы пробовали всё и никогда не беспокоились о счёте.' }, { title: 'Настоящие связи', desc: 'Познакомьтесь с виноделом, шефом с утреннего рынка. Эти связи превращают тур в воспоминание.' }], ctaTitle: 'Присоединяйтесь к нам на Коста Бланке', ctaText: 'Любите ли вы вино, гастрономию или просто цените красивые пейзажи — мы с радостью поделимся нашим уголком Средиземноморья.', ctaBtn: 'Смотреть туры' },
     contact: { eyebrow: 'Контакты', title: 'Вопросы? Мы рады помочь.', subtitle: 'Хотите настроить тур, есть диетические требования или просто хотите узнать больше — напишите нам.', nameLabel: 'Полное имя', namePlaceholder: 'Ваше имя', emailLabel: 'Email', emailPlaceholder: 'вы@email.ru', tourLabel: 'Интересующий тур (не обязательно)', tourPlaceholder: 'Выберите тур...', messageLabel: 'Сообщение', messagePlaceholder: 'Расскажите о поездке, вопросах, диетических требованиях...', sendBtn: 'Отправить', sendingBtn: 'Отправка...', successTitle: 'Сообщение отправлено!', successText: 'Спасибо за обращение. Мы ответим в течение 24 часов.', responseTitle: 'Время ответа', responseText: 'Мы отвечаем на все запросы в течение 24 часов. Для срочных бронирований звоните нам напрямую.' },
-    booking: { eyebrow: 'Бронирование', title: 'Забронировать тур', subtitle: 'Обеспечьте себе место для интимного путешествия всё включено по Коста Бланке.', step1: 'Выберите тур', step2: 'Ваши данные', tourLabel: 'Тур', tourPlaceholder: 'Выберите тур...', dateLabel: 'Предпочтительная дата', guestsLabel: 'Количество гостей', nameLabel: 'Полное имя', namePlaceholder: 'Ваше полное имя', emailLabel: 'Email', emailPlaceholder: 'вы@email.ru', phoneLabel: 'Номер телефона', phonePlaceholder: '+7 900 000 00 00', notesLabel: 'Особые пожелания / Диета', notesPlaceholder: 'Аллергии, диетические требования, особые случаи...', submitBtn: 'Завершить бронирование', processingBtn: 'Обработка...', cancelNote: 'Бесплатная отмена за 48 часов. Оплата в день тура.', summaryTitle: 'Сводка бронирования', selectTour: 'Выберите тур для просмотра сводки', priceLabel: 'Цена за человека', totalLabel: 'Итого', whyItems: ['Малые группы (макс. 4)', 'Местные гиды-эксперты', 'Бесплатная отмена за 48 ч'], successTitle: 'Бронирование подтверждено!', successText: (n,e) => `Спасибо, ${n}. Мы отправим детали на ${e}.`, refLabel: 'Номер брони', tourLabel2: 'Тур', dateLabel2: 'Дата', guestsLabel2: 'Гостей', totalLabel2: 'Итого', exploreBtn: 'Другие туры' },
+    booking: { eyebrow: 'Бронирование', title: 'Уточнить доступность тур', subtitle: 'Обеспечьте себе место для интимного путешествия всё включено по Коста Бланке.', step1: 'Выберите тур', step2: 'Ваши данные', tourLabel: 'Тур', tourPlaceholder: 'Выберите тур...', dateLabel: 'Предпочтительная дата', guestsLabel: 'Количество гостей', nameLabel: 'Полное имя', namePlaceholder: 'Ваше полное имя', emailLabel: 'Email', emailPlaceholder: 'вы@email.ru', phoneLabel: 'Номер телефона', phonePlaceholder: '+7 900 000 00 00', notesLabel: 'Особые пожелания / Диета', notesPlaceholder: 'Аллергии, диетические требования, особые случаи...', submitBtn: 'Завершить бронирование', processingBtn: 'Обработка...', cancelNote: 'Бесплатная отмена за 48 часов. Оплата в день тура.', summaryTitle: 'Сводка бронирования', selectTour: 'Выберите тур для просмотра сводки', priceLabel: 'Цена за человека', totalLabel: 'Итого', whyItems: ['Малые группы (макс. 4)', 'Местные гиды-эксперты', 'Бесплатная отмена за 48 ч'], successTitle: 'Запрос получен!', successText: (n,e) => `Спасибо, ${n}. Мы отправим детали на ${e}.`, refLabel: 'Номер брони', tourLabel2: 'Тур', dateLabel2: 'Дата', guestsLabel2: 'Гостей', totalLabel2: 'Итого', exploreBtn: 'Другие туры' },
   },
 };
 
@@ -584,10 +606,10 @@ function Header({ page, setPage }) {
   React.useEffect(() => { setMenuOpen(false); }, [page]);
 
   const nav = [
-    { id: 'home', label: t.nav.home },
-    { id: 'tours', label: t.nav.tours },
-    { id: 'about', label: t.nav.about },
-    { id: 'contact', label: t.nav.contact },
+    { id: 'home', label: t.nav.home, href: '/' },
+    { id: 'tours', label: t.nav.tours, href: '/turer/' },
+    { id: 'about', label: t.nav.about, href: '/om-oss/' },
+    { id: 'contact', label: t.nav.contact, href: '/kontakt/' },
   ];
 
   const frosted = scrolled || !isHero || menuOpen;
@@ -601,32 +623,28 @@ function Header({ page, setPage }) {
       borderBottom: frosted ? '1px solid rgba(255,255,255,0.07)' : 'none',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <button onClick={() => setPage('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0 0 0' }}>
+        <a href="/" aria-label="Costa Blanca Tours home" style={{ display: 'inline-flex', padding: '6px 0 0 0' }}>
           <CbtLogo size={54} />
-        </button>
+        </a>
 
         {/* Desktop nav */}
         <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="desktop-nav">
           {nav.map(n => (
-            <button key={n.id} onClick={() => setPage(n.id)} style={{
-              background: 'none', border: 'none', cursor: 'pointer',
+            <a key={n.id} href={n.href} style={{
               color: page === n.id ? 'var(--gold)' : 'rgba(255,255,255,0.82)',
               fontFamily: 'DM Sans, sans-serif', fontSize: '0.875rem', fontWeight: 500,
               letterSpacing: '0.06em', textTransform: 'uppercase',
               borderBottom: page === n.id ? '1px solid var(--gold)' : '1px solid transparent',
-              paddingBottom: 2, transition: 'all 0.2s',
-            }}>{n.label}</button>
+              paddingBottom: 2, transition: 'all 0.2s', textDecoration: 'none',
+            }}>{n.label}</a>
           ))}
           <LangSwitcher />
-          <button onClick={() => setPage('booking')} style={{
-            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+          <a href="/kontakt/" style={{
+            background: 'var(--gold)', color: '#0a0f1c',
             fontFamily: 'DM Sans, sans-serif', fontSize: '0.8rem', fontWeight: 700,
             letterSpacing: '0.08em', textTransform: 'uppercase', padding: '0.6rem 1.5rem',
-            borderRadius: 2, transition: 'all 0.2s',
-          }}
-          onMouseEnter={e => e.currentTarget.style.background='var(--gold-light)'}
-          onMouseLeave={e => e.currentTarget.style.background='var(--gold)'}
-          >{t.nav.bookNow}</button>
+            borderRadius: 2, transition: 'all 0.2s', textDecoration: 'none',
+          }}>{t.nav.bookNow}</a>
         </nav>
 
         {/* Mobile */}
@@ -643,20 +661,21 @@ function Header({ page, setPage }) {
       {menuOpen && (
         <div style={{ background: 'rgba(10,15,28,0.97)', borderTop: '1px solid rgba(255,255,255,0.08)', padding: '1.5rem 2rem 2rem' }}>
           {nav.map(n => (
-            <button key={n.id} onClick={() => { setPage(n.id); setMenuOpen(false); }} style={{
+            <a key={n.id} href={n.href} style={{
               display: 'block', width: '100%', textAlign: 'left',
-              background: 'none', border: 'none', cursor: 'pointer',
               color: page === n.id ? 'var(--gold)' : 'rgba(255,255,255,0.85)',
               fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', fontWeight: 500,
               padding: '0.9rem 0', borderBottom: '1px solid rgba(255,255,255,0.06)',
-            }}>{n.label}</button>
+              textDecoration: 'none',
+            }}>{n.label}</a>
           ))}
-          <button onClick={() => { setPage('booking'); setMenuOpen(false); }} style={{
+          <a href="/kontakt/" style={{
             display: 'block', width: '100%', marginTop: '1.5rem',
-            background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+            background: 'var(--gold)', color: '#0a0f1c',
             fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', fontWeight: 700,
             letterSpacing: '0.06em', textTransform: 'uppercase', padding: '0.9rem 1.5rem', borderRadius: 2,
-          }}>{t.nav.bookNow}</button>
+            textDecoration: 'none', textAlign: 'center',
+          }}>{t.nav.bookNow}</a>
         </div>
       )}
     </header>
@@ -677,27 +696,31 @@ function Footer({ setPage }) {
           </div>
           <div>
             <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.experiences}</h4>
-            {['Culinary & Culture', 'Wine & Gastronomy', 'Adventure & Sports', 'Romance & Luxury', 'Nature & Relaxation'].map(c => (
-              <button key={c} onClick={() => setPage('tours')} style={{ display: 'block', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textAlign: 'left', transition: 'color 0.2s' }}
-              onMouseEnter={e=>e.currentTarget.style.color='var(--gold)'}
-              onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.45)'}
-              >{c}</button>
+            {[
+              ['/turer/altea/', 'Altea'],
+              ['/turer/guadalest/', 'Guadalest'],
+              ['/turer/villajoyosa-sjokolade/', 'Villajoyosa & chocolate'],
+              ['/turer/jumilla-vin/', 'Jumilla wine country'],
+            ].map(([href,label]) => (
+              <a key={href} href={href} style={{ display: 'block', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textDecoration: 'none' }}>{label}</a>
             ))}
           </div>
           <div>
             <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.quickLinks}</h4>
-            {[['home', t.nav.home],['tours', t.nav.tours],['about', t.nav.about],['contact', t.nav.contact],['booking', t.nav.bookNow]].map(([id,label]) => (
-              <button key={id} onClick={() => setPage(id)} style={{ display: 'block', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textAlign: 'left', transition: 'color 0.2s' }}
-              onMouseEnter={e=>e.currentTarget.style.color='var(--gold)'}
-              onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.45)'}
-              >{label}</button>
+            {[
+              ['/', t.nav.home],
+              ['/turer/', t.nav.tours],
+              ['/om-oss/', t.nav.about],
+              ['/kontakt/', t.nav.contact],
+            ].map(([href,label]) => (
+              <a key={href} href={href} style={{ display: 'block', color: 'rgba(255,255,255,0.45)', fontFamily: 'DM Sans', fontSize: '0.875rem', padding: '0.25rem 0', textDecoration: 'none' }}>{label}</a>
             ))}
           </div>
           <div>
             <h4 style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'DM Sans', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.footer.contact}</h4>
             <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', lineHeight: 1.8 }}>
               cbt.freddybremseth.com<br/>
-              info@costablancatours.com<br/>
+              info@costablancatours.pro<br/>
               +34 600 000 000<br/>
               Alicante, Spain
             </p>
@@ -742,11 +765,20 @@ function Reveal({ children, delay = 0, style = {} }) {
 function TourCard({ tour, setPage, setTourId, compact }) {
   const { t } = useLang();
   const [hov, setHov] = React.useState(false);
+  const tourHref = {
+    'villajoyosa-chocolate': '/turer/villajoyosa-sjokolade/',
+    'altea-charm': '/turer/altea/',
+    'guadalest-valley': '/turer/guadalest/',
+    'juan-gil-wine': '/turer/jumilla-vin/',
+  }[tour.id];
   return (
     <div
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      onClick={() => { setTourId(tour.id); setPage('tour-detail'); window.scrollTo(0,0); }}
+      onClick={() => {
+        if (tourHref) window.location.href = tourHref;
+        else { setTourId(tour.id); setPage('tour-detail'); window.scrollTo(0,0); }
+      }}
       style={{
         cursor: 'pointer', borderRadius: 4, overflow: 'hidden',
         background: '#111827',
@@ -845,17 +877,18 @@ function HomePage({ setPage, setTourId, showStats }) {
               {t.hero.subtitle}
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <button onClick={() => setPage('tours')} style={{
-                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+              <a href="/turer/" style={{
+                background: 'var(--gold)', color: '#0a0f1c',
                 fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                padding: '1rem 2.5rem', borderRadius: 2,
-              }}>{t.hero.exploreBtn}</button>
-              <button onClick={() => setPage('about')} style={{
+                padding: '1rem 2.5rem', borderRadius: 2, textDecoration: 'none',
+              }}>{t.hero.exploreBtn}</a>
+              <a href="/om-oss/" style={{
                 background: 'transparent', color: 'white',
                 border: '1px solid rgba(255,255,255,0.4)',
-                cursor: 'pointer', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
                 letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1rem 2rem', borderRadius: 2,
-              }}>{t.hero.storyBtn}</button>
+                textDecoration: 'none',
+              }}>{t.hero.storyBtn}</a>
             </div>
           </div>
         </div>
@@ -871,10 +904,10 @@ function HomePage({ setPage, setTourId, showStats }) {
         <section style={{ background: '#0d1525', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
           <div style={{ maxWidth: 1280, margin: '0 auto', padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }} className="stats-grid">
             {[
-              { num: '10+', label: t.stats.tours },
+              { num: '4', label: 'Published experiences' },
               { num: '4', label: t.stats.guests },
-              { num: '100%', label: t.stats.inclusive },
-              { num: '5★', label: t.stats.rating },
+              { num: '1:1', label: 'Availability confirmed' },
+              { num: 'Local', label: t.stats.rating },
             ].map(({ num, label }) => (
               <div key={label} style={{ textAlign: 'center', padding: '1rem 0' }}>
                 <div style={{ fontFamily: 'Playfair Display', color: 'var(--gold)', fontSize: '2rem', fontWeight: 700 }}>{num}</div>
@@ -944,16 +977,17 @@ function HomePage({ setPage, setTourId, showStats }) {
             <h2 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1.5rem' }}>{t.cta.title}</h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>{t.cta.subtitle}</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button onClick={() => setPage('booking')} style={{
-                background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
+              <a href="/kontakt/" style={{
+                background: 'var(--gold)', color: '#0a0f1c',
                 fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                padding: '1rem 2.5rem', borderRadius: 2,
-              }}>{t.cta.reserveBtn}</button>
-              <button onClick={() => setPage('contact')} style={{
+                padding: '1rem 2.5rem', borderRadius: 2, textDecoration: 'none',
+              }}>{t.cta.reserveBtn}</a>
+              <a href="/kontakt/" style={{
                 background: 'transparent', color: 'white', border: '1px solid rgba(255,255,255,0.4)',
-                cursor: 'pointer', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
+                fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 500,
                 letterSpacing: '0.06em', textTransform: 'uppercase', padding: '1rem 2rem', borderRadius: 2,
-              }}>{t.cta.questionBtn}</button>
+                textDecoration: 'none',
+              }}>{t.cta.questionBtn}</a>
             </div>
           </Reveal>
         </div>
@@ -972,9 +1006,11 @@ function ToursPage({ setPage, setTourId }) {
   const [activeCategory, setActiveCategory] = React.useState('All');
   const filterLabel = t.tours.filter;
   const cats = [filterLabel, ...CATEGORIES.slice(1)];
+  const publishedIds = new Set(['villajoyosa-chocolate', 'altea-charm', 'guadalest-valley', 'juan-gil-wine']);
+  const publishedTours = TOURS.filter(tr => publishedIds.has(tr.id));
   const filtered = activeCategory === filterLabel || activeCategory === 'All'
-    ? TOURS
-    : TOURS.filter(tr => tr.category === activeCategory);
+    ? publishedTours
+    : publishedTours.filter(tr => tr.category === activeCategory);
 
   return (
     <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
@@ -1213,10 +1249,31 @@ function ContactPage() {
   const [sent, setSent] = React.useState(false);
   const [sending, setSending] = React.useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); }, 1200);
+    try {
+      const response = await fetch('https://www.zenecohomes.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          message: [form.message, form.tour ? 'Tour: ' + form.tour : ''].filter(Boolean).join('\n'),
+          source: 'costablancatours-contact',
+          request_type: 'tour-enquiry',
+          page_url: window.location.href,
+        }),
+      });
+      if (!response.ok) throw new Error('Contact endpoint returned ' + response.status);
+      setSent(true);
+    } catch (error) {
+      console.warn('[Costa Blanca Tours contact]', error);
+      alert('We could not send your message. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 2, padding: '0.875rem 1rem', color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', boxSizing: 'border-box', outline: 'none' };
@@ -1277,7 +1334,7 @@ function ContactPage() {
             <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.15rem', fontWeight: 700, marginBottom: '1.5rem' }}>{c.eyebrow}</h3>
             {[
               { label: 'Website', val: 'cbt.freddybremseth.com' },
-              { label: 'Email', val: 'info@costablancatours.com' },
+              { label: 'Email', val: 'info@costablancatours.pro' },
               { label: 'Phone', val: '+34 600 000 000' },
               { label: 'Location', val: 'Alicante, Costa Blanca, Spain' },
             ].map(({ label, val }) => (
@@ -1308,10 +1365,38 @@ function BookingPage({ setPage }) {
   const selectedTour = TOURS.find(tr => tr.id === form.tour);
   const total = selectedTour ? (parseInt(selectedTour.priceNum) * form.guests) : 0;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => { setSubmitting(false); setDone(true); }, 1400);
+    try {
+      const response = await fetch('https://www.zenecohomes.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          preferred_area: selectedTour?.name || undefined,
+          message: [
+            selectedTour ? 'Experience: ' + selectedTour.name : '',
+            form.date ? 'Preferred date: ' + form.date : '',
+            form.guests ? 'Guests: ' + form.guests : '',
+            form.notes || '',
+            'Reference: ' + ref,
+          ].filter(Boolean).join('\n'),
+          source: 'costablancatours-booking-request',
+          request_type: 'tour-booking-request',
+          page_url: window.location.href,
+        }),
+      });
+      if (!response.ok) throw new Error('Booking endpoint returned ' + response.status);
+      setDone(true);
+    } catch (error) {
+      console.warn('[Costa Blanca Tours booking]', error);
+      alert('We could not send your booking request. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 2, padding: '0.875rem 1rem', color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', boxSizing: 'border-box', outline: 'none' };
