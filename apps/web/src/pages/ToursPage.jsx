@@ -12,6 +12,8 @@ function ToursPage() {
   const { t, language } = useLanguage();
   
   const localizedTours = toursData.map(tour => getLocalizedTour(tour, language));
+  const exclusiveTours = localizedTours.filter(tour => tour.inquiryOnly);
+  const otherTours = localizedTours.filter(tour => !tour.inquiryOnly);
 
   return (
     <>
@@ -47,12 +49,40 @@ function ToursPage() {
 
         <div className="divider-elegant -mt-8 mb-12 relative z-20"></div>
 
-        {/* Optimized Tours Grid */}
+        {exclusiveTours.length > 0 && (
+          <section className="py-10 pb-20 relative" id="exclusive-experiences">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mb-10">
+                <span className="text-primary font-semibold uppercase tracking-widest text-sm">
+                  {language === 'no' ? 'Privat · Skreddersydd · Smak' : 'Private · Bespoke · Taste'}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-semibold mt-3 mb-4 text-foreground">
+                  {language === 'no' ? 'Eksklusive mat-, vin- og olivenopplevelser' : 'Exclusive wine, olive oil & gastronomy'}
+                </h2>
+                <p className="text-lg max-w-3xl text-muted-foreground">
+                  {language === 'no'
+                    ? 'Opplev produsentene, naturen og maten bak det ekte innlandet. Alle opplevelsene planlegges individuelt for inntil fire gjester. Datoer, transport, smaking og restauranter må bekreftes før bestilling.'
+                    : 'Meet the growers and winemakers, discover the countryside and sit down for local food. Each journey is arranged individually for up to four guests; visits, transfers, tastings and restaurants require confirmation.'}
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {exclusiveTours.map(tour => (
+                  <TourCard key={tour.id} tour={tour} useShortDescription={true} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Other tours */}
         <section className="pb-24 relative">
           <div className="absolute inset-0 bg-luxury-subtle opacity-30 pointer-events-none"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-8">
+              {language === 'no' ? 'Flere opplevelser' : 'More experiences'}
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {localizedTours.map((tour, index) => (
+              {otherTours.map((tour, index) => (
                 <motion.div
                   key={tour.id}
                   initial={{ opacity: 0, y: 20 }}

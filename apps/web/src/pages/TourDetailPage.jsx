@@ -27,6 +27,7 @@ function TourDetailPage() {
   if (!rawTour) return null;
 
   const tour = getLocalizedTour(rawTour, language);
+  const enquiry = tour.inquiryOnly ? `mailto:${tour.inquiryEmail}?subject=${encodeURIComponent(`Private experience enquiry: ${tour.name}`)}&body=${encodeURIComponent(`Hello, I would like to enquire about ${tour.name}.\n\nPreferred date(s):\nNumber of guests (up to 4):\nPreferred pickup area:\nSpecial requests:\n\nPlease confirm availability and a personal quote.`)}` : null;
 
   return (
     <>
@@ -158,10 +159,27 @@ function TourDetailPage() {
                     
                     <div className="mt-8 pt-6 border-t border-border/50">
                       <Button size="lg" className="w-full text-lg shadow-md" asChild>
-                        <Link to={`/booking?tour=${tour.id}`}>
-                          {t('tours.bookThisTour') || 'Book This Tour'}
-                        </Link>
+                        {tour.inquiryOnly ? (
+                          <a href={enquiry}>{language === 'no' ? 'Be om privat tilbud' : 'Request a private quote'}</a>
+                        ) : (
+                          <Link to={`/booking?tour=${tour.id}`}>
+                            {t('tours.bookThisTour') || 'Book This Tour'}
+                          </Link>
+                        )}
                       </Button>
+                      {tour.inquiryOnly && (
+                        <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
+                          {language === 'no'
+                            ? 'Dette åpner en e-postforespørsel. Ingen tur er bestilt eller betalt før du har fått skriftlig bekreftelse. Tilgjengelighet, lunsj og transport avtales.'
+                            : 'This opens an email enquiry. No booking or payment is made until confirmed in writing. Visits, lunch and transfers are subject to availability.'}
+                          <span className="block mt-2">{tour.inquiryEmail}</span>
+                        </p>
+                      )}
+                      {tour.producerUrl && (
+                        <a href={tour.producerUrl} target="_blank" rel="noopener noreferrer" className="block text-sm text-primary underline underline-offset-4 mt-4">
+                          {language === 'no' ? 'Les om produsenten' : 'About the producer'}
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

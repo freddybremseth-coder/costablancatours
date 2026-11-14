@@ -80,30 +80,57 @@ export const toursData = [
     featured: true
   },
   {
-    id: 'juan-gil-wine',
-    name: {
-      en: 'Juan Gil: The Art of Jumilla Wine',
-      no: 'Juan Gil: Kunsten av Jumilla-vin'
+    "id": "juan-gil-wine",
+    "name": {
+      "en": "Juan Gil – Private Monastrell Wine Journey",
+      "no": "Juan Gil – Privat Monastrell-vinreise"
     },
-    shortDescription: {
-      en: 'A sophisticated journey through Spain\'s celebrated wine heritage in the sun-drenched vineyards of Jumilla.',
-      no: 'En sofistikert reise gjennom Spanias feirede vinarv i de solfylte vingårdene i Jumilla.'
+    "shortDescription": {
+      "en": "Explore Jumilla's Monastrell heritage with a pre-arranged Juan Gil winery visit and tasting, then sit down for a thoughtful regional lunch.",
+      "no": "Opplev Monastrell-druen i Jumilla med forhåndsavtalt omvisning og vinsmaking hos Juan Gil, etterfulgt av en god regional lunsj."
     },
-    fullDescription: {
-      en: 'Step into the world of Juan Gil, where centuries of winemaking tradition meet modern excellence. The arid, sun-drenched landscapes of Jumilla produce some of Spain\'s most robust and celebrated wines. This sensory journey invites you to wander through historic vineyards, inhale the earthy aromas of aging wine in oak barrels, and taste the profound complexity of vintages that capture the very essence of the Spanish earth.\n\n<strong>THE EXPERIENCE</strong>\n\n• <strong>Arrival & Welcome:</strong> Relax in our comfortable <strong>Private Car</strong> as we journey inland to the Jumilla wine region. Upon arrival at the Juan Gil estate, you will be welcomed with a refreshing introductory glass and a brief history of the family\'s legacy.\n\n• <strong>Vineyard & Cellar Tour:</strong> Walk among the ancient Monastrell vines with an expert viticulturist. Descend into the cool, atmospheric cellars to witness the meticulous aging process and learn the secrets of their award-winning production.\n\n• <strong>Sommelier-Led Tasting:</strong> Take a seat in the exclusive tasting room. A master sommelier will guide you through a curated flight of Juan Gil\'s finest premium wines, explaining the nuanced notes, tannins, and terroir of each glass.\n\n• <strong>Gourmet Pairing Lunch:</strong> Indulge in a spectacular multi-course lunch at the estate. Each dish is crafted from local ingredients and perfectly paired with a specific vintage to elevate both the food and the wine.\n\n• <strong>Exclusive Cellar Access:</strong> Conclude your visit with the opportunity to purchase rare vintages directly from the cellar, taking a piece of Jumilla\'s liquid history home with you.\n\n<strong>WHY THIS TOUR IS UNIQUE</strong>\nCapped at a maximum of <strong>4 guests</strong>, this is an intimate immersion into elite winemaking. Traveling in our <strong>Private Car</strong>, you receive VIP access to areas of the estate rarely seen by the public. It is a masterclass in Spanish viticulture, offering personal interactions with the experts and a profound appreciation for the art of the vine.',
-      no: 'Stig inn i Juan Gils verden, hvor århundrer med vintradisjon møter moderne fortreffelighet. De tørre, solfylte landskapene i Jumilla produserer noen av Spanias mest robuste og feirede viner. Denne sansereisen inviterer deg til å vandre gjennom historiske vingårder, puste inn de jordlige aromaene av modnende vin på eikefat, og smake på den dype kompleksiteten i årganger som fanger selve essensen av den spanske jorden.\n\n<strong>OPPLEVELSEN</strong>\n\n• <strong>Ankomst og velkomst:</strong> Slapp av i vår komfortable <strong>Privat bil</strong> mens vi reiser innover i landet til Jumilla-vinregionen. Ved ankomst til Juan Gil-eiendommen vil du bli ønsket velkommen med et forfriskende introduksjonsglass.\n\n• <strong>Vingård og kjellertur:</strong> Gå blant de gamle Monastrell-vinstokkene med en ekspert. Gå ned i de kjølige, atmosfæriske kjellerne for å være vitne til den grundige modningsprosessen.\n\n• <strong>Sommelier-ledet smaking:</strong> Ta plass i det eksklusive smaksrommet. En mestersommelier vil guide deg gjennom et utvalg av Juan Gils fineste premiumviner.\n\n• <strong>Gourmet lunsjparing:</strong> Nyt en spektakulær flerreters lunsj på eiendommen. Hver rett er laget av lokale ingredienser og perfekt paret med en spesifikk årgang.\n\n• <strong>Eksklusiv kjellertilgang:</strong> Avslutt besøket med muligheten til å kjøpe sjeldne årganger direkte fra kjelleren.\n\n<strong>HVORFOR DENNE TUREN ER UNIK</strong>\nBegrenset til maksimalt <strong>4 gjester</strong>, er dette en intim fordypning i elitevinproduksjon. Ved å reise i vår <strong>Privat bil</strong>, får du VIP-tilgang til områder av eiendommen som sjelden sees av publikum.'
+    "fullDescription": {
+      "en": "Discover the dry landscapes of Jumilla and the character of Monastrell on a bespoke small-group wine day.\n\n<strong>THE PROPOSED EXPERIENCE</strong>\n\n• <strong>Scenic journey to Jumilla:</strong> Private transfer from your agreed pickup point, with a short introduction to the area's landscapes and the Monastrell grape.\n\n• <strong>Bodegas Juan Gil:</strong> Subject to the winery's written confirmation, enjoy their hosted introduction to the family business, wine production and the DOP Jumilla region, with an appropriate winery visit.\n\n• <strong>Monastrell tasting:</strong> Taste wines in the format currently offered by Juan Gil, learning how grape, climate, oak and ageing influence style. Exact number and selection of wines depend on the winery's confirmed programme.\n\n• <strong>Regional gastronomy:</strong> Enjoy a relaxed lunch at a suitable restaurant in or near Jumilla. The venue, menu, dietary needs and any wine pairing are agreed separately.\n\n• <strong>Optional Jumilla stroll:</strong> If timing allows, discover the old-town atmosphere and browse local wine and food specialities before the return journey.\n\n<strong>A NOTE ON ACCESS</strong>\n\nThis tour is organised in cooperation with the winery only after availability and terms have been confirmed. We do not promise VIP cellar access, private winemakers, rare vintages or lunch at the estate without a separate agreement. Price and travel dates are provided in a personal quote. Adults only for wine tasting.",
+      "no": "Oppdag det tørre landskapet rundt Jumilla og Monastrell-druens særpreg på en skreddersydd vintur for en liten gruppe.\n\n<strong>FORSLAG TIL OPPLEVELSEN</strong>\n\n• <strong>Vakker kjøretur til Jumilla:</strong> Privat transport kan organiseres fra avtalt hentested. Underveis blir vi kjent med landskapet og Monastrell-druens historie.\n\n• <strong>Bodegas Juan Gil:</strong> Når vingården har bekreftet besøket, blir det introduksjon til familiebedriften, produksjonen og vinområdet DOP Jumilla, med omvisning etter vingårdens program.\n\n• <strong>Monastrell-smaking:</strong> Smak på viner fra Juan Gils gjeldende besøksprogram. Lær om druen, klimaet, fatlagring og ulike stiler. Antall og utvalg viner bekreftes av produsenten.\n\n• <strong>Regional gastronomi:</strong> Nyt en rolig lunsj på en utvalgt restaurant i eller nær Jumilla. Restaurant, meny, eventuelle vinpakker og allergier avklares i forkant.\n\n• <strong>Mulig byvandring:</strong> Hvis det passer, kan vi legge inn en liten tur gjennom Jumilla og mulighet til å kjøpe lokale spesialiteter.\n\n<strong>BESØK ETTER AVTALE</strong>\n\nVingårdens tilgjengelighet og vilkår må bekreftes før vi tilbyr en konkret dato. Vi lover ikke VIP-adgang, møte med vinmakeren, sjeldne årganger eller lunsj på vingården uten særskilt avtale. Pris og tidspunkt gis i et personlig tilbud. Vinsmaking er for voksne."
     },
-    duration: { en: 'Full-day tour (approx. 7-8 hours)', no: 'Heldagstur (ca. 7-8 timer)' },
-    price: '€225',
-    maxGuests: 4,
-    transport: { en: 'Private Car', no: 'Privat bil' },
-    category: { en: 'Wine & Gastronomy', no: 'Vin & Gastronomi' },
-    image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=1000',
-    highlights: {
-      en: ['Private Car transport', 'VIP vineyard access', 'Sommelier-led tasting', 'Gourmet pairing lunch', 'Exclusive cellar access'],
-      no: ['Privat bil transport', 'VIP vingårdstilgang', 'Sommelier-ledet smaking', 'Gourmet lunsjparing', 'Eksklusiv kjellertilgang']
+    "duration": {
+      "en": "Private full day · approximately 8–10 hours",
+      "no": "Privat heldag · omtrent 8–10 timer"
     },
-    featured: true
+    "price": {
+      "en": "Price on request",
+      "no": "Pris på forespørsel"
+    },
+    "maxGuests": 4,
+    "transport": {
+      "en": "Private transport arranged on confirmation",
+      "no": "Privat transport avtales ved bekreftelse"
+    },
+    "category": {
+      "en": "Exclusive Wine & Gastronomy",
+      "no": "Eksklusiv vin og gastronomi"
+    },
+    "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=1000",
+    "highlights": {
+      "en": [
+        "Jumilla and Monastrell discovery",
+        "Juan Gil visit by arrangement",
+        "Guided winery tasting",
+        "Regional lunch",
+        "Optional historic-town stroll"
+      ],
+      "no": [
+        "Opplev Jumilla og Monastrell",
+        "Juan Gil-besøk etter avtale",
+        "Guidet vinsmaking",
+        "Regional lunsj",
+        "Mulig historisk byvandring"
+      ]
+    },
+    "featured": true,
+    "inquiryOnly": true,
+    "inquiryEmail": "freddy@zenecohomes.com",
+    "producerUrl": "https://www.bodegasjuangil.com/"
   },
   {
     id: 'ibiza-escape',
@@ -158,30 +185,59 @@ export const toursData = [
     featured: false
   },
   {
-    id: 'dona-anna',
-    name: {
-      en: 'Dona Anna: Coastal Elegance',
-      no: 'Dona Anna: Kysteleganse'
+    "id": "dona-anna",
+    "name": {
+      "en": "Doña Anna – Private Olive Estate & Gastronomy",
+      "no": "Doña Anna – Privat olivengård og gastronomi"
     },
-    shortDescription: {
-      en: 'Experience the pristine beauty of the Dona Anna coastline with an exclusive, luxurious seaside retreat.',
-      no: 'Opplev den uberørte skjønnheten til Dona Anna-kysten med et eksklusivt, luksuriøst tilfluktssted ved sjøen.'
+    "shortDescription": {
+      "en": "Meet the growers at a real olive estate in Biar. Explore century-old trees, learn to taste olive oil, then enjoy a leisurely lunch and one of the region's historic towns.",
+      "no": "Møt menneskene bak olivenoljen på en ekte gård i Biar. Opplev hundreårige trær, lær å smake olivenolje og nyt en god lunsj med et besøk i en historisk innlandsby."
     },
-    fullDescription: {
-      en: 'The Dona Anna coastal region is synonymous with dramatic cliffs, hidden grottos, and waters of impossible clarity. This exclusive tour is designed for those who appreciate the finer things in life, combining breathtaking natural scenery with unparalleled luxury and relaxation. It is a day dedicated to indulgence, sun, and the soothing rhythm of the Mediterranean waves.\n\n<strong>THE EXPERIENCE</strong>\n\n• <strong>Arrival & Welcome:</strong> Your journey begins in our luxurious <strong>Private Car</strong>, taking you along the spectacular coastal roads to the Dona Anna region. Enjoy a chilled glass of cava upon arrival at our exclusive seaside location.\n\n• <strong>Coastal Exploration:</strong> Take a guided, leisurely walk along the dramatic cliff tops, offering spectacular vantage points for photography and taking in the sweeping ocean vistas.\n\n• <strong>Private Beach Access:</strong> Descend to a secluded, premium beach area. Relax on reserved luxury loungers, swim in the crystal-clear waters, and enjoy personalized service throughout the morning.\n\n• <strong>Gourmet Seafood Feast:</strong> Indulge in a spectacular multi-course seafood lunch at a renowned cliffside restaurant. Savor the catch of the day, expertly prepared and paired with premium regional wines.\n\n• <strong>Afternoon Relaxation:</strong> Spend the remainder of the afternoon at your leisure—whether that means another swim, a coastal stroll, or simply relaxing with a cocktail as the sun begins to lower.\n\n<strong>WHY THIS TOUR IS UNIQUE</strong>\nStrictly limited to <strong>4 guests</strong>, this is the ultimate VIP coastal experience. Traveling in our <strong>Private Car</strong>, you bypass the crowded public beaches and gain access to exclusive spots and premium dining, ensuring a day of pure, uninterrupted elegance.',
-      no: 'Dona Anna-kystregionen er synonymt med dramatiske klipper, skjulte grotter og vann av utrolig klarhet. Denne eksklusive turen er designet for de som setter pris på de finere tingene i livet, og kombinerer fantastisk natur med enestående luksus og avslapning.\n\n<strong>OPPLEVELSEN</strong>\n\n• <strong>Ankomst og velkomst:</strong> Reisen din begynner i vår luksuriøse <strong>Privat bil</strong>, som tar deg langs de spektakulære kystveiene til Dona Anna-regionen. Nyt et avkjølt glass cava ved ankomst.\n\n• <strong>Kystutforskning:</strong> Ta en guidet, rolig spasertur langs de dramatiske klippetoppene, som tilbyr spektakulære utsiktspunkter for fotografering.\n\n• <strong>Privat strandtilgang:</strong> Gå ned til et avsidesliggende, premium strandområde. Slapp av på reserverte luksussolsenger og svøm i det krystallklare vannet.\n\n• <strong>Gourmet sjømatfest:</strong> Nyt en spektakulær flerreters sjømatlunsj på en anerkjent restaurant på klippekanten. Smak på dagens fangst, paret med premium regionale viner.\n\n• <strong>Ettermiddagsavslapning:</strong> Tilbring resten av ettermiddagen i ditt eget tempo – enten det betyr en ny svømmetur, en kysttur, eller bare avslapning med en cocktail.\n\n<strong>HVORFOR DENNE TUREN ER UNIK</strong>\nStrengt begrenset til <strong>4 gjester</strong>, er dette den ultimate VIP-kystopplevelsen. Ved å reise i vår <strong>Privat bil</strong>, unngår du de overfylte offentlige strendene og får tilgang til eksklusive steder.'
+    "fullDescription": {
+      "en": "An unhurried private journey into the countryside of Alicante, hosted around the working olive project of Anna and Freddy Bremseth. Doña Anna is not a coastal destination: it is rooted in the olive groves of Biar.\n\n<strong>THE PROPOSED DAY</strong>\n\n• <strong>Morning, the landscape of the Vinalopó:</strong> Private transport can be arranged from the northern Costa Blanca. Travel through the changing scenery of the Alicante interior to Biar. Exact pickup location, timing and transport are agreed in advance.\n\n• <strong>Welcome to the Doña Anna estate:</strong> Meet the people behind the oils. Walk among the groves, including old Changlot Real trees, and discover the estate's varieties such as Gordal, Genovesa, Picual and Arbequina. The route follows suitable paths and seasonal farm conditions.\n\n• <strong>Regenerative agriculture and the craft:</strong> Discuss soil health, biodiversity, water, pruning and the choices that shape a harvest. Where appropriate, see how ripeness, harvest timing and processing influence extra virgin olive oil.\n\n• <strong>Guided sensory tasting:</strong> Discover fruitiness, bitterness and pepperiness, compare available Doña Anna oils or documented samples, and learn simple food-pairing techniques. The exact oils depend on batches and availability; a fresh-harvest tasting is not guaranteed.\n\n• <strong>Long Mediterranean lunch:</strong> Enjoy an unrushed regional lunch in Biar, or choose Villena for a town-and-gastronomy extension. Restaurant, menu and inclusion in the quoted price are confirmed before booking.\n\n• <strong>Culture after lunch:</strong> Choose a gentle stroll through Biar's old town and views of its castle, or explore the historic centre of Villena and the Atalaya Castle area. Monument entry depends on opening hours and a separate reservation where required.\n\n<strong>PRIVATE BY DESIGN</strong>\n\nNormally for 2–4 guests. A tasting journal, seasonal harvest insights and optional oil purchases can be added. This is a bespoke proposal, not an automatically confirmed visit: farm hosting, restaurant, transport, programme and final price are confirmed individually. Learn more about the producer at donaanna.com.",
+      "no": "En rolig, privat opplevelse i Alicantes innland – rundt olivenprosjektet som Anna og Freddy Bremseth driver. Doña Anna er ikke et kyststed, men en levende olivengård i Biar.\n\n<strong>FORSLAG TIL DAGEN</strong>\n\n• <strong>Morgen – innlandets landskap:</strong> Vi kan organisere privat transport fra Costa Blanca Nord. Gjennom dalene i Vinalopó går turen til Biar. Hentested, tidspunkt og transport bekreftes på forhånd.\n\n• <strong>Velkommen til Doña Anna:</strong> Møt menneskene bak oljen, gå mellom oliventrærne og se gamle Changlot Real-trær. Bli kjent med sorter som Gordal, Genovesa, Picual og Arbequina. Rundturen tilpasses gårdsarbeid, vær og egnet underlag.\n\n• <strong>Regenerativ dyrking og håndverket:</strong> Lær om jordhelse, biologisk mangfold, vann, beskjæring og hvordan høstetidspunkt og produksjon påvirker kvaliteten.\n\n• <strong>Veiledet oljesmaking:</strong> Lær å kjenne fruktighet, bitterhet og peppertoner, sammenlign tilgjengelige Doña Anna-oljer eller dokumenterte smaksprøver, og prøv oljen til enkle lokale råvarer. Utvalget avhenger av tilgjengelige batcher – fersk olje kan ikke loves hele året.\n\n• <strong>Lang og god lunsj:</strong> Spis lokale spesialiteter på en utvalgt restaurant i Biar, eller velg Villena for en gastronomisk og kulturell utvidelse. Restaurant, meny og hva som inngår i prisen avtales før bestilling.\n\n• <strong>Historie og småbyliv:</strong> Velg en rolig vandring i gamle Biar og utsikt mot slottet, eller gamlebyen i Villena og området rundt Castillo de la Atalaya. Inngang og guiding til monumenter avhenger av åpningstid og eventuell reservasjon.\n\n<strong>EN PRIVAT OPPLEVELSE</strong>\n\nNormalt 2–4 deltakere. Vi kan legge til smaksskjema, innsikt fra høsten og mulighet for kjøp av olje når den er tilgjengelig. Dette er et forslag som skreddersys – tidspunkt, gårdsbesøk, transport, restaurant, program og pris bekreftes individuelt. Les mer om produsenten på donaanna.com."
     },
-    duration: { en: 'Full-day tour (approx. 7 hours)', no: 'Heldagstur (ca. 7 timer)' },
-    price: '€210',
-    maxGuests: 4,
-    transport: { en: 'Private Car', no: 'Privat bil' },
-    category: { en: 'Luxury & Coastal', no: 'Luksus & Kyst' },
-    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=1000',
-    highlights: {
-      en: ['Private Car transport', 'Cliff-top coastal walk', 'Reserved luxury beach loungers', 'Gourmet cliffside seafood lunch', 'VIP personalized service'],
-      no: ['Privat bil transport', 'Kystvandring på klippetoppen', 'Reserverte luksussolsenger', 'Gourmet sjømatlunsj på klippekanten', 'VIP personlig service']
+    "duration": {
+      "en": "Private full day · approximately 7–9 hours",
+      "no": "Privat heldag · omtrent 7–9 timer"
     },
-    featured: false
+    "price": {
+      "en": "Price on request",
+      "no": "Pris på forespørsel"
+    },
+    "maxGuests": 4,
+    "transport": {
+      "en": "Private transport arranged on confirmation",
+      "no": "Privat transport avtales ved bekreftelse"
+    },
+    "category": {
+      "en": "Exclusive Olive Oil & Gastronomy",
+      "no": "Eksklusiv olivenolje og gastronomi"
+    },
+    "image": "https://raw.githubusercontent.com/freddybremseth-coder/olivia/main/public/donaanna/garden-2026/biar-olivenlund-blaa-himmel.webp",
+    "highlights": {
+      "en": [
+        "Host-led olive estate walk",
+        "Century-old Changlot Real trees",
+        "Regenerative farming insights",
+        "Guided EVOO tasting",
+        "Lunch in Biar or Villena",
+        "Historic-town extension"
+      ],
+      "no": [
+        "Omvisning på olivengården",
+        "Hundreårige Changlot Real-trær",
+        "Regenerativ dyrking",
+        "Veiledet oljesmaking",
+        "Lunsj i Biar eller Villena",
+        "Historisk småbyvandring"
+      ]
+    },
+    "featured": true,
+    "inquiryOnly": true,
+    "inquiryEmail": "freddy@zenecohomes.com",
+    "producerUrl": "https://www.donaanna.com/"
   },
   {
     id: 'markedet-tour',
@@ -286,6 +342,59 @@ export const toursData = [
       no: ['Privat bil transport', 'Naturskjønn kystkjøretur', 'Eksklusivt solnedgangsutsiktspunkt', 'Premium vinsmaking', 'Gourmet lokale tapas']
     },
     featured: false
+  },
+  {
+    "id": "relleu-olive-oil",
+    "name": {
+      "en": "Señoríos de Relleu – Olive Oil Heritage Day",
+      "no": "Señoríos de Relleu – Eksklusiv oliventur"
+    },
+    "shortDescription": {
+      "en": "Visit Masía El Teuladí in the mountains of Alicante for a privately arranged olive-mill visit, sensory oil tasting and a relaxed regional food experience.",
+      "no": "Besøk Masía El Teuladí i Alicantes fjellområde med forhåndsavtalt oljemøllebesøk, oljesmaking og en rolig matopplevelse i området."
+    },
+    "fullDescription": {
+      "en": "An elegant introduction to Mediterranean olive culture in the beautiful hills around Relleu.\n\n<strong>THE PROPOSED EXPERIENCE</strong>\n\n• <strong>Travel into the mountains:</strong> Arrange private transport from the coast and enjoy the contrasting scenery of the Marina Baixa interior.\n\n• <strong>Señoríos de Relleu at Masía El Teuladí:</strong> Subject to availability, join the estate's olive-oil tourism programme. Walk through the grounds and learn about local olive varieties, olive growing, processing and the estate's historic mill setting.\n\n• <strong>Professional oil tasting:</strong> Discover aroma, fruitiness, bitterness, pungency and simple food pairing using the producer's available oils. The tasting format and included oils follow the confirmed visit package.\n\n• <strong>Long regional lunch:</strong> Complete the experience with a leisurely lunch in the Relleu area, either at the estate if a suitable hosted meal is bookable, or at a selected local restaurant.\n\n• <strong>Optional village extension:</strong> Enjoy a short stroll in Relleu or an additional scenic stop if time, weather and mobility permit.\n\n<strong>IMPORTANT</strong>\n\nThe standard oil-tour visit is offered by Señoríos de Relleu; Costa Blanca Tours' premium experience adds tailored planning and, if agreed, transport, lunch and local hosting. These are proposed components, not proof of an exclusive commercial arrangement. All arrangements, inclusions and final price are confirmed before payment.",
+      "no": "En gjennomført introduksjon til middelhavets olivenkultur, i vakre omgivelser i fjellene rundt Relleu.\n\n<strong>FORSLAG TIL OPPLEVELSEN</strong>\n\n• <strong>Gjennom fjellandskapet:</strong> Privat transport kan avtales fra kysten, med flott utsikt over innlandet i Marina Baixa.\n\n• <strong>Señoríos de Relleu og Masía El Teuladí:</strong> Når produsenten bekrefter plass, besøker vi gården på deres oliventur. Lær om lokale sorter, dyrking, produksjon og den historiske oljemøllen.\n\n• <strong>Profesjonell oljesmaking:</strong> Oppdag duft, fruktighet, bitterhet og peppertoner, og lær hvordan oljen passer til mat. Antall oljer og smakingsopplegg følger den bekreftede pakken.\n\n• <strong>God regional lunsj:</strong> Avslutt med et rolig måltid i Relleu-området – på gården dersom en passende matopplevelse kan bestilles, eller på en utvalgt lokal restaurant.\n\n• <strong>Ekstra landsbyopplevelse:</strong> Ved god tid og passende vær kan vi inkludere en kort vandring i Relleu eller et vakkert utsiktspunkt.\n\n<strong>VIKTIG</strong>\n\nSelve oliventuren leveres av Señoríos de Relleu. Costa Blanca Tours kan sette sammen en mer komplett privat tur med planlegging, transport, lunsj og lokal oppfølging etter avtale. Dette betyr ikke at et eksklusivt samarbeid er inngått. Innhold, tidspunkt og pris bekreftes før betaling."
+    },
+    "duration": {
+      "en": "Private half / full day · approximately 4–7 hours",
+      "no": "Privat halv-/heldag · omtrent 4–7 timer"
+    },
+    "price": {
+      "en": "Price on request",
+      "no": "Pris på forespørsel"
+    },
+    "maxGuests": 4,
+    "transport": {
+      "en": "Private transport arranged on confirmation",
+      "no": "Privat transport avtales ved bekreftelse"
+    },
+    "category": {
+      "en": "Exclusive Olive Oil & Culture",
+      "no": "Eksklusiv olivenolje og kultur"
+    },
+    "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=1000",
+    "highlights": {
+      "en": [
+        "Masía El Teuladí estate",
+        "Olive groves and oil mill",
+        "Producer-hosted EVOO tasting",
+        "Regional lunch by arrangement",
+        "Optional Relleu village stroll"
+      ],
+      "no": [
+        "Masía El Teuladí",
+        "Olivenlund og oljemølle",
+        "Oljesmaking med produsenten",
+        "Regional lunsj etter avtale",
+        "Mulig vandring i Relleu"
+      ]
+    },
+    "featured": true,
+    "inquiryOnly": true,
+    "inquiryEmail": "freddy@zenecohomes.com",
+    "producerUrl": "https://www.senoriosderelleu.com/"
   }
 ];
 
@@ -302,6 +411,7 @@ export const getLocalizedTour = (tour, lang) => {
     name: localize(tour.name),
     shortDescription: localize(tour.shortDescription),
     fullDescription: localize(tour.fullDescription),
+    price: localize(tour.price),
     duration: localize(tour.duration),
     transport: localize(tour.transport),
     category: localize(tour.category),
