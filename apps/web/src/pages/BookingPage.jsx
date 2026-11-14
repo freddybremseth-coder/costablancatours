@@ -39,7 +39,8 @@ function BookingPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
 
-  const localizedTours = toursData.map(tour => getLocalizedTour(tour, language));
+  // Private bespoke experiences have a separate enquiry-only flow. Never offer a fake €0 checkout.
+  const localizedTours = toursData.filter(tour => !tour.inquiryOnly).map(tour => getLocalizedTour(tour, language));
 
   // Pre-select tour if passed in URL
   useEffect(() => {
