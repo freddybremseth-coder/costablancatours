@@ -9,7 +9,8 @@ import { useLanguage } from '@/contexts/LanguageContext.jsx';
 
 function TourCard({ tour, useShortDescription = false, className }) {
   const { id, name, shortDescription, fullDescription, duration, image, highlights, price } = tour;
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const enquiry = tour.inquiryOnly ? `mailto:${tour.inquiryEmail}?subject=${encodeURIComponent(`Private experience enquiry: ${name}`)}&body=${encodeURIComponent(`Hello, I would like to enquire about ${name}.\n\nPreferred date(s):\nNumber of guests (up to 4):\nPreferred pickup area:\nSpecial requests:\n\nPlease confirm availability and a personal quote.`)}` : null;
 
   const description = useShortDescription ? shortDescription : fullDescription;
 
@@ -76,9 +77,13 @@ function TourCard({ tour, useShortDescription = false, className }) {
             </Link>
           </Button>
           <Button asChild className="flex-1 shadow-md hover:shadow-lg transition-all">
-            <Link to={`/booking?tour=${id}`}>
-              {t('tours.bookNow') || 'Book Now'}
-            </Link>
+            {tour.inquiryOnly ? (
+              <a href={enquiry}>{language === 'no' ? 'Spør om turen' : 'Request details'}</a>
+            ) : (
+              <Link to={`/booking?tour=${id}`}>
+                {t('tours.bookNow') || 'Book Now'}
+              </Link>
+            )}
           </Button>
         </div>
       </div>
