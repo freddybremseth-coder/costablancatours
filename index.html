@@ -1073,6 +1073,12 @@ function TourDetailPage({ tourId, setPage, setTourId }) {
   const { t } = useLang();
   const tour = TOURS.find(tr => tr.id === tourId) || TOURS[0];
   const [imgLoaded, setImgLoaded] = React.useState(false);
+  // Never auto-confirm a bespoke producer visit. The customer opens an email enquiry.
+  const enquiryHref = tour.inquiryOnly
+    ? 'mailto:' + tour.inquiryEmail
+      + '?subject=' + encodeURIComponent('Private tour enquiry: ' + tour.name)
+      + '&body=' + encodeURIComponent('Hello, I would like a private quote for ' + tour.name + '\n\nPreferred date(s):\nNumber of guests (up to 4):\nPickup location:\nSpecial requests:\n\nPlease confirm availability, inclusions and the final price.')
+    : null;
 
   return (
     <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72 }}>
@@ -1130,8 +1136,9 @@ function TourDetailPage({ tourId, setPage, setTourId }) {
             <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
               <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.7rem', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 6 }}>{t.detail.priceLabel}</div>
               <div style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2.5rem', fontWeight: 700, lineHeight: 1 }}>{tour.price}</div>
-              <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: 6 }}>{t.detail.allInclusive} {tour.maxGuests}</div>
+              <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: 6 }}>{tour.inquiryOnly ? 'Private request · up to ' + tour.maxGuests + ' guests' : t.detail.allInclusive + ' ' + tour.maxGuests}</div>
             </div>
+            {!tour.inquiryOnly && (
             <div style={{ marginBottom: '1.5rem' }}>
               {t.detail.included.map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.4rem 0' }}>
@@ -1140,19 +1147,26 @@ function TourDetailPage({ tourId, setPage, setTourId }) {
                 </div>
               ))}
             </div>
-            <button onClick={() => setPage('booking')} style={{
+            )}
+            <button onClick={() => tour.inquiryOnly ? window.location.assign(enquiryHref) : setPage('booking')} style={{
               width: '100%', background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
               fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
               padding: '1rem', borderRadius: 2, marginBottom: '0.75rem',
-            }}>{t.detail.reserveBtn}</button>
-            <button onClick={() => setPage('contact')} style={{
+            }}>{tour.inquiryOnly ? 'Request a private quote' : t.detail.reserveBtn}</button>
+            {tour.inquiryOnly && (
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.78rem', lineHeight: 1.6, marginBottom: 15 }}>
+                This opens your email app; no booking or payment is made. Farm or winery access, the tasting, lunch, transport and final quote must be confirmed.
+                {' '}<a href={tour.producerUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>About the producer</a>.
+              </p>
+            )}
+            {!tour.inquiryOnly && <button onClick={() => setPage('contact')} style={{
               width: '100%', background: 'transparent', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
               fontFamily: 'DM Sans', fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase',
               padding: '0.875rem', borderRadius: 2,
-            }}>{t.detail.questionBtn}</button>
-            <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.75rem', textAlign: 'center', marginTop: '1rem', lineHeight: 1.5 }}>
+            }}>{t.detail.questionBtn}</button>}
+            {!tour.inquiryOnly && <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.75rem', textAlign: 'center', marginTop: '1rem', lineHeight: 1.5 }}>
               {t.detail.cancelNote}
-            </p>
+            </p>}
           </div>
 
           <div style={{ marginTop: '2rem' }}>
@@ -1422,7 +1436,7 @@ function BookingPage({ setPage }) {
               <label style={labelStyle}>{b.tourLabel}</label>
               <select value={form.tour} onChange={e => setForm(f => ({ ...f, tour: e.target.value }))} required style={{ ...inputStyle, color: form.tour ? 'white' : 'rgba(255,255,255,0.35)' }}>
                 <option value="">{b.tourPlaceholder}</option>
-                {TOURS.map(tr => <option key={tr.id} value={tr.id}>{tr.name} — {tr.price}</option>)}
+                {TOURS.filter(tr => !tr.inquiryOnly).map(tr => <option key={tr.id} value={tr.id}>{tr.name} — {tr.price}</option>)}
               </select>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
