@@ -278,6 +278,21 @@ const TOURS = [
 const LOGO = 'https://horizons-cdn.hostinger.com/fdaae8f6-c2cb-4e61-863e-e79e6b571eca/5e1471de21621c8a783339a25d92fc19.png';
 const HERO_IMG = 'https://images.unsplash.com/photo-1602854127232-983309a47263?auto=format&fit=crop&q=85&w=1920';
 
+
+const CBT_INQUIRY_ENDPOINT = 'https://ereapsfcsqtdmzosgnnn.supabase.co/functions/v1/costablancatours-intake';
+async function sendCbtInquiry(payload) {
+  const response = await fetch(CBT_INQUIRY_ENDPOINT, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const result = await response.json().catch(() => null);
+  if (!response.ok || !result || result.accepted !== true) {
+    throw new Error(result?.error === 'rate_limited' ? 'Too many requests. Please try again later.' : 'We could not confirm delivery of your request.');
+  }
+  return result;
+}
+
 const CATEGORIES = ['All', 'Olive Oil & Gastronomy', 'Culinary & Culture', 'Wine & Gastronomy', 'Adventure & Sports', 'Island & Coastal', 'Culture & Sightseeing', 'Luxury & Coastal', 'Nature & History', 'Romance & Luxury', 'Nature & Relaxation'];
 
 </script>
@@ -1148,14 +1163,14 @@ function TourDetailPage({ tourId, setPage, setTourId }) {
               ))}
             </div>
             )}
-            <button onClick={() => tour.inquiryOnly ? window.location.assign(enquiryHref) : setPage('booking')} style={{
+            <button onClick={() => { window.__preferredTourId = tour.id; setPage('booking'); }} style={{
               width: '100%', background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: 'pointer',
               fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
               padding: '1rem', borderRadius: 2, marginBottom: '0.75rem',
             }}>{tour.inquiryOnly ? 'Request a private quote' : t.detail.reserveBtn}</button>
             {tour.inquiryOnly && (
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.78rem', lineHeight: 1.6, marginBottom: 15 }}>
-                This opens your email app; no booking or payment is made. Farm or winery access, the tasting, lunch, transport and final quote must be confirmed.
+                Request a private quote with our enquiry form. No payment or reservation is made. Farm or winery access, tastings, lunch, transport and final price must be confirmed.
                 {' '}<a href={tour.producerUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>About the producer</a>.
               </p>
             )}
@@ -1272,16 +1287,46 @@ function AboutPage({ setPage }) {
 }
 
 function ContactPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const c = t.contact;
   const [form, setForm] = React.useState({ name: '', email: '', phone: '', message: '', tour: '' });
   const [sent, setSent] = React.useState(false);
   const [sending, setSending] = React.useState(false);
+  const [consent, setConsent] = React.useState(false);
+  const [error, setError] = React.useState('');
+  const [receipt, setReceipt] = React.useState('');
+  const [startedAt] = React.useState(() => Date.now());
+  const [idempotency] = React.useState(() => crypto.randomUUID());
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending || !consent) return;
+    setError('');
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); }, 1200);
+    try {
+      const tour = TOURS.find(tour => tour.id === form.tour);
+      const result = await sendCbtInquiry({
+        form_type: 'contact',
+        tour_id: tour?.id || null,
+        tour_name: tour?.name || null,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        locale: lang,
+        privacy_consent: true,
+        idempotency_key: idempotency,
+        started_at: startedAt,
+        website: e.currentTarget?.elements?.namedItem('website')?.value || '',
+        source_page: location.origin + location.pathname
+      });
+      setReceipt(result.reference || '');
+      setSent(true);
+    } catch (err) {
+      setError(err?.message || 'We could not send your enquiry. Please try again or contact us by email.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 2, padding: '0.875rem 1rem', color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', boxSizing: 'border-box', outline: 'none' };
@@ -1303,7 +1348,8 @@ function ContactPage() {
             <div style={{ background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.3)', borderRadius: 4, padding: '3rem', textAlign: 'center' }}>
               <div style={{ color: 'var(--gold)', fontSize: '2rem', marginBottom: '1rem' }}>◆</div>
               <h3 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '1.5rem', marginBottom: '0.75rem' }}>{c.successTitle}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.9rem', lineHeight: 1.7 }}>{c.successText}</p>
+              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans', fontSize: '0.9rem', lineHeight: 1.7 }}>{lang === 'no' ? 'Henvendelsen er lagret og skal behandles. Dette er ikke en bekreftet tur.' : 'Your enquiry has been recorded for review. This does not confirm a tour.'}</p>
+              {receipt && <p style={{ color: 'var(--gold)', fontSize: '0.75rem', marginTop: '1rem' }}>Reference: {receipt}</p>}
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
@@ -1328,7 +1374,13 @@ function ContactPage() {
                 <label style={labelStyle}>{c.messageLabel}</label>
                 <textarea placeholder={c.messagePlaceholder} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} rows={6} required style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
-              <button type="submit" disabled={sending} style={{
+              <input type="text" name="website" autoComplete="off" tabIndex="-1" aria-hidden="true" style={{position:'absolute',left:'-9999px',width:1,height:1,opacity:0}} />
+              <label style={{display:'flex',gap:'0.65rem',alignItems:'flex-start',color:'rgba(255,255,255,0.65)',fontSize:'0.78rem',marginBottom:'1.5rem',lineHeight:1.5}}>
+                <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} required />
+                {lang === 'no' ? 'Jeg samtykker til at kontaktopplysningene mine brukes til å svare på denne forespørselen.' : 'I agree to the use of my contact details solely to handle this enquiry.'}
+              </label>
+              {error && <p role="alert" style={{color:'#ffb4a8',marginBottom:'1rem',fontSize:'0.85rem'}}>{error} <a href="mailto:freddy@zenecohomes.com" style={{color:'var(--gold)'}}>Email us instead</a></p>}
+              <button type="submit" disabled={sending || !consent} style={{
                 background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: sending ? 'wait' : 'pointer',
                 fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                 padding: '1rem 2.5rem', borderRadius: 2, opacity: sending ? 0.7 : 1,
@@ -1363,20 +1415,51 @@ function ContactPage() {
 }
 
 function BookingPage({ setPage }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const b = t.booking;
-  const [form, setForm] = React.useState({ tour: '', date: '', guests: 2, name: '', email: '', phone: '', notes: '' });
+  const [form, setForm] = React.useState({ tour: window.__preferredTourId || '', date: '', guests: 2, name: '', email: '', phone: '', notes: '', pickup: '' });
   const [submitting, setSubmitting] = React.useState(false);
   const [done, setDone] = React.useState(false);
-  const [ref] = React.useState(() => 'CBT-' + Math.random().toString(36).slice(2,8).toUpperCase());
+  const [ref, setRef] = React.useState('');
+  const [consent, setConsent] = React.useState(false);
+  const [error, setError] = React.useState('');
+  const [startedAt] = React.useState(() => Date.now());
+  const [idempotency] = React.useState(() => crypto.randomUUID());
 
   const selectedTour = TOURS.find(tr => tr.id === form.tour);
-  const total = selectedTour ? (parseInt(selectedTour.priceNum) * form.guests) : 0;
+  const total = selectedTour && !selectedTour.inquiryOnly ? Number(selectedTour.priceNum || 0) * form.guests : null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (submitting || !consent || !selectedTour) return;
     setSubmitting(true);
-    setTimeout(() => { setSubmitting(false); setDone(true); }, 1400);
+    setError('');
+    try {
+      const result = await sendCbtInquiry({
+        form_type: selectedTour.inquiryOnly ? 'private_tour' : 'tour_request',
+        tour_id: selectedTour.id,
+        tour_name: selectedTour.name,
+        preferred_date: form.date,
+        guests: form.guests,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        pickup_area: form.pickup,
+        message: form.notes,
+        locale: lang,
+        privacy_consent: true,
+        idempotency_key: idempotency,
+        started_at: startedAt,
+        website: e.currentTarget?.elements?.namedItem('website')?.value || '',
+        source_page: location.origin + location.pathname
+      });
+      setRef(result.reference || '');
+      setDone(true);
+    } catch (err) {
+      setError(err?.message || 'We could not send your request.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 2, padding: '0.875rem 1rem', color: 'white', fontFamily: 'DM Sans', fontSize: '0.9rem', boxSizing: 'border-box', outline: 'none' };
@@ -1387,9 +1470,9 @@ function BookingPage({ setPage }) {
       <div style={{ background: '#080c18', minHeight: '100vh', paddingTop: 72, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 540, textAlign: 'center' }}>
           <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem', fontSize: '2rem', color: 'var(--gold)' }}>◆</div>
-          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>{b.successTitle}</h1>
+          <h1 style={{ fontFamily: 'Playfair Display', color: 'white', fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>{lang === 'no' ? 'Forespørselen er mottatt' : 'Enquiry received'}</h1>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-            {typeof b.successText === 'function' ? b.successText(form.name, form.email) : b.successText}
+            {lang === 'no' ? 'Vi har lagret din forespørsel. Turen er ikke bekreftet, og ingen betaling er gjennomført. Vi tar kontakt om dato og pris.' : 'Your enquiry is recorded. No reservation is confirmed and no payment has been taken. We will confirm availability and a quote with you.'}
           </p>
           <div style={{ background: '#0d1525', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 4, padding: '1.5rem', marginBottom: '2.5rem', textAlign: 'left' }}>
             {[
@@ -1397,7 +1480,7 @@ function BookingPage({ setPage }) {
               [b.tourLabel2, selectedTour?.name],
               [b.dateLabel2, form.date],
               [b.guestsLabel2, `${form.guests}`],
-              [b.totalLabel2, `€${total}`],
+              ['Estimated quote, not paid', total === null ? 'On request' : `€${total} (estimate)`],
             ].map(([k, v]) => (
               <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem' }}>{k}</span>
@@ -1436,13 +1519,13 @@ function BookingPage({ setPage }) {
               <label style={labelStyle}>{b.tourLabel}</label>
               <select value={form.tour} onChange={e => setForm(f => ({ ...f, tour: e.target.value }))} required style={{ ...inputStyle, color: form.tour ? 'white' : 'rgba(255,255,255,0.35)' }}>
                 <option value="">{b.tourPlaceholder}</option>
-                {TOURS.filter(tr => !tr.inquiryOnly).map(tr => <option key={tr.id} value={tr.id}>{tr.name} — {tr.price}</option>)}
+                {TOURS.map(tr => <option key={tr.id} value={tr.id}>{tr.name} — {tr.price}</option>)}
               </select>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
               <div>
                 <label style={labelStyle}>{b.dateLabel}</label>
-                <input type="date" value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} required style={{ ...inputStyle, colorScheme: 'dark' }} />
+                <input type="date" min={new Date().toISOString().slice(0,10)} value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} required style={{ ...inputStyle, colorScheme: 'dark' }} />
               </div>
               <div>
                 <label style={labelStyle}>{b.guestsLabel}</label>
@@ -1472,18 +1555,28 @@ function BookingPage({ setPage }) {
                 <input type="tel" placeholder={b.phonePlaceholder} value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} required style={inputStyle} />
               </div>
             </div>
+            <div style={{marginBottom:'1.25rem'}}>
+              <label style={labelStyle}>{lang === 'no' ? 'Ønsket hentested (valgfritt)' : 'Preferred pickup area (optional)'}</label>
+              <input type="text" value={form.pickup} placeholder="Benidorm, Altea, Alicante..." maxLength={200} onChange={e => setForm(f => ({ ...f, pickup: e.target.value }))} style={inputStyle} />
+            </div>
             <div>
               <label style={labelStyle}>{b.notesLabel}</label>
               <textarea placeholder={b.notesPlaceholder} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} rows={4} style={{ ...inputStyle, resize: 'vertical' }} />
             </div>
           </div>
 
-          <button type="submit" disabled={submitting} style={{
+          <input type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" style={{position:'absolute',left:'-9999px',width:1,height:1,opacity:0}} />
+          <label style={{display:'flex',alignItems:'flex-start',gap:'0.65rem',fontSize:'0.78rem',lineHeight:1.5,color:'rgba(255,255,255,0.65)',marginBottom:'1.25rem'}}>
+            <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} required />
+            {lang === 'no' ? 'Jeg samtykker til at kontaktopplysningene mine brukes til å behandle turforespørselen.' : 'I agree that my contact details may be used to arrange this tour enquiry.'}
+          </label>
+          {error && <p role="alert" style={{color:'#ffb4a8',marginBottom:'1.25rem'}}>{error} <a href="mailto:freddy@zenecohomes.com" style={{color:'var(--gold)'}}>Email us directly</a></p>}
+          <button type="submit" disabled={submitting || !consent} style={{
             background: 'var(--gold)', color: '#0a0f1c', border: 'none', cursor: submitting ? 'wait' : 'pointer',
             fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
             padding: '1.1rem 3rem', borderRadius: 2, opacity: submitting ? 0.7 : 1,
-          }}>{submitting ? b.processingBtn : b.submitBtn}</button>
-          <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: '1rem' }}>{b.cancelNote}</p>
+          }}>{submitting ? b.processingBtn : (lang === 'no' ? 'Send forespørsel' : 'Send enquiry — no payment')}</button>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginTop: '1rem' }}>{lang === 'no' ? 'Ingen betaling trekkes. Dato, produsentbesøk, transport og sluttpris må bekreftes.' : 'No payment is taken. Date, producer visit, transfer and final price must be confirmed.'}</p>
         </form>
 
         <div style={{ position: 'sticky', top: 92 }}>
@@ -1496,11 +1589,11 @@ function BookingPage({ setPage }) {
                 <div style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.8rem', marginBottom: '1.5rem' }}>{selectedTour.duration}</div>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.875rem' }}>{selectedTour.price} × {form.guests}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans', fontSize: '0.875rem' }}>{selectedTour.inquiryOnly ? 'Personal quote on request' : selectedTour.price + ' × ' + form.guests}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                    <span style={{ color: 'white', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700 }}>{b.totalLabel}</span>
-                    <span style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '1.4rem', fontWeight: 700 }}>€{total}</span>
+                    <span style={{ color: 'white', fontFamily: 'DM Sans', fontSize: '0.875rem', fontWeight: 700 }}>{lang === 'no' ? 'Veiledende pris' : 'Indicative only'}</span>
+                    <span style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '1.4rem', fontWeight: 700 }}>{total === null ? 'On request' : `€${total} (estimate)`}</span>
                   </div>
                 </div>
               </>
