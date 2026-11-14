@@ -1745,8 +1745,21 @@ const HERO_IMAGES = {
 };
 
 function App() {
-  const [page, setPage] = React.useState('home');
-  const [tourId, setTourId] = React.useState(null);
+  // Link directly to a tour from the owner's portfolio or a partner website.
+  const getTourFromHash = () => {
+    const slug = (window.location.hash.match(/^#tour\/([a-z0-9-]+)$/) || [])[1] || '';
+    return TOURS.some(tr => tr.id === slug) ? slug : null;
+  };
+  const [page, setPage] = React.useState(() => getTourFromHash() ? 'tour-detail' : 'home');
+  const [tourId, setTourId] = React.useState(() => getTourFromHash());
+  React.useEffect(() => {
+    const onHashChange = () => {
+      const selected = getTourFromHash();
+      if (selected) { setTourId(selected); setPage('tour-detail'); }
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
   const [tweaks, setTweaksState] = React.useState(TWEAK_DEFAULTS);
   const [showTweaks, setShowTweaks] = React.useState(false);
 
