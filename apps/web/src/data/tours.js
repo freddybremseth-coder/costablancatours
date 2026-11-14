@@ -129,7 +129,7 @@ export const toursData = [
     },
     "featured": true,
     "inquiryOnly": true,
-    "inquiryEmail": "info@donaanna.com",
+    "inquiryEmail": "freddy@zenecohomes.com",
     "producerUrl": "https://www.bodegasjuangil.com/"
   },
   {
@@ -236,7 +236,7 @@ export const toursData = [
     },
     "featured": true,
     "inquiryOnly": true,
-    "inquiryEmail": "info@donaanna.com",
+    "inquiryEmail": "freddy@zenecohomes.com",
     "producerUrl": "https://www.donaanna.com/"
   },
   {
@@ -393,7 +393,7 @@ export const toursData = [
     },
     "featured": true,
     "inquiryOnly": true,
-    "inquiryEmail": "info@donaanna.com",
+    "inquiryEmail": "freddy@zenecohomes.com",
     "producerUrl": "https://www.senoriosderelleu.com/"
   }
 ];
