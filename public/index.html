@@ -825,9 +825,9 @@ function TourCard({ tour, setPage, setTourId, compact }) {
         <p style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans', fontSize: '0.875rem', lineHeight: 1.65, margin: 0 }}>{tour.shortDesc}</p>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <span style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans', fontSize: '0.7rem', display: 'block', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{t.tours.from}</span>
+            <span style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans', fontSize: '0.7rem', display: 'block', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{tour.inquiryOnly ? 'Private experience' : t.tours.from}</span>
             <span style={{ color: 'white', fontFamily: 'Playfair Display', fontSize: '1.4rem', fontWeight: 700 }}>{tour.price}</span>
-            <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.75rem' }}>{t.tours.perPerson}</span>
+            <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans', fontSize: '0.75rem' }}>{tour.inquiryOnly ? '' : t.tours.perPerson}</span>
           </div>
           <div style={{
             background: hov ? 'var(--gold)' : 'transparent',
@@ -1017,7 +1017,7 @@ function ToursPage({ setPage, setTourId }) {
   const filterLabel = t.tours.filter;
   const cats = [filterLabel, ...CATEGORIES.slice(1)];
   const filtered = activeCategory === filterLabel || activeCategory === 'All'
-    ? TOURS
+    ? [...TOURS.filter(tr => tr.inquiryOnly), ...TOURS.filter(tr => !tr.inquiryOnly)]
     : TOURS.filter(tr => tr.category === activeCategory);
 
   return (
@@ -1047,6 +1047,13 @@ function ToursPage({ setPage, setTourId }) {
       </div>
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '4rem 2rem 6rem' }}>
+        {(activeCategory === 'All' || activeCategory === filterLabel) && (
+          <section style={{ borderLeft: '3px solid var(--gold)', padding: '0.25rem 0 0.5rem 1.5rem', marginBottom: '2.5rem' }}>
+            <div style={{ color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.7rem', marginBottom: 10 }}>Private · Bespoke · By appointment</div>
+            <h2 style={{ color: 'white', fontFamily: 'Playfair Display', fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', marginBottom: 12 }}>Exclusive wine, olive oil &amp; gastronomy</h2>
+            <p style={{ color: 'rgba(255,255,255,0.62)', maxWidth: 750, fontSize: '0.95rem', lineHeight: 1.7 }}>Explore the real olive estate of Doña Anna in Biar, Monastrell wines at Juan Gil in Jumilla, and the olive-oil heritage of Señoríos de Relleu. Small private experiences for up to four guests, with visits, meals and transfers confirmed individually before booking.</p>
+          </section>
+        )}
         <div style={{ marginBottom: '2rem', color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans', fontSize: '0.85rem' }}>
           {filtered.length} {filtered.length === 1 ? t.tours.count1 : t.tours.countN}
         </div>
