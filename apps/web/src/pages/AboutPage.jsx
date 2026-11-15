@@ -108,7 +108,7 @@ function AboutPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">Local expertise</h3>
                 <p className="leading-relaxed text-muted-foreground">
-                  Our guides were born and raised on the Costa Blanca. They know the family behind every vineyard, the story behind every village, and the best time to visit each location. This isn't rehearsed knowledge — it's lived experience.
+                  Our guides bring practical knowledge of the Costa Blanca, developed through years of exploration and local relationships. We help guests discover the villages, producers and places that make this region special.
                 </p>
               </motion.div>
 
