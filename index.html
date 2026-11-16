@@ -14,6 +14,15 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Readable identity on the Costa Blanca Tours header and footer */
+    .cbt-brand-lockup{display:inline-flex;align-items:center;gap:12px;color:#f7e7ba}
+    .cbt-brand-lockup svg{display:block;flex-shrink:0}
+    .cbt-brand-label{text-align:left;display:flex;flex-direction:column;gap:5px}
+    .cbt-brand-label strong{font:600 18px/1.1 'Playfair Display',Georgia,serif;letter-spacing:.075em;white-space:nowrap}
+    .cbt-brand-label span{font:600 11px/1 'DM Sans',sans-serif;letter-spacing:.3em;color:#e0be72}
+    @media(max-width:1050px){.cbt-brand-label{display:none}}
+    @media(max-width:600px){.cbt-header-inner{padding:0 1rem!important;height:78px!important}}
+
 
     :root {
       --gold: #c9a84c;
@@ -659,9 +668,9 @@ function Header({ page, setPage }) {
       backdropFilter: frosted ? 'blur(16px)' : 'none',
       borderBottom: frosted ? '1px solid rgba(255,255,255,0.07)' : 'none',
     }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <button onClick={() => setPage('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0 0 0' }}>
-          <CbtLogo size={54} />
+      <div className="cbt-header-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 92 }}>
+        <button onClick={() => setPage('home')} aria-label="Costa Blanca Tours – home" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+          <span className="cbt-brand-lockup"><CbtLogo size={71} /><span className="cbt-brand-label"><strong>COSTA BLANCA</strong><span>TOURS</span></span></span>
         </button>
 
         {/* Desktop nav */}
@@ -729,7 +738,7 @@ function Footer({ setPage }) {
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
           <div>
-            <CbtLogo size={110} />
+            <CbtLogo size={164} />
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: 280, marginTop: '0.5rem' }}>
               {t.footer.desc}
             </p>
